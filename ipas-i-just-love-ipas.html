@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-org1d0776f" class="outline-2">
+<h2 id="org1d0776f">IPA's I just love IPA's</h2>
+<div class="outline-text-2" id="text-org1d0776f">
+<p>
+India Pale Ale has always been a favorite of mine, I've had so many different styles/flavors and still get excited every time I find a new one. Some of my go to IPA's are;
+</p>
+<ul class="org-ul">
+<li><a href="https://www.brewdog.com/uk/punk-ipa-12-can">Punk IPA</a></li>
+<li><a href="https://www.camdentownbrewery.com/beer/off-menu-ipa/">Camden IPA</a></li>
+<li><a href="https://lagunitas.com/beer/ipa/">Lagunitas IPA</a></li>
+</ul>
+
+<p>
+Ok ok, joking aside. During a Friday beers Discord call with a few friends I thought it would be a good idea to mix up the "drink and talk rubbish" that we normally do, in favor for doing something productive. I thought it could be cool to play with <a href="https://www.gitpod.io">Gitpod</a> to collaborate. The only question left to answer was "what?", what are we going to collaborate on? I'd just finished a mobile application assessment and I looked at my testing iPhone and thought, "Lets do static analysis of all the <code>.ipa</code>'s on this device". With that, we started writing some horrible bash, had latency issues, and the drinking was not helping much, so we left it very much how we started it.
+</p>
+
+<p>
+Nursing a hangover, I messages my friends to see if they wanted to continue with the small side project, and as expected they said "No". But I had an idea, I don't like <a href="https://mobsf.github.io/docs/#/">mobSF</a>, on mobile application assessments I do what it does manually using <a href="https://rada.re/n/radare2.html">radare2</a>, so why not reinvent the wheel to understand why its round, by using <a href="https://www.radare.org/n/r2pipe.html">r2pipe</a> to parse out the specific information from <code>r2</code> commands, this played nicely because I'd been looking for an excuse to use golang for something.
+</p>
+</div>
+
+<div id="outline-container-orgbd166db" class="outline-3">
+<h3 id="orgbd166db">go2ipa</h3>
+<div class="outline-text-3" id="text-orgbd166db">
+<p>
+Did you know that you can pass a <code>ipa://</code> schema to radare2 ? I did not, I would always extract the content and then throw the binary into <code>r2</code>. After getting the r2pipe library installed, I began to write most likely really shoddy golang. But it worked, it did what I wanted it to do, it was just I had a nagging feeling that it seemed a bit useless. It would be quicker and easier just to use the <code>r2</code> commands. So with that in mind, if you really want to use my wrapper and see my shoddy golang, the repo is <a href="https://gitlab.com/JxTx/go2ipa">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org797ff0a" class="outline-3">
+<h3 id="org797ff0a">Getting the IPA's</h3>
+<div class="outline-text-3" id="text-org797ff0a">
+<p>
+I don't use many mobile applications, I prefer a keyboard. So one weekend I just went on a rampage within the App Store, downloading anything and everything that I could find. I ended up with ~60 mobile applications, Now all I had to do was pull them off the device, that should be simple enough. Using <a href="https://github.com/ChiChou/bagbak">bagbak</a> and this <i>one liner</i> I was able to pull all the <code>.ipa</code>'s off the device.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">for</span> app<span style="font-weight: bold;"> in</span> $(bagbak -l | awk <span style="font-style: italic;">'{print $4}'</span> | grep -v <span style="font-style: italic;">'apple|Cydia|portswigger|jxtx'</span> | tr -d <span style="font-style: italic;">"'"</span>); <span style="font-weight: bold;">do</span> bagbak -z $<span style="font-weight: bold; font-style: italic;">app</span> ; <span style="font-weight: bold;">done</span>
+</pre>
+</div>
+
+
+<div id="orgc42550e" class="figure">
+<p><img src="./ipas-pull.gif" alt="ipas-pull.gif" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org714cf00" class="outline-3">
+<h3 id="org714cf00">Analysis</h3>
+<div class="outline-text-3" id="text-org714cf00">
+<p>
+If I was going to put some effort into this, I wanted to make it worth it. A while ago I went through the <a href="https://www.hacker101.com/sessions/iOS/ios_quickstart">iOS quickstart video series by hackerone</a>, this series went through both static and dynamic analysis, so I reviewed my notes and built the following list of requirements that I wanted to extract from each <code>.ipa</code>.
+</p>
+
+<ul class="org-ul">
+<li>Info.plist</li>
+<li>File Contents</li>
+<li>Entitlements</li>
+<li>Sections</li>
+<li>Linked libraries</li>
+<li>Strings</li>
+<li>Classes</li>
+</ul>
+
+<p>
+With that list I then wrote a bash script using <code>rabin2</code> to automate the <code>r2</code> commands, and then build out a markdown file for each <code>.ipa</code>. Although markdown is cool (org is better), a bunch of markdown files does not help anyone. What I needed was to over engineer displaying the extracted information, so it would be easier to consume.
+</p>
+
+<p>
+Seeing as the analysis side was already being ran by a <a href="https://docs.gitlab.com/ee/ci/pipelines/">gitlab pipeline</a> I googled around to see if I could do anything within the pipeline to display or parse out the markdown files.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge0f9233" class="outline-3">
+<h3 id="orge0f9233">Publishing</h3>
+<div class="outline-text-3" id="text-orge0f9233">
+<p>
+I'm a fan of the <a href="https://readthedocs.org">read the docs</a> theme so <a href="https://www.mkdocs.org">mkdocs</a> with the read the docs theme made sense, adding this to the pipeline was simple enough, I just needed to add the following stages.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">test:
+  stage: test
+  image: python:3.8-buster
+  before_script:
+  - pip install mkdocs&gt;=1.1.2
+  script:
+  - mkdocs build --strict --verbose --site-dir $CI_PROJECT_DIR/test
+  artifacts:
+    paths:
+    - $CI_PROJECT_DIR/test
+
+pages:
+  stage: deploy
+  image: python:3.8-buster
+  before_script:
+  - pip install mkdocs&gt;=1.1.2
+  script:
+  - mkdocs build --strict --verbose
+  artifacts:
+    paths:
+    - public
+</pre>
+</div>
+
+<p>
+Once the job finished, I enabled <a href="https://docs.gitlab.com/ee/user/project/pages/">gitlab pages</a> for the repo, and well <a href="https://jxtx.gitlab.io/ipa-analysis/">look for yourself</a>.
+</p>
+
+<p>
+There are a few gotchas, first off, the analysis stage runs the analysis over each <code>.ipa</code> every time, which means adding additional <code>.ipa</code>'s takes a long time for the job to complete. Secondly, as its markdown any string extracted from the <code>.ipa</code> that starts with a <code>#</code> gets rendered as a heading. Both of which I can live with for now.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc0ca5af" class="outline-3">
+<h3 id="orgc0ca5af">Findings</h3>
+<div class="outline-text-3" id="text-orgc0ca5af">
+<p>
+First off, every application ran on a jailbroken device, and every application was pulled off with <code>bagbak</code> which uses <a href="https://frida.re">Frida</a>, so I guess you have two findings right there :)
+</p>
+
+<ul class="org-ul">
+<li>32 application had app transport security restrictions disabled.</li>
+<li>54 applications had URL schemas that could potentially be fuzzed</li>
+<li>41 applications supported the lowest OS as 13.0</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

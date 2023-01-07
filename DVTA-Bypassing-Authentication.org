@@ -1,0 +1,68 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* DVTA Bypassing Authentication
+[[https://github.com/nddmars/dvta][DVTA]] (Damn Vulnerable Thick App) is a Vulnerable Thick Client Application developed in C# .NET. There are quite a few vulnerabilities within this application. One of them allows to bypass login and login to the application as the admin user. 
+** Setup
+The thick app needs a MSSQL database and FTP server to function. I just followed the video below.
+
+ - [[https://www.youtube.com/watch?v=rx8mtI1HU5c&feature=youtu.be][Set up SQL Server and FTP Server]]
+
+Once you've downloaded the repo, build the project in visual studio and you should have =DVTA.exe= within the =bin/Release= directory. To test, we can log in with another user.
+
+[[./dvta/rebecca.png]]
+
+Great! Time to start hacking.
+
+** Getting Admin
+First off, I need a way to debug the application. Luckily [[https://github.com/0xd4d/dnSpy/][dnSpy]] is perfect for this. Open up dnSpy (x86) and drag / drop =DVTA.exe= into it.
+
+[[./dvta/dnspy1.png]]
+
+To live debug the application, click =Start= then in the dialog box, click =OK=. Then the application should be executed with dnSpy attached.
+
+[[./dvta/dnspystart.png]]
+
+Attempt to login into the application with the username of =admin= and any password that is *not* =admin123=. you should get an error.
+
+[[./dvta/adminlogerror.png]]
+
+Without closing the error, in dnSpy click =Break All=.
+
+[[./dvta/dnspybreakall.png]]
+
+Now its possible to debug the login process of the application. To identify where in the application authentication is made, lets have a look at the call stack. 
+
+[[./dvta/dnspycallstack.png]]
+
+Within the call stack window, we can see the function used for the message box, and that the "Invalid Login" error is a result of the function =db.checkLogin=.
+
+[[./dvta/dnspymessagebox.png]]
+
+Clicking the =db.checkLogin= function shows the query made when authentication to the application. Right click the line that starts with =string text= and select =Add Breakpoint=.
+
+[[./dvta/dnspybreakpoint.png]]
+
+Great, with the break point set, click =Continue= and attempt to login to the application again. The break point should then trigger, and you should see a new =Locals= tab in the bottom half of dnSpy.
+
+[[./dvta/dnspybreakhit.png]]
+
+Like other debuggers, when a break point is hit, we can step into / step over the instruction. If we click =Step Over= to the line that says =Console.WriteLine(text);= we can see the query in the =Locals= tab.
+
+[[./dvta/dnspystepover.png]]
+
+Clicking =Step Over= again to the line that says =return new SqlCommand(text, this.conn).ExecuteReader();=, we can then =Step Into= this instruction that constructs the SQL query, and is shown in the =Locals= tab.
+
+[[./dvta/dnspysqlquery.png]]
+
+At this stage we can change the query within the =Locals= tab by clicking the query and pressing =Enter=. Lets change the query to ~"SELECT * FROM users where username='admin'"~ 
+
+[[./dvta/dnspychangequery.png]]
+
+Now if we click =Continue= in dnSpy we should have bypassed authentication and logged in ad =admin=.
+
+[[./dvta/admin.png]]
+
+** Conclusion
+Because the application had the SQL query hard coded we were able to bypass authentication, it should be noted that we could have changed the SQL statement to something like =INSERT= or =UPDATE= resulting in an injection to the SQL database.

@@ -1,0 +1,66 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* A bit about Gatekeeper
+macOS actually comes with an /anti-virus/ like windows does, and like defender, there have been [[https://papers.put.as/papers/macosx/2015/Wardle-VB2015.pdf][several bypasses]].
+
+Gatekeeper was introduced by Apple in macOS 10.7.5 and heavily relies on code signing, using it as a means by which software origin can be verified.
+
+Gatekeeper applies the quarantine attribute (=com.apple.quarantine)= which flags files as quarantined, this is populated with values whose keys are defined in LaunchServices.framework's =LSQuarantine.h=, Applications can set this manually (using the =LSQuarantine*= APIs) or have macOS set this automatically for them.
+
+#+begin_src c
+  // $ cat $(xcrun --show-sdk-path)/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Headers/LSQuarantine.h | grep 'const'
+
+  extern const CFStringRef kLSQuarantineAgentNameKey                   API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineAgentBundleIdentifierKey       API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTimeStampKey                   API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTypeKey                        API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTypeWebDownload                API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTypeOtherDownload              API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTypeEmailAttachment            API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTypeInstantMessageAttachment   API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTypeCalendarEventAttachment    API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineTypeOtherAttachment            API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineOriginURLKey                   API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+  extern const CFStringRef kLSQuarantineDataURLKey                     API_AVAILABLE( macos(10.5) ) API_UNAVAILABLE( ios, tvos, watchos );
+#+end_src
+
+** Example
+Have you ever downloaded a file, and when you try to run it, it says that /"<application> can’t be opened because Apple cannot check it for malicious software."/? This is gatekeeper in action.
+
+[[./abag/popup.png]]
+
+To quickly test this, I'll make a small =swift= program, and importantly, *download it via a web browser*.
+
+#+begin_src shell :results output
+  echo 'print("hi")' > test.swift
+  swiftc ./test.swift
+  pyhttpd
+#+end_src
+
+After browsing to my local =http= server, and downloading the test binary, I get the gatekeeper message above.
+
+I had to download the binary via a web browser, because browsers will automatically generate extended attribute for the download. We can view these attributes with the =xattr= command.
+
+#+begin_example
+% xattr -l ./test
+com.apple.macl:
+com.apple.metadata:kMDItemDownloadedDate: bplist00�3A�OgH݇
+
+com.apple.metadata:kMDItemWhereFroms: bplist00�_http://127.0.0.1:8000/test_http://127.0.0.1:8000/
+                                                                                                (
+com.apple.quarantine: 0083;62ee9710;Safari;EE513242-BF88-4C3C-85D4-3AE401C9C315
+#+end_example
+
+Notice the last line in the above output.
+
+Readers that want the world to burn, would be asking themselves if this attribute is only applied if the binary is downloaded via a web browser, so lets test that.
+
+[[./abag/curl.png]]
+
+No output is good, to be doubly sure, lets run it.
+
+[[./abag/curl-run.png]]
+
+This technique is [[https://lapcatsoftware.com/articles/without-notarization.html][well known]] and actually bypasses gatekeeper.

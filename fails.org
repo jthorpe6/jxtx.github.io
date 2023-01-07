@@ -1,0 +1,5 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+This page is a collection of personal fails. I'm human, and sometimes you learn more from a failure than a success.

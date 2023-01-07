@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.70 scan initiated Sat May 16 13:50:24 2020 as: nmap -sC -p- -oA nmap-allport 192.168.0.120 -->
+<nmaprun scanner="nmap" args="nmap -sC -p- -oA nmap-allport 192.168.0.120" start="1589633424" startstr="Sat May 16 13:50:24 2020" version="7.70" xmloutputversion="1.04">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<taskprogress task="SYN Stealth Scan" time="1589634155" percent="24.98" remaining="2193" etc="1589636347"/>
+<taskprogress task="SYN Stealth Scan" time="1589639222" percent="99.99" remaining="1" etc="1589639223"/>
+<taskprogress task="SYN Stealth Scan" time="1589639237" percent="99.99" remaining="1" etc="1589639238"/>
+<taskprogress task="SYN Stealth Scan" time="1589639328" percent="99.99" remaining="1" etc="1589639329"/>
+<host starttime="1589633425" endtime="1589639352"><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.120" addrtype="ipv4"/>
+<address addr="1E:79:4C:BB:7C:83" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65534">
+<extrareasons reason="resets" count="65534"/>
+</extraports>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" method="table" conf="3"/><script id="http-title" output="VulnUni - We train the top Information Security Professionals"><elem key="title">VulnUni - We train the top Information Security Professionals</elem>
+</script></port>
+</ports>
+<times srtt="3616" rttvar="352" to="100000"/>
+</host>
+<runstats><finished time="1589639352" timestr="Sat May 16 15:29:12 2020" elapsed="5928.17" summary="Nmap done at Sat May 16 15:29:12 2020; 1 IP address (1 host up) scanned in 5928.17 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

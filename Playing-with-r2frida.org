@@ -1,0 +1,181 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Playing with r2frida
+[[https://www.radare.org/r/][Radare2]] and [[https://frida.re/][frida]] are some of my favourite tools, mainly because once you get over the steep learning curve they are fantastic at what they do. A bit like =emacs=, in that once you have your setup the way you want it, you'll learn more tinkering. Well the other day I stumbled across [[https://github.com/nowsecure/r2frida][r2frida]].
+
+** Install
+Your going to have to have =radare2= and =frida= installed ofcourse, and theres a few other dependencies too install too.
+
+#+begin_src shell
+  sudo apt install -y make gcc libzip-dev nodejs npm curl pkg-config git
+#+end_src
+
+Once installed, you can use =r2pm= to install =r2frida=.
+
+#+begin_src shell
+  r2pm -ci r2frida
+#+end_src
+
+Your also going to need frida on your target device, but thats a littl out of scope for this post.
+** Connecting to target with =r2frida=
+The =README= outlines this, but here is a quick guide to connect and spawn an app on the device.
+
+First we need to get the identifier of the target device, and we can use frida to do that.
+
+#+begin_src shell
+  frida-ls-devices
+#+end_src
+
+#+RESULTS:
+: Id                                        Type    Name        
+: ----------------------------------------  ------  ------------
+: local                                     local   Local System
+: e1bbe59525c47da47dd89ed4421800f38fbe7cb5  usb     iOS Device  
+: socket                                    remote  Local Socket
+
+Great, now to use =r2firda= to spawn and connect to an app we can use the following command.
+
+#+begin_src shell
+  # r2 frida://spawn/usb/<Device Id>/<Gadget>
+  r2 frida://spawn/usb/e1bbe59525c47da47dd89ed4421800f38fbe7cb5/com.hammerandchisel.discord
+#+end_src
+
+Once connected however the app with pause (like it does in the frida repl) so to continue the process we need to type =\dc= (Continue breakpoints or resume a spawned process).
+
+Now we can run specfic =r2frida= commands that are prepended with =\=.
+
+#+begin_example
+  [0x00000000]> \?
+  r2frida commands available via =! or \ prefix
+
+  [...]
+#+end_example
+
+** Search Example
+In =radare2= to search for a pattern you'd use the =/ <pattern>= command, well with =r2frida= its the same but prepended with =\=.
+
+#+begin_example
+  [0x00000000]> \/ jail
+  Searching 4 bytes: 6a 61 69 6c
+  Searching 4 bytes in [0x0000000100bf4000-0x0000000100c04000]
+  [...]
+  Searching 4 bytes in [0x0000000262600000-0x00000002626cc000]
+  Searching 4 bytes in [0x00000002646cc000-0x000000026bf84000]
+  Searching 4 bytes in [0x0000000280000000-0x00000002a0000000]
+  hits: 32
+  0x10190fe97 hit1_0 jailbroken
+  0x10798d4d2 hit1_1 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x108c37dbb hit1_2 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x108c768ff hit1_3 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x108cb9b89 hit1_4 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x108cd72a9 hit1_5 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x108cf52f6 hit1_6 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x109548ebd hit1_7 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x10b10c603 hit1_8 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x10d01820d hit1_9 jailbreak dectection tonight 
+  0x10d01825d hit1_10 jailbreak dectection tonight 
+  0x10d83b7ad hit1_11 jailbreak dectection tonight "
+  0x10d83b7fd hit1_12 jailbreak dectection tonight I
+  0x22910a4c0 hit1_13 jail ls,zls,saamrd: ka p Ts odgtuizbmsmi
+  0x22976cce8 hit1_14 jail.com
+  0x2297748b9 hit1_15 jailinmatesearch.com
+  0x22978149f hit1_16 jailaflemme.fr
+  0x2297963f9 hit1_17 jailbreakingisnotacrime.org
+  0x2389c5635 hit1_18 jailedReferenceBoundsInPixels
+  0x23a75c859 hit1_19 jailedReferenceBoundsInPixels
+  0x24e3631fe hit1_20 jailedProjects
+  0x24e363780 hit1_21 jailedProjects
+  0x255c9ee2f hit1_22 jailedReferenceBounds
+  0x255c9ee48 hit1_23 jailedReferenceBoundsInPixels
+  0x255c9ee69 hit1_24 jailedReferenceBoundsForInterfaceOrientation:
+  0x255eaaf3a hit1_25 jailed bounds, ending
+  0x281fe6e51 hit1_26 jailbroken
+  0x2826c0560 hit1_27 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x2826cb3c0 hit1_28 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x2826cb580 hit1_29 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x2826cb660 hit1_30 jailbreak dectection tonight .. do you want a copy, or do yo
+  0x2828c8500 hit1_31 jailbreak dectection tonight .. do you want a copy, or do yo
+
+  [0x00000000]> 
+
+#+end_example
+
+When doing mobile testing its also nice to have a list of classes that that app uses. We can get that with the =\ic= command, and the =\icl= command for a list of classes that have been loaded.
+
+#+begin_example
+  [0x00000000]> \icl
+  Do you want to print 26214 lines? (y/N) y
+  PFEmbeddedMulticasterImplementation
+  PFMulticasterDistributionMethods
+  _PFMainThreadReleaseMethods
+  PFChecksum
+  PFTaggedPointer
+  PFBlockControl
+  PFPipeline
+  PFPipelineStage
+  PFPipelineStage0
+  PFSelectorPipelineStage
+  PFPipelineJobGeneratorInfo
+  PFPipelineIndeterminiteJobGeneratorInfo
+  PFPipelineDeterminiteJobGeneratorInfo
+  PFPipelineJobInfo
+  PFLimitedConcurrencySlotQueue
+  PFDiskCacheFile
+  PFUtilities
+
+  [...]
+#+end_example
+
+Like with any =radare2= command, this can be filtered.
+
+#+begin_example
+  [0x00000000]> \icl~+discord
+  discord_ios_discord_ios_swift_lib.Networking
+  discord_ios_discord_ios_swift_lib.ContactSyncEncryption
+  discord_ios_discord_ios_swift_lib.DCDRoundedCornerView
+  discord_ios_discord_ios_swift_lib.DCDQRScanner
+  discord_ios_discord_ios_swift_lib.DCDMessageLoadingSpinner
+  discord_ios_discord_ios_swift_lib.DCDSegmentedControl
+  discord_ios_discord_ios_swift_lib.DCDTableView
+#+end_example
+
+** Inspecting Memory
+With the =\dm= command we can see the memory regions. With the =\dmm= command its then possible to show the memory maps.
+
+#+begin_example
+  [0x00000000]> \dmm
+  0x0000000100bf4000 - 0x0000000101f6e000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/Discord
+  0x00000001021bc000 - 0x000000010227f000 rwx /binpack/lib/dyld
+  0x00000001022a0000 - 0x00000001022a4000 rwx /private/var/preferences/Logging/.plist-cache.Bw2gXuOr
+  0x00000001027a4000 - 0x00000001027e1000 rwx /usr/lib/libobjc-trampolines.dylib
+  0x00000001027e8000 - 0x0000000103800000 rwx /usr/share/icu/icudt62l.dat
+  0x000000010598c000 - 0x00000001059d1000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/Assets.car
+  0x00000001059d8000 - 0x0000000105c74000 rwx /private/var/mobile/Containers/Data/Application/90140E80-1450-4642-89ED-7CD8CC067C57/Library/Caches/com.hammerandchisel.discord/Cache.db-shm
+  0x0000000105fc0000 - 0x0000000106b01000 rwx /System/Library/PrivateFrameworks/UIKitCore.framework/Artwork.bundle/Assets.car
+  0x0000000106b08000 - 0x0000000106b2c000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/gbindict
+  0x0000000106b54000 - 0x0000000106b67000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/English.lproj/bindict4
+  0x0000000106bf4000 - 0x0000000106bfe000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/English.lproj/bindict7
+  0x0000000107b48000 - 0x0000000107d03000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/gnamebindict
+  0x0000000107d08000 - 0x0000000107d72000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/English.lproj/bindict
+  0x0000000107d78000 - 0x0000000107dbb000 rwx /private/var/db/timezone/tz/2020d.1.0/icutz/icutz44l.dat
+  0x0000000107de0000 - 0x00000001081e3000 rwx /usr/share/langid/langid.inv
+  0x00000001088dc000 - 0x0000000108d2b000 rwx /System/Library/LinguisticData/RequiredAssets_en.bundle/AssetData/Delta-en_GB.idx
+  0x0000000108d54000 - 0x0000000108d7c000 rwx /private/var/mobile/Library/Caches/com.apple.UIStatusBar/16G201/images/103902009632437770076865854842937718261
+  0x0000000108df4000 - 0x00000001092a1000 rwx /System/Library/LinguisticData/RequiredAssets_en.bundle/AssetData/Unigrams-en.idx
+  0x0000000109370000 - 0x0000000109429000 rwx /System/Library/LinguisticData/RequiredAssets_en.bundle/AssetData/Delta-en_GB.dat
+  0x0000000109458000 - 0x00000001094a2000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/whitney-italic.ttf
+  0x00000001094bc000 - 0x00000001094e3000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/whitney-light.ttf
+  0x00000001094f8000 - 0x000000010950b000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/whitney-semibold.ttf
+  0x0000000109600000 - 0x000000010c2bb000 rwx /System/Library/Fonts/CoreUI/SFUIText.ttf
+  0x000000010c2ec000 - 0x000000010d21f000 rwx /System/Library/Fonts/Core/Helvetica.ttc
+  0x000000010eb9c000 - 0x000000010ef52000 rwx /System/Library/Fonts/Core/Courier.ttc
+  0x000000010f24c000 - 0x0000000111cee000 rwx /System/Library/Fonts/Core/AppleColorEmoji@2x.ttc
+  0x0000000228800000 - 0x0000000256e24000 rwx /Library/Caches/frida-EJ74S0.dylib
+
+  [0x00000000]> 
+
+#+end_example
+
+More & better examples at [[https://github.com/enovella/r2frida-wiki][r2frida-wiki]].

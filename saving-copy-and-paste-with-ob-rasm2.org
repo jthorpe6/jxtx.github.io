@@ -1,0 +1,51 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Saving Copy and Paste With ob-rasm2
+At the beginning of 2022 I thought it would be a good idea to learn assembly, specfically ARM assembly. Like any good Emacs user I'm taking my notes in =org-mode= and I wanted to reduce the amount of copy and paste from the terminal to Emacs. I already use =vterm= and =asm-mode= to assemble my code, but I wanted to have that inline with my notes. So i started to look around.
+
+** Rasm2
+[[https://r2wiki.readthedocs.io/en/latest/tools/rasm2/][Rasm2]] is part of the radare2 framework, and assembles and disassembles files or hexpair strings without having to open =r2=. After installing [[https://rada.re/n/radare2.html][radare2]] we can execute =rasm2= to quickly assemble and disassemble strings.
+
+#+begin_src shell :results output :exports both
+  rasm2 -a arm -b 64 "mov  x2, xzr"
+#+end_src
+
+#+RESULTS:
+: e2031faa
+
+And the reverse.
+
+#+begin_src shell :results output :exports both
+  rasm2 -a arm -b 64 -d e2031faa
+#+end_src
+
+#+RESULTS:
+: mov x2, xzr
+
+This is great and excatly what I want for learning, but it would be nicer if it was more inline. The command never really changes, and I wonder if I can do better.
+
+** Org Babel
+The code blocks above are ran by using [[https://orgmode.org/worg/org-contrib/babel/intro.html][org babel]] with shell-mode. Under the hood, it executes whats in the =src= bock and then displays the results in the buffer. Now, if I could have the =rasm2= command above as a snippet then it would save me a lot of repitition, but I can do one better.
+
+My [[https://letmegooglethat.com/?q=rasm2+org+babel][research]] into linking =rasm2= to org babel led me to [[https://vishnudevtj.github.io/notes/wrting-shellcode-in-emacs][this post]]. The author actually provides the code to make this work, however there is a problem. When I edit code blocks in =org-mode= I like to enter a temprary buffer with =C '=, with the code from the post I get an error that /no such language: rasm2-mode/. This means that there is no ~C '~ for me.
+
+** ob-rasm2
+Tidying up the code and googling around a bit, I ended up with [[https://gitlab.com/JxTx/ob-rasm2][ob-rasm2]], and adding =(add-to-list 'org-src-lang-modes '("rasm2" . asm))= allows editiing with =C '= by tricking =org-mode= in thinking that your editing in =asm=. All thats left to do is show the same example above :).
+
+#+begin_src rasm2 :arch arm :bits 64
+  mov x2, xzr
+#+end_src
+
+#+RESULTS:
+: \xe2\x03\x1f\xaa
+
+And the reverse.
+
+#+begin_src rasm2 :arch arm :bits 64 :disasm
+  e2031faa
+#+end_src
+
+#+RESULTS:
+: mov x2, xzr

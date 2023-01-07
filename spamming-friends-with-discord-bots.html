@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-org915571b" class="outline-2">
+<h2 id="org915571b">Spamming Friends with Discord Bot's</h2>
+<div class="outline-text-2" id="text-org915571b">
+<p>
+Recently a few ex-colleagues and I created a Discord server to stay in touch with one another. This gave me an idea to create a bot that would remind us of events that took place when we worked together. Also be semi-annoying to people still working there.
+</p>
+
+<p>
+Discord allows you to create a bot from their <a href="https://discord.com/developers/applications">developer portal</a> and once you've set that up you'll be given a token to authenticated. I'm not going to tell you how to do this, as there are <a href="https://www.howtogeek.com/364225/how-to-make-your-own-discord-bot/">very good guides</a> that do this.
+</p>
+
+<p>
+For my bot, I chose to use the <a href="https://discordpy.readthedocs.io/en/stable/">python library</a> just because python was easier for me. Once downloaded the first thing was to try to build out a simple command. If anyone has ever worked with me they would know that I'm a fan of the <a href="http://www.catb.org/~esr/faqs/smart-questions.html">smart questions</a> page by Eric Steven Raymond. So it seemed logical to start with that as my first command, and the code looked a little bit like this.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/usr/bin/env python3</span>
+<span style="font-weight: bold;">import</span> discord
+<span style="font-weight: bold;">from</span> discord.ext <span style="font-weight: bold;">import</span> commands
+
+<span style="font-weight: bold; font-style: italic;">bot</span> = commands.Bot(command_prefix=<span style="font-style: italic;">'!'</span>)
+
+<span style="font-weight: bold; text-decoration: underline;">@bot.command</span>()
+<span style="font-weight: bold;">async def</span> <span style="font-weight: bold;">thelink</span>(ctx, *args):
+    <span style="font-weight: bold;">await</span> ctx.send(<span style="font-style: italic;">'http://www.catb.org/~esr/faqs/smart-questions.html'</span>)
+
+<span style="font-weight: bold;">def</span> <span style="font-weight: bold;">main</span>():
+    bot.run(<span style="font-style: italic;">'TOKEN'</span>)
+
+<span style="font-weight: bold;">if</span> <span style="font-weight: bold;">__name__</span> == <span style="font-style: italic;">'__main__'</span>:
+    main()
+
+</pre>
+</div>
+
+<p>
+Once the bot was up, anyone (normally me) could use the command <code>!thelink</code> and the bot would reply with the smart questions link.
+</p>
+
+
+<div id="org048961d" class="figure">
+<p><img src="./discordbot/thelink.png" alt="thelink.png" />
+</p>
+</div>
+
+<p>
+Great start. So a few commands later, I wanted to start tagging (mentioning) people. This is where the documentation is not very clear in my opinion, but a few google searches later, I discovered that you needed to find and provide that persons user ID, and then you can mention them with the bot's reply. To do this, you need to enable developer mode in Discord's settings, and then you can copy the ID of the person you want to mention in the bot's code.
+</p>
+
+
+<div id="org5667690" class="figure">
+<p><img src="./discordbot/userid.png" alt="userid.png" />
+</p>
+</div>
+
+<p>
+Now that I have this I <i>accidently</i> ended up spamming the person.
+</p>
+
+
+<div id="org0ac5bb3" class="figure">
+<p><img src="./discordbot/spam.png" alt="spam.png" />
+</p>
+</div>
+
+<p>
+Another gotcha I had was comment matching. The bot has the ability to respond to comments that match a certain criteria, seeing as I did not want to break out the <code>regex</code> for a silly bot, I had some interesting results.
+</p>
+
+
+<div id="org3663d89" class="figure">
+<p><img src="./discordbot/badmatch.png" alt="badmatch.png" />
+</p>
+</div>
+
+<p>
+A few commits later, I changed the matching to be a more specific string. But I was still having the problem where the bot would reply to itself.
+</p>
+
+
+<div id="org35fa593" class="figure">
+<p><img src="./discordbot/botreply.png" alt="botreply.png" />
+</p>
+</div>
+
+<p>
+This one was an easy fix. I just had to change the bot to reply to the original message only if the sender was not the bot itself.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">if</span> <span style="font-style: italic;">"MATCHED STRING"</span> <span style="font-weight: bold;">in</span> message.content.lower():
+    <span style="font-weight: bold;">if</span> message.author.bot: <span style="font-weight: bold;">return</span>
+    <span style="font-weight: bold;">await</span> message.reply(<span style="font-style: italic;">'lol MATCHED STRING'</span>)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org049bcc0" class="outline-3">
+<h3 id="org049bcc0">Over Engineering the Deployment</h3>
+<div class="outline-text-3" id="text-org049bcc0">
+<p>
+The only <i>problem</i> with the bot was that the script had to be running forever, meaning I needed to having it running on a system that was up for the majority of the time. Because I made a local repo for the code, I decided to make a <code>Dockerfile</code> for each bot, and then after any commit, a CI/CD pipeline would run that would re-deploy the container. As I used <a href="https://python-poetry.org">poetry</a> for the python project, here is the <code>Dockerfile</code> I ended up using.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dockerfile">FROM d21d3q/arm32v7-python-poetry
+
+COPY . /discordbot
+WORKDIR /discordbot
+RUN apt-get update &amp;&amp; \
+	pip3 install --upgrade pip &amp;&amp; \
+	poetry build &amp;&amp; \
+	pip3 install dist/*.tar.gz
+
+CMD bot
+</pre>
+</div>
+
+<p>
+Now, when I commit a change to the bot's code, the pipeline runs, and re-deploys the container.
+</p>
+
+
+<div id="org8ebeaa5" class="figure">
+<p><img src="./discordbot/containerbot.png" alt="containerbot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

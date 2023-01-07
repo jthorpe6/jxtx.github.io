@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-org0fcdddd" class="outline-2">
+<h2 id="org0fcdddd">Jailbreak and Root Detection</h2>
+<div class="outline-text-2" id="text-org0fcdddd">
+<p>
+When I'm testing mobile applications, as part of static analysis, I always check to see if the application may give me a hard time running on rooted or jailbroken devices. This normally includes searching for <i>common</i> detection strings like "Cydia" within the compiled application, for example;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">strings ~/Downloads/UnCrackable_Level_2/Payload/UnCrackable<span style="font-style: italic;">\ </span>Level<span style="font-style: italic;">\ </span>2.app/UnCrackable<span style="font-style: italic;">\ </span>Level<span style="font-style: italic;">\ </span>2 | grep Cydia
+</pre>
+</div>
+
+<pre class="example">
+/Applications/Cydia.app
+/Applications/Cydia.app
+</pre>
+
+
+<p>
+Over time this of <i>common</i> strings has got quite long, and I end up making a new list for each project.
+</p>
+
+<p>
+Another way I like to look for these <i>common</i> detection strings is by searching with <code>radare2</code>, for example;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">r2 -c izzq~+Cydia ~/Downloads/UnCrackable_Level_2/Payload/UnCrackable<span style="font-style: italic;">\ </span>Level<span style="font-style: italic;">\ </span>2.app/UnCrackable<span style="font-style: italic;">\ </span>Level<span style="font-style: italic;">\ </span>2
+</pre>
+</div>
+
+<pre class="example">
+0xeea1 24 23 /Applications/Cydia.app
+0xef20 36 35 cydia://package/com.example.package
+</pre>
+</div>
+
+<div id="outline-container-orgc0e98f3" class="outline-3">
+<h3 id="orgc0e98f3">Automate the boring stuff</h3>
+<div class="outline-text-3" id="text-orgc0e98f3">
+<p>
+So I wanted to have a standard script that I could run that would do this for me, both with <code>radare2</code> and with <code>strings</code>. I also wanted this to work for Android applications. So after little thought, I decided to use <code>python</code> and specifically the <code>r2pipe</code> library to interact with <code>radare2</code> and then using the <code>sh</code> library fall back to <code>strings</code>.
+</p>
+
+<p>
+I ended up with this function
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">string_search</span>(app, strings):
+    <span style="font-weight: bold;">for</span> string <span style="font-weight: bold;">in</span> <span style="font-weight: bold; font-style: italic;">strings</span>:
+        <span style="font-weight: bold;">try</span>:
+            r_pipe = r2pipe.<span style="font-weight: bold;">open</span>(app)
+            <span style="font-weight: bold; font-style: italic;">r_strings</span> = r_pipe.cmd(<span style="font-style: italic;">'izzq~+{}'</span>.<span style="font-weight: bold;">format</span>(string))
+            <span style="font-weight: bold;">if</span> r_strings:
+                <span style="font-weight: bold;">yield</span> r_strings
+        <span style="font-weight: bold;">except</span> <span style="font-weight: bold; text-decoration: underline;">Exception</span>:
+            <span style="font-weight: bold;">pass</span>
+
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">/bin/strings if radare2 fails</span>
+    <span style="font-weight: bold; font-style: italic;">sh_strings</span> = sh.strings(app)
+    <span style="font-weight: bold;">for</span> line <span style="font-weight: bold;">in</span> sh_strings:
+        <span style="font-weight: bold;">for</span> string <span style="font-weight: bold;">in</span> strings:
+            <span style="font-weight: bold;">if</span> string <span style="font-weight: bold;">in</span> line:
+                <span style="font-weight: bold;">yield</span> line
+</pre>
+</div>
+
+<p>
+Nice, now that the searching function is complete, I added this function to handle user arguments.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">get_args</span>():
+    <span style="font-weight: bold; font-style: italic;">parser</span> = argparse.ArgumentParser(description=<span style="font-style: italic;">'[+] root &amp; jailbreak detection'</span>)
+    group = parser.add_mutually_exclusive_group(required=<span style="font-weight: bold; text-decoration: underline;">True</span>)
+    group.add_argument(<span style="font-style: italic;">'--dex'</span>, <span style="font-weight: bold;">help</span>=<span style="font-style: italic;">'path to android dex file'</span>)
+    group.add_argument(<span style="font-style: italic;">'--ios'</span>, <span style="font-weight: bold;">help</span>=<span style="font-style: italic;">'path to extracted payload binary'</span>)
+    <span style="font-weight: bold;">return</span> parser.parse_args()
+</pre>
+</div>
+
+<p>
+And then depending option selected by the user, would result in which set of stings get imported at run-time.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">if</span> args.<span style="font-weight: bold; font-style: italic;">dex</span>:
+    app = args.dex
+    <span style="font-weight: bold;">from</span> jailrootdetector.detections <span style="font-weight: bold;">import</span> root_strings
+    <span style="font-weight: bold; font-style: italic;">strings</span> = root_strings
+<span style="font-weight: bold;">elif</span> args.<span style="font-weight: bold; font-style: italic;">ios</span>:
+    app = args.ios
+    <span style="font-weight: bold;">from</span> jailrootdetector.detections <span style="font-weight: bold;">import</span> jailbreak_strings
+    <span style="font-weight: bold; font-style: italic;">strings</span> = jailbreak_strings
+<span style="font-weight: bold;">else</span>:
+    sys.<span style="font-weight: bold; text-decoration: underline;">exit</span>()
+
+<span style="font-weight: bold;">print</span>(<span style="font-style: italic;">'\n[+] searching\n'</span>)
+<span style="font-weight: bold; font-style: italic;">search_results</span> = <span style="font-weight: bold;">set</span>(string_search(app, strings))
+<span style="font-weight: bold;">if</span> search_results:
+    <span style="font-weight: bold;">print</span>(<span style="font-style: italic;">'[+] detection strings found:'</span>)
+    <span style="font-weight: bold;">for</span> string <span style="font-weight: bold;">in</span> search_results:
+        <span style="font-weight: bold;">print</span>(<span style="font-style: italic;">'{}'</span>.<span style="font-weight: bold;">format</span>(string.strip()))
+<span style="font-weight: bold;">else</span>:
+    <span style="font-weight: bold;">print</span>(<span style="font-style: italic;">'[+] no detection strings found in: {}'</span>.<span style="font-weight: bold;">format</span>(app))
+</pre>
+</div>
+
+<p>
+This works well, but it did not quite hit the mark, I wanted this to be callable ate the users shell prompt, and not have to <code>cd</code> into this project directory to run one small script.
+</p>
+</div>
+
+<div id="outline-container-orgaa59150" class="outline-4">
+<h4 id="orgaa59150">Python Poetry</h4>
+<div class="outline-text-4" id="text-orgaa59150">
+<p>
+I was using <code>poetry</code> to manage the <code>virtualenv</code> and any other dependencies of this script, so I initially looked at the documentation to see how I could have this installed to the users <code>$PATH</code>, and discovered the <code>tool.poetry.scripts</code> in the <code>pyproject.toml</code> file. This was exactly what I was looking for, so I added in the following;
+</p>
+
+<pre class="example" id="org747f721">
+[tool.poetry.scripts]
+jrd = "jailrootdetector.main:main"
+</pre>
+
+<p>
+This now means users can install the script and then call it with <code>jrd --help</code>, amazing!!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3fdcaf3" class="outline-3">
+<h3 id="org3fdcaf3">PyPi</h3>
+<div class="outline-text-3" id="text-org3fdcaf3">
+<p>
+All that was left was to upload this to PyPi so people could install it with <code>pip</code> or <code>pipx</code>. <code>poetry</code> also helped here too with the <code>poetry publish --build</code> command.
+</p>
+
+<p>
+Now that the script had been uploaded to PyPi, its as simple as <code>pip(3|x) install jailrootdetector</code>, like so;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pipx install jailrootdetector
+</pre>
+</div>
+
+<p>
+And then call <code>jrd</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">jrd --help
+</pre>
+</div>
+
+<pre class="example" id="org20751e9">
+usage: jrd [-h] (--dex DEX | --ios IOS)
+
+[+] root &amp; jailbreak detection
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --dex DEX   path to android dex file
+  --ios IOS   path to extracted payload binary
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-orgb943319" class="outline-2">
+<h2 id="orgb943319">Playing with r2frida</h2>
+<div class="outline-text-2" id="text-orgb943319">
+<p>
+<a href="https://www.radare.org/r/">Radare2</a> and <a href="https://frida.re/">frida</a> are some of my favourite tools, mainly because once you get over the steep learning curve they are fantastic at what they do. A bit like <code>emacs</code>, in that once you have your setup the way you want it, you'll learn more tinkering. Well the other day I stumbled across <a href="https://github.com/nowsecure/r2frida">r2frida</a>.
+</p>
+</div>
+
+<div id="outline-container-orgbbd38a3" class="outline-3">
+<h3 id="orgbbd38a3">Install</h3>
+<div class="outline-text-3" id="text-orgbbd38a3">
+<p>
+Your going to have to have <code>radare2</code> and <code>frida</code> installed ofcourse, and theres a few other dependencies too install too.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt install -y make gcc libzip-dev nodejs npm curl pkg-config git
+</pre>
+</div>
+
+<p>
+Once installed, you can use <code>r2pm</code> to install <code>r2frida</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">r2pm -ci r2frida
+</pre>
+</div>
+
+<p>
+Your also going to need frida on your target device, but thats a littl out of scope for this post.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdab12b6" class="outline-3">
+<h3 id="orgdab12b6">Connecting to target with <code>r2frida</code></h3>
+<div class="outline-text-3" id="text-orgdab12b6">
+<p>
+The <code>README</code> outlines this, but here is a quick guide to connect and spawn an app on the device.
+</p>
+
+<p>
+First we need to get the identifier of the target device, and we can use frida to do that.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">frida-ls-devices
+</pre>
+</div>
+
+<pre class="example">
+Id                                        Type    Name        
+----------------------------------------  ------  ------------
+local                                     local   Local System
+e1bbe59525c47da47dd89ed4421800f38fbe7cb5  usb     iOS Device  
+socket                                    remote  Local Socket
+</pre>
+
+
+<p>
+Great, now to use <code>r2firda</code> to spawn and connect to an app we can use the following command.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">r2 frida://spawn/usb/&lt;Device Id&gt;/&lt;Gadget&gt;</span>
+r2 frida://spawn/usb/e1bbe59525c47da47dd89ed4421800f38fbe7cb5/com.hammerandchisel.discord
+</pre>
+</div>
+
+<p>
+Once connected however the app with pause (like it does in the frida repl) so to continue the process we need to type <code>\dc</code> (Continue breakpoints or resume a spawned process).
+</p>
+
+<p>
+Now we can run specfic <code>r2frida</code> commands that are prepended with <code>\</code>.
+</p>
+
+<pre class="example" id="orgc434093">
+[0x00000000]&gt; \?
+r2frida commands available via =! or \ prefix
+
+[...]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org420ab4f" class="outline-3">
+<h3 id="org420ab4f">Search Example</h3>
+<div class="outline-text-3" id="text-org420ab4f">
+<p>
+In <code>radare2</code> to search for a pattern you'd use the <code>/ &lt;pattern&gt;</code> command, well with <code>r2frida</code> its the same but prepended with <code>\</code>.
+</p>
+
+<pre class="example" id="orgf5a4ee0">
+[0x00000000]&gt; \/ jail
+Searching 4 bytes: 6a 61 69 6c
+Searching 4 bytes in [0x0000000100bf4000-0x0000000100c04000]
+[...]
+Searching 4 bytes in [0x0000000262600000-0x00000002626cc000]
+Searching 4 bytes in [0x00000002646cc000-0x000000026bf84000]
+Searching 4 bytes in [0x0000000280000000-0x00000002a0000000]
+hits: 32
+0x10190fe97 hit1_0 jailbroken
+0x10798d4d2 hit1_1 jailbreak dectection tonight .. do you want a copy, or do yo
+0x108c37dbb hit1_2 jailbreak dectection tonight .. do you want a copy, or do yo
+0x108c768ff hit1_3 jailbreak dectection tonight .. do you want a copy, or do yo
+0x108cb9b89 hit1_4 jailbreak dectection tonight .. do you want a copy, or do yo
+0x108cd72a9 hit1_5 jailbreak dectection tonight .. do you want a copy, or do yo
+0x108cf52f6 hit1_6 jailbreak dectection tonight .. do you want a copy, or do yo
+0x109548ebd hit1_7 jailbreak dectection tonight .. do you want a copy, or do yo
+0x10b10c603 hit1_8 jailbreak dectection tonight .. do you want a copy, or do yo
+0x10d01820d hit1_9 jailbreak dectection tonight 
+0x10d01825d hit1_10 jailbreak dectection tonight 
+0x10d83b7ad hit1_11 jailbreak dectection tonight "
+0x10d83b7fd hit1_12 jailbreak dectection tonight I
+0x22910a4c0 hit1_13 jail ls,zls,saamrd: ka p Ts odgtuizbmsmi
+0x22976cce8 hit1_14 jail.com
+0x2297748b9 hit1_15 jailinmatesearch.com
+0x22978149f hit1_16 jailaflemme.fr
+0x2297963f9 hit1_17 jailbreakingisnotacrime.org
+0x2389c5635 hit1_18 jailedReferenceBoundsInPixels
+0x23a75c859 hit1_19 jailedReferenceBoundsInPixels
+0x24e3631fe hit1_20 jailedProjects
+0x24e363780 hit1_21 jailedProjects
+0x255c9ee2f hit1_22 jailedReferenceBounds
+0x255c9ee48 hit1_23 jailedReferenceBoundsInPixels
+0x255c9ee69 hit1_24 jailedReferenceBoundsForInterfaceOrientation:
+0x255eaaf3a hit1_25 jailed bounds, ending
+0x281fe6e51 hit1_26 jailbroken
+0x2826c0560 hit1_27 jailbreak dectection tonight .. do you want a copy, or do yo
+0x2826cb3c0 hit1_28 jailbreak dectection tonight .. do you want a copy, or do yo
+0x2826cb580 hit1_29 jailbreak dectection tonight .. do you want a copy, or do yo
+0x2826cb660 hit1_30 jailbreak dectection tonight .. do you want a copy, or do yo
+0x2828c8500 hit1_31 jailbreak dectection tonight .. do you want a copy, or do yo
+
+[0x00000000]&gt; 
+
+</pre>
+
+<p>
+When doing mobile testing its also nice to have a list of classes that that app uses. We can get that with the <code>\ic</code> command, and the <code>\icl</code> command for a list of classes that have been loaded.
+</p>
+
+<pre class="example" id="org2c325c8">
+[0x00000000]&gt; \icl
+Do you want to print 26214 lines? (y/N) y
+PFEmbeddedMulticasterImplementation
+PFMulticasterDistributionMethods
+_PFMainThreadReleaseMethods
+PFChecksum
+PFTaggedPointer
+PFBlockControl
+PFPipeline
+PFPipelineStage
+PFPipelineStage0
+PFSelectorPipelineStage
+PFPipelineJobGeneratorInfo
+PFPipelineIndeterminiteJobGeneratorInfo
+PFPipelineDeterminiteJobGeneratorInfo
+PFPipelineJobInfo
+PFLimitedConcurrencySlotQueue
+PFDiskCacheFile
+PFUtilities
+
+[...]
+</pre>
+
+<p>
+Like with any <code>radare2</code> command, this can be filtered.
+</p>
+
+<pre class="example" id="org45284ea">
+[0x00000000]&gt; \icl~+discord
+discord_ios_discord_ios_swift_lib.Networking
+discord_ios_discord_ios_swift_lib.ContactSyncEncryption
+discord_ios_discord_ios_swift_lib.DCDRoundedCornerView
+discord_ios_discord_ios_swift_lib.DCDQRScanner
+discord_ios_discord_ios_swift_lib.DCDMessageLoadingSpinner
+discord_ios_discord_ios_swift_lib.DCDSegmentedControl
+discord_ios_discord_ios_swift_lib.DCDTableView
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org75cc640" class="outline-3">
+<h3 id="org75cc640">Inspecting Memory</h3>
+<div class="outline-text-3" id="text-org75cc640">
+<p>
+With the <code>\dm</code> command we can see the memory regions. With the <code>\dmm</code> command its then possible to show the memory maps.
+</p>
+
+<pre class="example" id="org03c83d6">
+[0x00000000]&gt; \dmm
+0x0000000100bf4000 - 0x0000000101f6e000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/Discord
+0x00000001021bc000 - 0x000000010227f000 rwx /binpack/lib/dyld
+0x00000001022a0000 - 0x00000001022a4000 rwx /private/var/preferences/Logging/.plist-cache.Bw2gXuOr
+0x00000001027a4000 - 0x00000001027e1000 rwx /usr/lib/libobjc-trampolines.dylib
+0x00000001027e8000 - 0x0000000103800000 rwx /usr/share/icu/icudt62l.dat
+0x000000010598c000 - 0x00000001059d1000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/Assets.car
+0x00000001059d8000 - 0x0000000105c74000 rwx /private/var/mobile/Containers/Data/Application/90140E80-1450-4642-89ED-7CD8CC067C57/Library/Caches/com.hammerandchisel.discord/Cache.db-shm
+0x0000000105fc0000 - 0x0000000106b01000 rwx /System/Library/PrivateFrameworks/UIKitCore.framework/Artwork.bundle/Assets.car
+0x0000000106b08000 - 0x0000000106b2c000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/gbindict
+0x0000000106b54000 - 0x0000000106b67000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/English.lproj/bindict4
+0x0000000106bf4000 - 0x0000000106bfe000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/English.lproj/bindict7
+0x0000000107b48000 - 0x0000000107d03000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/gnamebindict
+0x0000000107d08000 - 0x0000000107d72000 rwx /System/Library/PrivateFrameworks/ProofReader.framework/English.lproj/bindict
+0x0000000107d78000 - 0x0000000107dbb000 rwx /private/var/db/timezone/tz/2020d.1.0/icutz/icutz44l.dat
+0x0000000107de0000 - 0x00000001081e3000 rwx /usr/share/langid/langid.inv
+0x00000001088dc000 - 0x0000000108d2b000 rwx /System/Library/LinguisticData/RequiredAssets_en.bundle/AssetData/Delta-en_GB.idx
+0x0000000108d54000 - 0x0000000108d7c000 rwx /private/var/mobile/Library/Caches/com.apple.UIStatusBar/16G201/images/103902009632437770076865854842937718261
+0x0000000108df4000 - 0x00000001092a1000 rwx /System/Library/LinguisticData/RequiredAssets_en.bundle/AssetData/Unigrams-en.idx
+0x0000000109370000 - 0x0000000109429000 rwx /System/Library/LinguisticData/RequiredAssets_en.bundle/AssetData/Delta-en_GB.dat
+0x0000000109458000 - 0x00000001094a2000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/whitney-italic.ttf
+0x00000001094bc000 - 0x00000001094e3000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/whitney-light.ttf
+0x00000001094f8000 - 0x000000010950b000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/whitney-semibold.ttf
+0x0000000109600000 - 0x000000010c2bb000 rwx /System/Library/Fonts/CoreUI/SFUIText.ttf
+0x000000010c2ec000 - 0x000000010d21f000 rwx /System/Library/Fonts/Core/Helvetica.ttc
+0x000000010eb9c000 - 0x000000010ef52000 rwx /System/Library/Fonts/Core/Courier.ttc
+0x000000010f24c000 - 0x0000000111cee000 rwx /System/Library/Fonts/Core/AppleColorEmoji@2x.ttc
+0x0000000228800000 - 0x0000000256e24000 rwx /Library/Caches/frida-EJ74S0.dylib
+
+[0x00000000]&gt; 
+
+</pre>
+
+<p>
+More &amp; better examples at <a href="https://github.com/enovella/r2frida-wiki">r2frida-wiki</a>.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

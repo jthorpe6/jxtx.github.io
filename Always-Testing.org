@@ -1,0 +1,56 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Always Testing
+Devices sent to customers for internal penetration tests I've develeoped both a /kali linux/ installation script and a /Debian/ installation script filled with tools. To track the changes to these files an internal [[https://gitlab.com/][GitLab]] was deployed. But like any project there are bugs, so devices that were sent for internal penetration tests were not working as expected. To try and overcome this obvious issue, I looked into the =CI/CD= process build into [[https://gitlab.com][GitLab]] and was amazed. Not only would the process run the script as a job, but it will show if there was a problem. 
+
+** Server Configurations
+*** Installation
+   First the =gitlab-runner= needs to be installed. Because updates are nice installing the =gitlab-runner= repo is chosen.
+   1. Run the install script 
+      #+BEGIN_SRC shell
+	curl -L \
+	     https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+      #+END_SRC
+   2. Then install the =gitlab-runner= via =apt=
+      #+BEGIN_SRC shell
+	sudo apt-get install gitlab-runner -y 
+      #+END_SRC
+   3. Install docker on the server
+      #+BEGIN_SRC shell
+	curl -fsSL get.docker.com -o get-docker.sh && \
+	    sudo bash ./get-docker.sh
+      #+END_SRC
+*** Deploying a Runner
+   A runner is now needed for the project(s) that you want to test a build of. When I first done this the runner would have the status of /stuck/, A bit of googling around and I discovered this command.
+   #+BEGIN_SRC shell
+     REGISTER_LOCKED=false \
+		    gitlab-runner \
+		    register \
+		    --non-interactive \
+		    --url $URL \
+		    --registration-token $TOKEN \
+		    --executor docker \
+		    --docker-image debian
+   #+END_SRC
+   Replace =$URL= and =$TOKEN= with the values shown under the runner settings of the project.
+
+** Project Configurations
+  For the runner to know what to run for the project a =.gitlab-ci.yml= file is needed in the project root. Populate that file to represent the commands to test your installation script. Mine looks like this.
+  #+BEGIN_EXAMPLE
+    before_script:
+      - apt-get update -qq && apt-get upgrade -y && apt-get -qq install lsb-release wget -y
+  
+    offensive-debian:
+      image: debian
+      script:
+       - bash ./setup/debian.sh full
+
+    kalilinux:
+      image: kalilinux/kali-linux-docker
+      script:
+      - bash ./setup/kali.sh
+  #+END_EXAMPLE
+
+Now on the next commit your job /should/ run and your see the output in the =CI/CD= options for the project.

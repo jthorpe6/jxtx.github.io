@@ -1,0 +1,56 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Raspberry pi Home Lab
+
+I've been using a home lab for a number of years now, just to play with different software and services. At the end of last year, the setup was a [[https://www.proxmox.com/en/][proxmox]] hypervisor on a custom PC I built when I left school, so it was starting to show its age. At the end of 2020 to make that year even worse, my home lab gave up and would refuse to boot. Luckily, there was nothing /too/ important on there, but I learnt a lesson about backups that day. There were a lot of VM's in there that had been powered off for months, so it got me thinking for a new home lab in if I could use some raspberry pi's that I had sitting in my draw doing nothing. So I made the following list of services I *require* in a home lab;
+
+ - [[https://about.gitlab.com/install/][GitLab]]
+ - [[https://www.docker.com/get-started][Docker]] / [[https://www.portainer.io/][Portainer]]
+ - [[https://en.wikipedia.org/wiki/Samba][SMB]] / Network Share
+
+** GitLab
+
+Having a self hosted GitLab instance allows me to have all my code & projects local, but with all the power of =git=. GitLab works very well in my workflow for learning new topics / languages, and with the [[https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html][repository mirroring]] feature, I can push to gitlab.com with ease.
+
+Installing GitLab on the raspberry pi, was surprisingly simple, however, I did have to order a raspberry pi model 4. Once that arrived, I just followed the [[https://about.gitlab.com/install/#raspberry-pi-os][installation documentation]].
+
+I like to use the builtin [[https://docs.gitlab.com/ee/ci/][CI/CD]] to test and deploy services. To do this at home I installed a [[https://docs.gitlab.com/runner/][GitLab runner]] on the next raspberry pi, as its advised not to install a runner on the same server as GitLab.
+
+** Portainer
+
+Portainer is a nice web interface to docker, although docker in the terminal is nice. I followed [[https://www.wundertech.net/portainer-raspberry-pi-install-how-to-install-docker-and-portainer/][this guide]] to install Portainer on the raspberry pi. The only step that is different from the [[https://documentation.portainer.io/v2.0/deploy/linux/][official guide]] is specifying to use the =linux-arm= image. Which brings me to a consideration, as the raspberry pi has an =arm= processor, some docker images are not built to run on =arm=. For example, attempting to run the official [[https://www.kali.org/news/official-kali-linux-docker-images/][kalilinux docker constainer]] results in a failure with the error that it does not match the host platform.
+
+#+begin_example
+  pi@portainerpi:~ $ docker run --rm -it kalilinux/kali-rolling /bin/bash
+  
+  WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm/v7) and no specific platform was requested
+  standard_init_linux.go:219: exec user process caused: exec format error
+#+end_example
+
+This can be a little frustrating, luckily there is a [[https://hub.docker.com/u/hypriot/][good list of containers]] built to run on the raspberry pi. If its not in that list it may take a bit of searching, for example, I use the =antoineb/kalilinux-arm= base container for the majority of what I do within kali linux.
+
+#+begin_example
+  pi@portainerpi:~ $ docker run --rm -it antoineb/kalilinux-arm /bin/bash 
+
+  root@18aaed4c585b:/# cat /etc/issue 
+  Kali GNU/Linux 2.0 \n \l
+  root@18aaed4c585b:/# 
+#+end_example
+
+I also installed a [[https://docs.gitlab.com/runner/][GitLab runner]] on this raspberry pi as it will use docker.
+
+** Network Share
+
+Unfortunately, not everything can or fits well inside of a =git= repository. I don't use this that often, but its worth having ( with backups this time :) ). I attached a 500GB external HDD to another raspberry pi, and then followed [[https://gennaromigliaccio.com/creating-a-samba-share-using-a-raspberry-pi-and-an-external-hard-drive][this guide]] to set up a =smb= share on the external HDD.
+
+I consider this raspberry pi more of a "test pi" than a critical service, I've installed =nginx= on this to serve some static images, and installed =postgresql= should I actually need a =DBMS=. 
+
+** Windows
+
+Ah, sometimes I need to try something within a windows environment and my home lab does not /support/ this right now. For now, the need for windows is so low, I'm happy having a windows VM on my laptop for those odd occasions, If i find myself needing this environment more, I'll look into setting up [[https://www.tomshardware.com/how-to/install-windows-10-raspberry-pi][windows on a raspberry pi]]. 
+
+* Conclusion
+
+So hopefully this helped someone, If anything it was a place for me to include all the links I used to set up my home lab. However, if it did help you, please let me know.

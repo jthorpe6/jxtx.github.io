@@ -1,0 +1,124 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Jailbreak and Root Detection
+When I'm testing mobile applications, as part of static analysis, I always check to see if the application may give me a hard time running on rooted or jailbroken devices. This normally includes searching for /common/ detection strings like "Cydia" within the compiled application, for example;
+
+#+begin_src shell :results output
+  strings ~/Downloads/UnCrackable_Level_2/Payload/UnCrackable\ Level\ 2.app/UnCrackable\ Level\ 2 | grep Cydia
+#+end_src
+
+#+RESULTS:
+: /Applications/Cydia.app
+: /Applications/Cydia.app
+
+Over time this of /common/ strings has got quite long, and I end up making a new list for each project.
+
+Another way I like to look for these /common/ detection strings is by searching with =radare2=, for example;
+
+#+begin_src shell :results output
+  r2 -c izzq~+Cydia ~/Downloads/UnCrackable_Level_2/Payload/UnCrackable\ Level\ 2.app/UnCrackable\ Level\ 2
+#+end_src
+
+#+RESULTS:
+: 0xeea1 24 23 /Applications/Cydia.app
+: 0xef20 36 35 cydia://package/com.example.package
+
+** Automate the boring stuff
+So I wanted to have a standard script that I could run that would do this for me, both with =radare2= and with =strings=. I also wanted this to work for Android applications. So after little thought, I decided to use =python= and specifically the =r2pipe= library to interact with =radare2= and then using the =sh= library fall back to =strings=.
+
+I ended up with this function
+
+#+begin_src python :results output
+  def string_search(app, strings):
+      for string in strings:
+          try:
+              r_pipe = r2pipe.open(app)
+              r_strings = r_pipe.cmd('izzq~+{}'.format(string))
+              if r_strings:
+                  yield r_strings
+          except Exception:
+              pass
+
+      # /bin/strings if radare2 fails
+      sh_strings = sh.strings(app)
+      for line in sh_strings:
+          for string in strings:
+              if string in line:
+                  yield line
+#+end_src
+
+Nice, now that the searching function is complete, I added this function to handle user arguments.
+
+#+begin_src python :results output
+  def get_args():
+      parser = argparse.ArgumentParser(description='[+] root & jailbreak detection')
+      group = parser.add_mutually_exclusive_group(required=True)
+      group.add_argument('--dex', help='path to android dex file')
+      group.add_argument('--ios', help='path to extracted payload binary')
+      return parser.parse_args()
+#+end_src
+
+And then depending option selected by the user, would result in which set of stings get imported at run-time.
+
+#+begin_src python :results output
+      if args.dex:
+          app = args.dex
+          from jailrootdetector.detections import root_strings
+          strings = root_strings
+      elif args.ios:
+          app = args.ios
+          from jailrootdetector.detections import jailbreak_strings
+          strings = jailbreak_strings
+      else:
+          sys.exit()
+
+      print('\n[+] searching\n')
+      search_results = set(string_search(app, strings))
+      if search_results:
+          print('[+] detection strings found:')
+          for string in search_results:
+              print('{}'.format(string.strip()))
+      else:
+          print('[+] no detection strings found in: {}'.format(app))
+#+end_src
+
+This works well, but it did not quite hit the mark, I wanted this to be callable ate the users shell prompt, and not have to =cd= into this project directory to run one small script.
+
+*** Python Poetry
+I was using =poetry= to manage the =virtualenv= and any other dependencies of this script, so I initially looked at the documentation to see how I could have this installed to the users =$PATH=, and discovered the =tool.poetry.scripts= in the =pyproject.toml= file. This was exactly what I was looking for, so I added in the following;
+
+#+begin_example
+  [tool.poetry.scripts]
+  jrd = "jailrootdetector.main:main"
+#+end_example
+
+This now means users can install the script and then call it with =jrd --help=, amazing!!
+
+** PyPi
+All that was left was to upload this to PyPi so people could install it with =pip= or =pipx=. =poetry= also helped here too with the =poetry publish --build= command.
+
+Now that the script had been uploaded to PyPi, its as simple as =pip(3|x) install jailrootdetector=, like so;
+
+#+begin_src shell :results output
+  pipx install jailrootdetector
+#+end_src
+
+And then call =jrd=.
+
+#+begin_src shell :results output
+  jrd --help
+#+end_src
+
+#+RESULTS:
+#+begin_example
+  usage: jrd [-h] (--dex DEX | --ios IOS)
+
+  [+] root & jailbreak detection
+
+  optional arguments:
+    -h, --help  show this help message and exit
+    --dex DEX   path to android dex file
+    --ios IOS   path to extracted payload binary
+#+end_example

@@ -1,0 +1,349 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Static Analysis of the discord APK
+** Overview
+  When performing static analysis of an android APK file I often find myself doing the same tasks, with this repetition should come automation. I decided to download the [[https://apkpure.com/discord-chat-for-gamers/com.discord][discord apk]] and peform the initial tasks to write a script. I'll be using [[https://ibotpeaches.github.io/Apktool/][apktool]] and [[https://www.radare.org/r/][radare2]] as well as =grep= to get some initial information about the =apk=.
+** Extract the apk
+  First we have to extract the =apk= file with =apktool= so the =AndroidManifest.xml= is readable.
+  #+begin_src shell ~/Downloads/Discord/
+    java -jar /usr/local/bin/apktool.jar d ./Discord.apk -o apk-extracted
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  I: Using Apktool 2.3.4 on Discord.apk
+  I: Loading resource table...
+  I: Decoding AndroidManifest.xml with resources...
+  I: Loading resource table from file: /home/jthorpe/.local/share/apktool/framework/1.apk
+  I: Regular manifest package...
+  I: Decoding file-resources...
+  I: Decoding values */* XMLs...
+  I: Baksmaling classes.dex...
+  I: Baksmaling classes2.dex...
+  I: Copying assets and libs...
+  I: Copying unknown files...
+  I: Copying original files...
+  #+end_example
+ Next we have to unzip the =apk= too 
+** Android Permissions
+  Now that the apk has been extracted we can look at the =AndroidManifest.xml= for any permissions required by the application.
+  #+begin_src shell :dir ~/Downloads/Discord/apk-anal/smali/ :results output
+    grep "permission" AndroidManifest.xml
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+      <uses-permission android:name="android.permission.BLUETOOTH"/>
+      <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+      <uses-permission android:name="android.permission.INTERNET"/>
+      <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.CAMERA"/>
+      <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+      <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+      <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+      <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
+      <uses-permission android:name="android.permission.VIBRATE"/>
+      <uses-permission android:name="android.permission.WAKE_LOCK"/>
+      <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+      <permission android:description="@string/app_permission_connect_desc" android:label="@string/app_permission_connect_label" android:name="com.discord.permission.CONNECT" android:protectionLevel="dangerous"/>
+      <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+      <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+      <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+	  <service android:exported="true" android:name="com.discord.app.DiscordConnectService" android:permission="com.discord.permission.CONNECT">
+	  <receiver android:enabled="true" android:exported="true" android:name="com.discord.utilities.receiver.CampaignReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+	  <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+	  <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+	  <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+	  <receiver android:enabled="true" android:exported="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+	  <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+  #+end_example
+  The permissions requested by the application seem apparent to what the application does.
+
+  Sometimes there are further =AndroidManifest.xml= files hidden within the application, lets quickly see if thats the case.
+  #+begin_src shell :dir ~/Downloads/Discord/apk-anal/
+    find . -name AndroidManifest.xml -print
+  #+end_src
+
+  #+RESULTS:
+  : ./zip/AndroidManifest.xml
+  : ./smali/AndroidManifest.xml
+  : ./smali/original/AndroidManifest.xml
+** Classes dex files
+*** Initial Analysis
+   After extracting the =apk= there are further files than the =AndroidManifest.xml= files that are intresting to us for analysis should include =.dex= files. These files hold the code to the =apk= and are used are runtime.
+   #+begin_src shell :dir ~/Downloads/Discord/apk-anal/
+     find . -name *.dex -print 
+   #+end_src
+
+   #+RESULTS:
+   : ./zip/classes2.dex
+   : ./zip/classes.dex
+  
+   So two =classes.dex= files found. This is pretty normal, as the =classes.dex= file can only hold a certian amount before a further =classes.dex= file is needed for the application.
+
+   Lets first see the info for the files.
+   #+begin_src python :dir ~/Downloads/Discord/apk-anal/zip/
+     import r2pipe
+
+     r = r2pipe.open("classes.dex")
+     print(r.cmd("iI"))
+     r = r2pipe.open("classes2.dex")
+     print(r.cmd("iI"))
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   arch     dalvik
+   baddr    0x0
+   binsz    8576488
+   bintype  class
+   bits     32
+   canary   false
+   retguard false
+   sanitiz  false
+   class    035
+   crypto   false
+   endian   little
+   havecode true
+   laddr    0x0
+   lang     dalvik
+   linenum  false
+   lsyms    false
+   machine  Dalvik VM
+   nx       false
+   os       linux
+   pic      false
+   relocs   false
+   static   true
+   stripped false
+   subsys   android
+   va       false
+   sha1  12-8576468c  403ab357dcab3b55d4cf13fee859f43afc31ec1b
+   adler32  12-8576488c  00000000
+
+   arch     dalvik
+   baddr    0x0
+   binsz    3833788
+   bintype  class
+   bits     32
+   canary   false
+   retguard false
+   sanitiz  false
+   class    035
+   crypto   false
+   endian   little
+   havecode true
+   laddr    0x0
+   lang     dalvik
+   linenum  false
+   lsyms    false
+   machine  Dalvik VM
+   nx       false
+   os       linux
+   pic      false
+   relocs   false
+   static   true
+   stripped false
+   subsys   android
+   va       false
+   sha1  12-3833768c  968c0c2d1b8887ccdfe4520f5a977905dd2b8241
+   adler32  12-3833788c  00000000
+
+   #+end_example
+  
+   Great! As expected its a Dalvik VM.
+*** Checking for Root detection
+   Later for dynamic analysis it would be good to know if the application will run on a rooted device, to check for this we can search the strings of the =classes.dex= file for anything that may impact it running on a rooted device.
+   #+begin_src python :dir ~/Downloads/Discord/apk-anal/zip/
+     import r2pipe
+
+     dexfile = ["classes.dex","classes2.dex"]
+     strings = ["sudo","bin/su","superuser"]
+
+     for dex in dexfile:
+	 r = r2pipe.open(dex)
+	 for string in strings:
+	     print("looking for {} in {}".format(string,dex))
+	     print(r.cmd("izzq~+{}".format(string)))
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   looking for sudo in classes.dex
+
+   looking for bin/su in classes.dex
+
+   looking for superuser in classes.dex
+
+   looking for sudo in classes2.dex
+
+   looking for bin/su in classes2.dex
+   0x281fcb 16 15 /system/xbin/su
+
+   looking for superuser in classes2.dex
+   0x281fb0 26 25 /system/app/Superuser.apk
+
+   #+end_example
+   So it looks like the =classes2.dex= does look for the =Superuser.apk=. Something to make note of for dynamic analysis.
+*** Possible URL endpoints
+   Most the time API or URLs are in the =classes.dex= files and it would be a good idea to know these before dynamic analysis to understand all the calls that the application should be making or that it could reference.
+   #+name: URLs
+   #+begin_src python :dir ~/Downloads/Discord/apk-anal/zip/ :cache yes :results silent
+     # encoding=utf8
+     import r2pipe
+
+     dexfile = ["classes.dex","classes2.dex"]
+     strings = ["http:","https:"]
+
+     for dex in dexfile:
+	 r = r2pipe.open(dex)
+	 for string in strings:
+	     print("looking for {} in {}".format(string,dex))
+	     print(r.cmd("izzq~+{}".format(string))).encode('utf-8')
+   #+end_src
+
+
+   Alright, so lets try to extract only the urls from that output so we have a nicer list.
+   #+begin_src shell :var output=URLs
+     for line in $output
+     do
+	 if [[ $(echo $line | grep -E '(http://|https://)' | wc -l) = 0 ]]
+	 then
+	     :
+	 else
+	     echo $line | grep -E '(http://|https://)'
+	 fi
+
+     done
+   #+end_src   
+
+   #+RESULTS:
+   #+begin_example
+   \ahttp://
+   http://127.0.0.1
+   ,*http://schemas.android.com/apk/res/android
+   http://www.android.com/
+   https://github.com/adjust/android_sdk#can-i-trigger-an-event-at-application-launch
+   2getString(R.string.guild…"https://discordapp.com")
+   \bhttps://
+   https://account.samsung.cn
+   \ehttps://account.samsung.com
+   \ehttps://api.spotify.com/v1/
+   https://app.adjust.com
+   'https://app.adjust.com/ndjczk?campaign=
+   https://cdn.discordapp.com
+   &https://cdn.discordapp.com/app-assets/
+   %https://cdn.discordapp.com/app-icons/
+   #https://cdn.discordapp.com/avatars/
+   #https://cdn.discordapp.com/banners/
+   )https://cdn.discordapp.com/channel-icons/
+   !https://cdn.discordapp.com/icons/
+   $https://cdn.discordapp.com/splashes/
+   https://discord.gg
+   https://discord.gg/
+   "https://discord.gg/discord-testers
+   https://discord.gift
+   https://discord.gift/
+   https://discordapp.com
+   'https://discordapp.com/acknowledgements
+   \ehttps://discordapp.com/api/
+   %https://discordapp.com/api//channels/
+   #https://discordapp.com/api//guilds/
+   6https://discordapp.com/api//sso?service=zendesk&token=
+   "https://discordapp.com/api//users/
+   ?https://discordapp.com/api/v6/oauth2/samsung/authorize/callback
+   https://discordapp.com/app
+   &https://discordapp.com/billing/premium
+   ,https://discordapp.com/developers/docs/intro
+   !https://discordapp.com/guidelines
+   $https://discordapp.com/login/handoff
+   "https://discordapp.com/store/skus/
+   4https://dl.discordapp.net/apps/android/versions.json
+   https://i.scdn.co/image/
+   https://ko.surveymonkey.com/r/
+   https://open.spotify.com/user/
+   ,*https://play.google.com/store/apps/details
+   =https://play.google.com/store/apps/details?id=com.authy.authy
+   9https://play.google.com/store/apps/details?id=com.discord
+   Thttps://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
+   dhttps://play.google.com/store/apps/details?id=com.spotify.music&utm_source=discord&utm_medium=mobile
+   https://reddit.com/u/
+   https://status.discordapp.com/
+   $https://steamcommunity.com/profiles/
+   "https://support-dev.discordapp.com
+   (https://support.apple.com/en-us/HT202039
+   https://support.discordapp.com
+   https://twitch.tv/
+   https://twitter.com/discordapp
+   https://us.account.samsung.com
+   https://www.discordapp.com
+   https://www.example.com
+   https://www.facebook.com/
+   #https://www.facebook.com/discordapp
+   $https://www.instagram.com/discordapp
+   https://www.paypal.com
+   https://www.surveymonkey.com/r/
+   https://www.twitter.com/
+   https://youtube.com/channel/
+   http://goo.gl/8Rd3yj
+   http://goo.gl/8Rd3yj
+   http://goo.gl/8Rd3yj
+   http://goo.gl/8Rd3yj
+   http://goo.gl/8Rd3yj
+   http://goo.gl/8Rd3yj
+   http://goo.gl/naFqQk
+   http://goo.gl/8Rd3yj
+   http://goo.gl/8Rd3yj
+   \ahttp://
+   'http://schemas.android.com/apk/res-auto
+   ,*http://schemas.android.com/apk/res/android
+   http://www.google-analytics.com
+   https://goo.gl/NAOOOI.
+   https://goo.gl/NAOOOI
+   \bhttps://
+   https://app-measurement.com/a
+   'https://e.crashlytics.com/spi/v2/events
+   https://google.com/search?
+   Ahttps://pagead2.googlesyndication.com/pagead/gen_204?id=gmob-apps
+   https://plus.google.com/
+   Jhttps://settings.crashlytics.com/spi/v2/platforms/android/apps/%s/settings
+   https://ssl.google-analytics.com
+   https://www.google.com
+   ohttps://www.googleadservices.com/pagead/conversion/app/deeplink?id_type=adid&sdk_version=%s&rdid=%s&bundleid=%s
+   #+end_example
+
+   Ok its not pretty but we now have a better list of URLs that are present in the =apk=.
+*** Any SQL statements
+   #+begin_src python :dir ~/Downloads/Discord/apk-anal/zip/
+     import r2pipe
+
+     dexfile = ["classes.dex","classes2.dex"]
+     sqlStatements = ["SELECT","INSERT","DELETE","UPDATE","CREATE"]
+
+     for dex in dexfile:
+	 r = r2pipe.open(dex)
+	 for statement in sqlStatements:
+	     print("looking for {} in {}".format(statement,dex))
+	     print(r.cmd("izzq~{}\n".format(statement))).encode('utf-8')
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+     looking for SELECT in classes.dex
+     0x569b32 157 156  AND (SELECT COUNT(*)=0 FROM dependency WHERE     prerequisite_id=id AND     work_spec_id NOT IN         (SELECT id FROM workspec WHERE state IN (2, 3, 5)))
+     0x582c90 42 41 (ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN
+     0x582d80 35 34 !ACTION_ARGUMENT_SELECTION_END_INT
+     0x582da3 37 36 #ACTION_ARGUMENT_SELECTION_START_INT
+     0x582f1f 23 22 ACTION_CLEAR_SELECTION
+     0x583494 15 14 \rACTION_SELECT
+     0x5834a4 16 15 ACTION_SELECTOR
+     0x5834ca 21 20 ACTION_SET_SELECTION
+     0x5841c0 23 22 ARG_SELECTED_COLOR_KEY
+     0x599f53 134 133 DELETE FROM room_table_modification_log WHERE version NOT IN( SELECT MAX(version) FROM room_table_modification_log GROUP BY table_id)
+     ..snip..
+   #+end_example

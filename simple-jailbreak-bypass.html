@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-orgd7fb9a5" class="outline-2">
+<h2 id="orgd7fb9a5">Simple Jailbreak Bypass</h2>
+<div class="outline-text-2" id="text-orgd7fb9a5">
+<p>
+Mobile applications will often detect if the mobile divice is in an untrusted state, for iOS this is detecting if the device is jailbroken. As attackers this is rather annoying, however, it it normally possible to bypass this.
+</p>
+</div>
+
+<div id="outline-container-orge6f2906" class="outline-3">
+<h3 id="orge6f2906">Detection</h3>
+<div class="outline-text-3" id="text-orge6f2906">
+<p>
+Mobile applications can detect if a device is untrusted in a few different ways. One of the ways I like to find this out before I launch the application is to discover any <i>common</i> strings within the application that relate to this type of detection.
+</p>
+
+<p>
+In this example I'll use <a href="https://pypi.org/project/jailrootdetector/">jailrootdetector</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">jrd --ios ~/Downloads/DamnVulnerableiOSApp/Payload/DamnVulnerableIOSApp.app/DamnVulnerableIOSApp
+</pre>
+</div>
+
+<pre class="example" id="org3771176">
+
+[+] searching
+
+[+] detection strings found:
+/usr/bin/sshd
+0x83305 29 28 /Applications/SBSettings.app
+/private/var/tmp/cydia.log
+0x833f4 50 49 /System/Library/LaunchDaemons/com.ikey.bbot.plist
+/bin/bash
+0x8333b 32 31 /Applications/IntelliScreen.app
+0x8335b 55 54 /Library/MobileSubstrate/DynamicLibraries/Veency.plist
+/etc/apt
+0x832b1 15 14 /usr/sbin/sshd
+/usr/libexec/sftp-server
+0x8347e 23 22 /private/var/lib/cydia
+/Library/MobileSubstrate/DynamicLibraries/LiveClock.plist
+/Applications/RockApp.app
+0x832e7 30 29 /Applications/WinterBoard.app
+0x85868 47 46 /Library/MobileSubstrate/MobileSubstrate.dylib
+0x833e1 19 18 /private/var/stash
+/Applications/Cydia.app
+/Applications/WinterBoard.app
+/Library/MobileSubstrate/DynamicLibraries/Veency.plist
+/Applications/SBSettings.app
+0x85953 21 20 Device is Jailbroken
+0x85968 25 24 Device is Not Jailbroken
+0x8e331 22 21 isTheDeviceJailbroken
+0x8e513 13 12 isJailbroken
+0x91e12 39 38 showAlertForJailbreakTestIsJailbroken:
+0x83322 25 24 /Applications/MxTube.app
+/Applications/Icy.app
+/Library/MobileSubstrate/MobileSubstrate.dylib
+0x83269 24 23 /Applications/Cydia.app
+/private/var/stash
+0x83463 27 26 /private/var/tmp/cydia.log
+0x8329b 22 21 /Applications/Icy.app
+/usr/sbin/sshd
+0x85897 10 9 /bin/bash
+0x83281 26 25 /Applications/RockApp.app
+0x833cc 21 20 /private/var/lib/apt
+/System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist
+0x832c0 14 13 /usr/sbin/sshd
+0x832ce 25 24 /usr/libexec/sftp-server
+/private/var/lib/apt
+/System/Library/LaunchDaemons/com.ikey.bbot.plist
+0x858a1 9 8 /etc/apt
+/Applications/MxTube.app
+/private/var/lib/cydia
+0x83426 61 60 /System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist
+0x83392 58 57 /Library/MobileSubstrate/DynamicLibraries/LiveClock.plist
+/Applications/IntelliScreen.app
+</pre>
+
+<p>
+From that output we can see that the application attempts to detect the following;
+</p>
+
+<ul class="org-ul">
+<li>/bin/bash</li>
+<li>/etc/apt</li>
+<li>/usr/bin/sshd</li>
+<li>/usr/sbin/sshd</li>
+<li>/usr/libexec/sftp-server</li>
+<li>/private/var/stash</li>
+<li>/private/var/lib/apt</li>
+<li>/private/var/lib/cydia</li>
+<li>/private/var/tmp/cydia.log</li>
+<li>/Applications/Icy.app</li>
+<li>/Applications/Cydia.app</li>
+<li>/Applications/MxTube.app</li>
+<li>/Applications/RockApp.app</li>
+<li>/Applications/SBSettings.app</li>
+<li>/Applications/IntelliScreen.app</li>
+<li>/Applications/WinterBoard.app</li>
+<li>/System/Library/LaunchDaemons/com.ikey.bbot.plist</li>
+<li>/System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist</li>
+<li>/Library/MobileSubstrate/MobileSubstrate.dylib</li>
+<li>/Library/MobileSubstrate/DynamicLibraries/Veency.plist</li>
+<li>/Library/MobileSubstrate/DynamicLibraries/LiveClock.plist</li>
+</ul>
+
+<p>
+Running the application and triggering the jailbreak check functionality, and it does detect that its running on a jailbroken device.
+</p>
+
+
+<div id="orgefcd857" class="figure">
+<p><img src="./simple_jb_bypass/device_is_jb.png" alt="device_is_jb.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfd353fd" class="outline-3">
+<h3 id="orgfd353fd">Bypass</h3>
+<div class="outline-text-3" id="text-orgfd353fd">
+<p>
+There are a few ways to bypass this detection, could use something like <a href="https://yalujailbreak.net/liberty-lite/">Liberty Lite</a> where this application is installed on a jailbroken device. To have more fun, I'm going to leverage a frida script.
+</p>
+
+<p>
+First I'll make a list of all those detected strings from the previous step.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="font-weight: bold;">var</span> <span style="font-weight: bold; font-style: italic;">paths</span> = [
+    <span style="font-style: italic;">"/bin/bash"</span>,
+    <span style="font-style: italic;">"/etc/apt"</span>,
+    <span style="font-style: italic;">"/usr/bin/sshd"</span>,
+    <span style="font-style: italic;">"/usr/sbin/sshd"</span>,
+    <span style="font-style: italic;">"/usr/libexec/sftp-server"</span>,
+    <span style="font-style: italic;">"/private/var/stash"</span>,
+    <span style="font-style: italic;">"/private/var/lib/apt"</span>,
+    <span style="font-style: italic;">"/private/var/lib/cydia"</span>,
+    <span style="font-style: italic;">"/private/var/tmp/cydia.log"</span>,
+    <span style="font-style: italic;">"/Applications/Icy.app"</span>,
+    <span style="font-style: italic;">"/Applications/Cydia.app"</span>,
+    <span style="font-style: italic;">"/Applications/MxTube.app"</span>,
+    <span style="font-style: italic;">"/Applications/RockApp.app"</span>,
+    <span style="font-style: italic;">"/Applications/SBSettings.app"</span>,
+    <span style="font-style: italic;">"/Applications/IntelliScreen.app"</span>,
+    <span style="font-style: italic;">"/Applications/WinterBoard.app"</span>,
+    <span style="font-style: italic;">"/System/Library/LaunchDaemons/com.ikey.bbot.plist"</span>,
+    <span style="font-style: italic;">"/System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist"</span>,
+    <span style="font-style: italic;">"/Library/MobileSubstrate/MobileSubstrate.dylib"</span>,
+    <span style="font-style: italic;">"/Library/MobileSubstrate/DynamicLibraries/Veency.plist"</span>,
+    <span style="font-style: italic;">"/Library/MobileSubstrate/DynamicLibraries/LiveClock.plist"</span>,
+];
+</pre>
+</div>
+
+<p>
+Then, I want to catch or move exectuion to the next instruction if the application detects if the path is present, or if it can execute the file at that path. My <code>JavaScript</code> is questionable, but I luckily found <a href="https://codeshare.frida.re/@rodnt/ios-jailbreak-bypass/">this script</a> on frida code share that does what I want in the following code;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">resolver.enumerateMatches(<span style="font-style: italic;">'*[* *jail**]'</span>, {
+    <span style="font-weight: bold;">onMatch</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">match</span>) {
+        <span style="font-weight: bold;">var</span> <span style="font-weight: bold; font-style: italic;">ptr</span> = match[<span style="font-style: italic;">"address"</span>];
+        Interceptor.attach(ptr, {
+            <span style="font-weight: bold;">onEnter</span>: <span style="font-weight: bold;">function</span>() {},
+            <span style="font-weight: bold;">onLeave</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">retval</span>) {
+                retval.replace(0x0);
+            }
+        });
+    },
+    <span style="font-weight: bold;">onComplete</span>: <span style="font-weight: bold;">function</span>() {}
+});
+
+resolver.enumerateMatches(<span style="font-style: italic;">'*[* fileExistsAtPath*]'</span>, {
+    <span style="font-weight: bold;">onMatch</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">match</span>) {
+        <span style="font-weight: bold;">var</span> <span style="font-weight: bold; font-style: italic;">ptr</span> = match[<span style="font-style: italic;">"address"</span>];
+        Interceptor.attach(ptr, {
+            <span style="font-weight: bold;">onEnter</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">args</span>) {
+                <span style="font-weight: bold;">var</span> <span style="font-weight: bold; font-style: italic;">path</span> = ObjC.Object(args[2]).toString();
+                <span style="font-weight: bold; text-decoration: underline;">this</span>.jailbreakCall = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">var</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; paths.length; i++) {
+                    <span style="font-weight: bold;">if</span> (paths[i] == path) {
+                        <span style="font-weight: bold; text-decoration: underline;">this</span>.jailbreakCall = <span style="font-weight: bold; text-decoration: underline;">true</span>;
+                    }
+                }
+            },
+            <span style="font-weight: bold;">onLeave</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">retval</span>) {
+                <span style="font-weight: bold;">if</span> (<span style="font-weight: bold; text-decoration: underline;">this</span>.jailbreakCall) {
+                    retval.replace(0x0);
+                }
+            }
+        });
+    },
+    <span style="font-weight: bold;">onComplete</span>: <span style="font-weight: bold;">function</span>() {}
+});
+
+resolver.enumerateMatches(<span style="font-style: italic;">'*[* canOpenURL*]'</span>, {
+    <span style="font-weight: bold;">onMatch</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">match</span>) {
+        <span style="font-weight: bold;">var</span> <span style="font-weight: bold; font-style: italic;">ptr</span> = match[<span style="font-style: italic;">"address"</span>];
+        Interceptor.attach(ptr, {
+            <span style="font-weight: bold;">onEnter</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">args</span>) {
+                <span style="font-weight: bold;">var</span> <span style="font-weight: bold; font-style: italic;">url</span> = ObjC.Object(args[2]).toString();
+                <span style="font-weight: bold; text-decoration: underline;">this</span>.jailbreakCall = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                <span style="font-weight: bold;">if</span> (url.indexOf(<span style="font-style: italic;">"cydia"</span>) &gt;= 0) {
+                    <span style="font-weight: bold; text-decoration: underline;">this</span>.jailbreakCall = <span style="font-weight: bold; text-decoration: underline;">true</span>;
+                }
+            },
+            <span style="font-weight: bold;">onLeave</span>: <span style="font-weight: bold;">function</span>(<span style="font-weight: bold; font-style: italic;">retval</span>) {
+                <span style="font-weight: bold;">if</span> (<span style="font-weight: bold; text-decoration: underline;">this</span>.jailbreakCall) {
+                    retval.replace(0x0);
+                }
+            }
+        });
+    },
+    <span style="font-weight: bold;">onComplete</span>: <span style="font-weight: bold;">function</span>() {}
+});
+</pre>
+</div>
+
+<p>
+I could run this directly from firda codeshare with the <code>--codeshare rodnt/ios-jailbreak-bypass</code> option, but I want to review it, and I need to make any changes, I have it locally.
+</p>
+</div>
+
+<div id="outline-container-org890d4a9" class="outline-4">
+<h4 id="org890d4a9">Hooking with Frida</h4>
+<div class="outline-text-4" id="text-org890d4a9">
+<p>
+All that I need to do now is hook the application with <a href="https://frida.re">frida</a>, and include the bypass script.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">frida -U -l ./jailbreakbypass.js -f <span style="font-style: italic;">"com.highaltitudehacks.dvia"</span> --no-pause
+</pre>
+</div>
+
+<p>
+That command will spawn the application, and load in the <code>JavaScript</code> file that hopfully bypasses the detection. All thats left is to check if its worked.
+</p>
+
+
+
+<div id="orgce93b8f" class="figure">
+<p><img src="./simple_jb_bypass/device_is_not_jb.png" alt="device_is_not_jb.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

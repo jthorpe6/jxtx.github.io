@@ -1,0 +1,110 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* Literate Hacking
+I found [[http://howardism.org/Technical/Emacs/literate-devops.html][this]] blog post that goes into the concept "Literate DevOps" where everything is executed in Emacs. I don't do DevOps but I am a penetration tester that uses Emacs, so I've came up with the concept /Literate Hacking/.
+** Notes File
+Like any other penetration tester, I take notes when on a project so i can recall what I've found / done. I've been taking my notes in an =org-mode= document for some time now, as well as /staging/ my report in the same document so I can reference it later down the line if need be.
+
+Like most other penetration testers I dint have the tools on my local system, I'll normally =ssh= to a virtual machine and run the tools from that device, then work with =scp= to get all the data off later. Or now days I'll use a docker container. Literate Hacking allows me to define code blocks in my notes file and then execute it on the virtual machine via =ssh=. 
+*** Example
+   First I'll show the example, then I'll show the =org-mode= code for it.
+   In this example I'll just pull the =IP= of the remote server.
+   #+BEGIN_SRC shell :dir /ssh:home-kalipi:~/ :exports both :results output :eval no-export
+     ip addr
+   #+END_SRC
+   
+   #+RESULTS:
+   #+begin_example
+   1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+   link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+       inet 127.0.0.1/8 scope host lo
+	  valid_lft forever preferred_lft forever
+       inet6 ::1/128 scope host 
+	  valid_lft forever preferred_lft forever
+   2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+       link/ether b8:27:eb:f3:f7:5b brd ff:ff:ff:ff:ff:ff
+       inet 192.168.1.6/24 brd 192.168.1.255 scope global eth0
+	  valid_lft forever preferred_lft forever
+       inet6 fe80::ba27:ebff:fef3:f75b/64 scope link 
+	  valid_lft forever preferred_lft forever
+   #+end_example
+   
+   So the =org-mode= code for that looks like this
+
+   #+BEGIN_EXAMPLE
+   #+BEGIN_SRC shell :dir /ssh:home-kalipi:~/ :exports both :results output
+   ip addr
+   #+END_SRC
+   #+END_EXAMPLE
+
+   That's great, I have all my =SSH= config, such as keys and what not for the host =home-kalipi= in =~/.ssh/config= and with =C-c= on the code block it executes.
+   With other tools like =msfconsole= I could do something like this.
+
+   #+BEGIN_SRC shell :dir /ssh:kc-apptester:/usr/share/metasploit-framework :results output :exports both :eval no-export
+     msfconsole -q -x 'use auxiliary/scanner/http/iis_internal_ip' -x 'set RHOSTS $target' -x 'set RPORT 80' -x 'set SSL false' -x 'run'
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+   RHOSTS => $target
+   RPORT => 80
+   SSL => false
+   [+] Location Header: http://10.8.9.40/
+   [+] Result for $target found Internal IP:  10.8.9.40
+   [+] Location Header: http://10.8.9.40/
+   [+] Result for $target found Internal IP:  10.8.9.40
+   [+] Location Header: http://10.8.9.40/
+   [+] Result for $target found Internal IP:  10.8.9.40
+   [*] Scanned 1 of 1 hosts (100% complete)
+   [*] Auxiliary module execution completed
+   msf auxiliary(scanner/http/iis_internal_ip) > 
+   #+end_example
+   
+   =$target= would be the vulnerable =IP= in this case, and the =org-mode= code looks like this.
+
+   #+BEGIN_EXAMPLE
+   #+BEGIN_SRC shell :dir /ssh:home-kalipi:/usr/share/metasploit-framework :results output :exports both
+     msfconsole -q -x 'use auxiliary/scanner/http/iis_internal_ip' -x 'set RHOSTS $target' -x 'set RPORT 80' -x 'set SSL false' -x 'run'
+   #+END_SRC
+   #+END_EXAMPLE
+**** Internal devices
+    So, a lot of the time for an internal penetration test, we would send =$client= an appliance of some sort and connect to it remotely. I'm a huge fan of using a reverse =SSH= shell to connect to internal appliances, but until recently I've not worked out how to do Literate Hacking via a reverse =SSH= connection. 
+
+    For this example, I'll use a =vps= and access the same internal device as above.
+   
+    - *hax* = external public ip box
+    - *home-kalipi* = internal box
+    
+   #+BEGIN_SRC shell :dir /ssh:hax|ssh:jthorpe@127.0.0.1#2222:/opt :results output :exports both :eval no-export
+     echo $PWD && ls -lah && ip a
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+   /opt
+   total 8.0K
+   drwxr-xr-x  2 root root 4.0K Oct 20  2017 .
+   drwxr-xr-x 22 root root 4.0K Apr 21  2017 ..
+   1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+       2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether b8:27:eb:f3:f7:5b brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.6/24 brd 192.168.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::ba27:ebff:fef3:f75b/64 scope link 
+       valid_lft forever preferred_lft forever
+   #+end_example
+
+   #+BEGIN_EXAMPLE
+   #+BEGIN_SRC shell :dir /ssh:hax|ssh:jthorpe@127.0.0.1#2222:/opt :results output : exports both
+     echo $PWD && ls -lah && ip a
+   #+END_SRC
+   #+END_EXAMPLE
+   
+   So the initial connection to the =vps= is then passed to =127.0.0.1= and the port is specified with =#2222=. Pretty nifty :). I have found however that trying to do that with the =root= account and =org-mode= really does not like it, so setting up another account and configuring =sudo= not to ask for a password on that account is what I do now.

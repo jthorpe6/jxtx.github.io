@@ -1,0 +1,56 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* The Emacs Multimedia System
+
+** Why ?
+  Music is a big part of my workflow, and for the majority of it i use /spotify/, but sometimes its not enough, or some of the content that I want is not available on there and I have to buy and stream from [[https://bandcamp.com/jxtx_][Bandcamp]]. This is a tedious "solution", and yes /spotify/ does support playing local files, but how about on systems that i've not installed /spotify/ on? 
+
+  I spend the majority of my workflow within an emacs buffer, and I looked into solutions to have =Emacs= control my downloaded music, and thats where I found [[https://www.gnu.org/software/emms/][EMMS]].
+
+** Setup
+  Being an =Emacs= package, it's reasonably easy to install, however EMMS uses the =mpd/mpc= external programs to control and play music, Trying this a couple of months ago I actually gave up. Now however I think I have a repetable process.
+  1) Install =mpd/mpc= on your system, for me this was done like so.
+     #+BEGIN_SRC shell :results silent
+       sudo apt update && \
+	   sudo apt install mpc mpd -y 
+     #+END_SRC
+  2) Next make the =mpd= files.
+     #+BEGIN_SRC shell
+       ls ~/.mpd/
+     #+END_SRC
+
+     #+RESULTS:
+     : database
+     : log
+     : mpd.conf
+     : mpd.db
+     : mpd.log
+     : mpd.pid
+     : pid
+     : playlists
+  3) Configure =Pulse Audio= in the =~/.mpd/mpd.conf= file.   
+     #+BEGIN_EXAMPLE
+       audio_output {
+	       type		"pulse"
+	       name		"My Pulse Output"
+	       server		"localhost"		# optional
+       ##	sink		"remote_server_sink"	# optional
+       }
+     #+END_EXAMPLE
+     This [[https://help.ubuntu.com/community/MPD][page]] helped alot with the =mpd/mpc= side of things.
+  4) Install the =emms= package in =Emacs=
+     #+BEGIN_SRC emacs-lisp 
+       (use-package emms
+	 :ensure t
+	 :config
+	 (require 'emms-setup)
+	 (emms-standard)
+	 (emms-default-players)
+	 (require 'emms-mode-line)
+	 (emms-mode-line 1)
+	 )
+     #+END_SRC
+** Usage
+  This is =Emacs= so the usage is whatever you want it to be, I personally doing =M-x emms-play-directory RET= works best for me, but =EMMS= has loads more features that I'm yet to discover.

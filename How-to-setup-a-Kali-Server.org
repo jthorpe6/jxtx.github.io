@@ -1,0 +1,98 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+* How to setup a Kali Server
+** Install Kali
+For this guide I've chosen to use the kali-light iso, because I'll be removing the Window Manager and other tools, I'll also only selecting certain programs to install on this build.
+Just install the light iso like you would any other instance of kali, keeping the default settings ect.
+** Initial tweaks
+Because this will be a server and not a desktop I'll remove the Window Manager, enable ssh login for root, and having ssh start on boot.
+
+First permit root with ssh access 
+#+BEGIN_SRC 
+sed -i "s/^#\PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
+#+END_SRC
+
+Next enable ssh at boot
+#+BEGIN_SRC shell
+systemctl enable ssh
+#+END_SRC
+
+Finally remove the Window Manager
+#+BEGIN_SRC shell
+apt update && apt purge kali-desktop-common kali-desktop-live kali-desktop-xfce xfce4 xfce4-* -y && apt autoremove -y
+#+END_SRC
+
+Right after that is done, lets reboot
+
+** Interface issue
+Because we have removed the Window Manager the interface settings may not be correct anymore to fix find the interface name with ~ip a~ and edit the ~/etc/network/interfaces~ file, adding the interface in.
+
+#+BEGIN_SRC shell
+echo -e "auto ens32\niface ens32 inet dhcp" >> /etc/network/interfaces
+#+END_SRC
+
+** SSH tweaks
+For this setup i don't want to have to use a password, i want to use my SSH keys. 
+
+First copy your ssh keys to the server
+#+BEGIN_SRC shell
+ssh-copy-id root@server-ip
+#+END_SRC
+
+Next don't allow password auth, change to the following settings in ~/etc/ssh/sshd_config~
+#+BEGIN_SRC
+PubkeyAuthentication yes
+PasswordAuthentication no
+#+END_SRC
+
+** Install tools
+*** Comforts 
+
+#+BEGIN_SRC shell
+apt update && apt install zsh tmux fortunes git  -y
+#+END_SRC
+*** zsh configuration 
+#+BEGIN_SRC shell
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+#+END_SRC
+
+#+BEGIN_SRC shell
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+#+END_SRC
+
+#+BEGIN_SRC shell
+chsh -s /bin/zsh
+#+END_SRC
+
+*** Kali tools
+#+BEGIN_SRC shell
+apt update && apt upgrade -y && apt install kali-linux-web -y
+#+END_SRC
+
+*** External tools 
+I'm not going to tell you how to set up your own server, for me all external tools go in ~/opt~ and i use the following script to get updates
+#+BEGIN_SRC shell
+  #!/bin/bash
+  apt-get -qq update && \
+      apt-get -qq -y upgrade && \
+      apt-get -qq autoremove -y
+  for dir in $(ls /opt); do
+      cd /opt/$dir
+      git pull
+  done
+#+END_SRC
+** Cleanup
+We don't need all the Window Manager stuff anymore, I'm going to remove it 
+#+BEGIN_SRC shell
+cd && rm -r Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+#+END_SRC
+
+#+BEGIN_SRC shell
+passwd -l root
+#+END_SRC
+

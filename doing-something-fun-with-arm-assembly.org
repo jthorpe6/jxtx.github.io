@@ -1,0 +1,25 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+#+TITLE: Doing Something Fun with ARM Assembly
+ - [[file:index.html][home]]
+
+I've developed a new addiction in 2022, that is finding random bits of ARM assembly and running them in a debugger. I think it may be the "I have no idea what I'm doing" factor that interests me. Or it could be the fact that in 2020 I bought a M1 mac, and wanted to get the most of it. All I know, is that I'm finding it really addictive and interesting. In my day job as a pentester, I don't typically get to debug or try to see what assembly programs are doing, sure you could argue that you look at the assembly of mobile applications on mobile assessments, but we all know you don't actually do much with it. 
+
+What I do a lot as a pentester, is use exploits to gain access to a host or application, typically with a reverse shell or sometimes using shellcode. This got me thinking, could I use this new addiction to make something useful? Could I generate my own ARM reverse shell, and generate the shellcode from that? I gave myself these goals:
+
+ - 64bit
+ - Has to work on Linux and macOS
+ - Be able to change the callback IP and port
+
+* ARM64-reverse-shell
+
+If you just want the code the Github repo is [[https://github.com/jthorpe6/arm64-reverse-shell][here]] and if Gitlab is your thing, the repo is [[https://gitlab.com/JxTx/arm64-reverse-shell][here]]. Its the same code, mirrored :)
+
+The long and short of it is, is that it detects if its being executed on a Linux or macOS system, and then using the arguments, replaces the instructions to the hex encoded values. It then generates a Makefile and runs =make= which assembles the assembly with =as= and then uses =ld= (with mac specific arguments if your on macOS) to link the assembled file, where you left with a binary that when executed calls out to the IP address and port and spawns =/bin/bash=. If you also add the =shellcode= argument, it will use =objcopy= to print out shellcode that you can use in other scripts.
+
+There were some initial gotcha's along the way, the original [[https://www.exploit-db.com/shellcodes/47050][exploit-db]] entry did had an alignment issue which resulted in a =SIGBUS= which means that the program was accessing areas that it was not permitted to read. There was also a little learning curve to port that to macOS. Anyway here is your usage.
+
+#+HTML: <script id="asciicast-483086" src="https://asciinema.org/a/483086.js" async></script>
+
+

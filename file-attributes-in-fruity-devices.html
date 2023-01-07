@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-orge0979f0" class="outline-2">
+<h2 id="orge0979f0">File Attributes in Fruity Devices</h2>
+<div class="outline-text-2" id="text-orge0979f0">
+<p>
+I wanted to spend some time looking around different file types in the Apple world, and this is what I've got.
+</p>
+</div>
+<div id="outline-container-org0d02416" class="outline-3">
+<h3 id="org0d02416">Mach-O</h3>
+<div class="outline-text-3" id="text-org0d02416">
+<p>
+Mach-O is the executable format used on macOS and iOS. In the Windows world this could be like a .exe file.
+</p>
+
+
+<div id="orgf181a1c" class="figure">
+<p><img src="./fafd/macho-file.png" alt="macho-file.png" />
+</p>
+</div>
+
+<p>
+A Mach-O file contains a header comprised of a series of load commands – commands telling dyld information about the file. Some load commands specify metadata about the file, such as the version it is compiled for, or the file’s entry point.
+</p>
+
+<p>
+The most important load commands define segments, which are the areas of the Mach-O file that are loaded into memory at a specified address. There are three common segments.
+</p>
+
+
+<div id="orgfd0daea" class="figure">
+<p><img src="./fafd/sections.png" alt="sections.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li><code>__TEXT</code>
+<ul class="org-ul">
+<li>A read-only area containing executable code and constant data.</li>
+</ul></li>
+<li><code>__DATA</code>
+<ul class="org-ul">
+<li>A read/write area that contains the non-constant data for an executable.</li>
+</ul></li>
+<li><code>__LINKEDIT</code>
+<ul class="org-ul">
+<li>Contains raw data for the linker like symbols and string tables, compressed dynamic linking info, code signing info, and the indirect symbol table.</li>
+</ul></li>
+</ul>
+
+<p>
+Each segment can also define sections, which further subdivides the segment into named parts. For example, the <code>__DATA</code> section includes sections such as <code>__objc_classlist</code> containing pointers to classes defined in the file.
+</p>
+
+
+<div id="org2b1156f" class="figure">
+<p><img src="./fafd/macho-segments.png" alt="macho-segments.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf37f446" class="outline-3">
+<h3 id="orgf37f446">Dyld</h3>
+<div class="outline-text-3" id="text-orgf37f446">
+<p>
+Dyld is the dynamic linker in macOS and iOS. In the Mach-O sections there are several items with the <code>LC_LOAD_DYLIB</code> load command. These typically point to frameworks such as WebKit and UIKit.
+</p>
+
+<p>
+Unlike other operating systems, instead of including the system libraries with the OS, since iOS 3.1 and macOS BigSur, Apple includes a generated cache of all built in dynamic libraries and excludes the original libraries.
+</p>
+
+
+<div id="orgc9dcf58" class="figure">
+<p><img src="./fafd/dyld-lib.png" alt="dyld-lib.png" />
+</p>
+</div>
+
+<p>
+Because Apple includes a generated cache of the libraries we have to do a bit of a dance to get the original binaries of the libraries. We first need to obtain the cache, that’s easy enough, on macOS it’s located at <code>/System/Library/dyld/</code> and on iOS its located at <code>/System/Library/Caches/com.apple.dyld/</code>.
+</p>
+
+<p>
+After you’ve located and made a copy of the cache, we need to extract it. <a href="https://opensource.apple.com/source/dyld/dyld-832.7.3/dyld3/shared-cache/dsc_extractor.cpp.auto.html">Apple have an extractor that’s open source</a>, but is a bit broken, a better extractor is <a href="https://github.com/arandomdev/DyldExtractor">DyldExtractor</a> as it works 90% of the time.
+</p>
+
+
+<div id="orgf12ae76" class="figure">
+<p><img src="./fafd/cache.png" alt="cache.png" />
+</p>
+</div>
+
+<p>
+We can also get the generated cache from a <code>.ipsw</code> so, let’s go over that next.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb911ec6" class="outline-3">
+<h3 id="orgb911ec6">IPSW</h3>
+<div class="outline-text-3" id="text-orgb911ec6">
+<p>
+A <code>.ipsw</code> file, simply put, is a firmware file for an Apple device. This file is a zip archive and looks something along the lines of this after extracting.
+</p>
+
+
+<div id="org3a1b8e1" class="figure">
+<p><img src="./fafd/ipsw-tree.png" alt="ipsw-tree.png" />
+</p>
+</div>
+
+<p>
+Starting from the top, we have two <code>.dmg</code> (Disk Image) files. You’ll only be able to mount the largest of the <code>.dmg</code> files due to the other not including a partition table. Once mounted, you’ll see the file system that is restored to an apple device.
+</p>
+
+
+<div id="org2d164ca" class="figure">
+<p><img src="./fafd/dmg-mount.png" alt="dmg-mount.png" />
+</p>
+</div>
+
+<p>
+Seeing as we have access to the file system and as mentioned above, the location of the dyld cache. We can actually extract it from the mounted DMG.
+</p>
+
+
+<div id="orgf8e046e" class="figure">
+<p><img src="./fafd/cache-mount.png" alt="cache-mount.png" />
+</p>
+</div>
+
+<p>
+We can also review much more within the file system, such as directories and permissions.
+</p>
+</div>
+
+<div id="outline-container-org0edf758" class="outline-4">
+<h4 id="org0edf758">*.plist</h4>
+<div class="outline-text-4" id="text-org0edf758">
+<p>
+Moving on, we have two <code>.plist</code> files in the extracted .ipsw, Like everything Apple, there’s identifiers for almost everything. These <code>.plist</code> files include identifiers for the firmware, such as the OS version and supported devices.
+</p>
+
+
+<div id="org3f8c20b" class="figure">
+<p><img src="./fafd/plist.png" alt="plist.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org910f6db" class="outline-4">
+<h4 id="org910f6db">file ./kernelcache</h4>
+<div class="outline-text-4" id="text-org910f6db">
+<p>
+The kernelcache is basically the kernel itself as well as all of its extensions in one file, then packed and encrypted.
+</p>
+
+<p>
+We can view the kernel extensions and their load addresses from the encrypted kernelcache with <a href="http://newosxbook.com/tools/jtool.html">jtool2</a>.
+</p>
+
+
+<div id="org8f25cf1" class="figure">
+<p><img src="./fafd/kernelcache.png" alt="kernelcache.png" />
+</p>
+</div>
+
+<p>
+It’s also possible to decrypt and decompress the kernel with <code>jtool2</code> allowing us to use other reverse engineering tools.
+</p>
+
+
+<div id="org346f5fb" class="figure">
+<p><img src="./fafd/rekernelcache.png" alt="rekernelcache.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb5b8291" class="outline-4">
+<h4 id="orgb5b8291">ls ./Firmware/all<sub>flash</sub>/all<sub>flash</sub>.{BoardCode}.production/</h4>
+<div class="outline-text-4" id="text-orgb5b8291">
+<p>
+Inside the all<sub>flash</sub> directory we have a few files that end with a <code>.img3</code> extension. As the extension and directory may give away, these are files that are used in the boot image. Like most things Apple, these files are encrypted, and require the Hardware AES engine to be run per file in order to decrypt. That’s not saying it’s impossible, but that would deserve its own blog post.
+</p>
+
+<p>
+At a high level here are these files and their usage within the boot image;
+</p>
+<ul class="org-ul">
+<li>DeviceTree{BoardCode}.img3
+<ul class="org-ul">
+<li>This file is a representation of hardware used by the boot loaders to provide the kernel with a mapping of hardware</li>
+</ul></li>
+<li>LLB.{BoardCode}.RELEASE.img3
+<ul class="org-ul">
+<li>This is the Low Level Bootloader, It runs several setup routines and it checks the signature of iBoot before jumping to it.</li>
+</ul></li>
+<li>iBoot.{BoardCode}.RELEASE.img3
+<ul class="org-ul">
+<li>Lastly, iBoot is Apple’s stage 2 bootloader. It runs recovery mode and it has an interactive interface which can be used over USB or serial.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org283713c" class="outline-4">
+<h4 id="org283713c">ls ./Firmware/dfu/</h4>
+<div class="outline-text-4" id="text-org283713c">
+<p>
+Lastly the DFU directory. This directory contains the DFU mode boot images, and yep you guessed it, they are encrypted. Again DFU mode deserves its own blog post, so at a high level there will be two different files in this directory, a file starting with <code>iBEC</code> and another starting with <code>iBSS</code>.
+</p>
+
+<p>
+The <code>iBEC</code> file is a stripped down version of iBoot which is used when performing a restore of the device from DFU mode.
+</p>
+
+<p>
+The <code>iBSS</code> file bootstraps the <code>iBEC</code> file, which prepares and executes the restore process. It is also responsible for checking the integrity the restore image.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

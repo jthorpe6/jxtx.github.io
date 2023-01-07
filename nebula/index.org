@@ -1,0 +1,23 @@
+#+OPTIONS: num:0
+#+PROPERTY: header-args :tangle yes :eval no-export :results output
+
+#+begin_src shell :results raw :exports results
+  for x in $(ls);
+  do
+      echo " - [[file:$x/index.html][$x]]"
+  done
+  
+#+end_src
+
+#+RESULTS:
+ - [[file:00/index.html][00]]
+ - [[file:01/index.html][01]]
+ - [[file:02/index.html][02]]
+ - [[file:03/index.html][03]]
+ - [[file:04/index.html][04]]
+ - [[file:05/index.html][05]]
+ - [[file:06/index.html][06]]
+ - [[file:07/index.html][07]]
+ - [[file:08/index.html][08]]
+ - [[file:09/index.html][09]]
+ - [[file:10/index.html][10]]

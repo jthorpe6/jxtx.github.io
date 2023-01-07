@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-07 Sat 14:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ul class="org-ul">
+<li><a href="index.html">home</a></li>
+</ul>
+<div id="outline-container-org360af0d" class="outline-2">
+<h2 id="org360af0d">Literate Hacking</h2>
+<div class="outline-text-2" id="text-org360af0d">
+<p>
+I found <a href="http://howardism.org/Technical/Emacs/literate-devops.html">this</a> blog post that goes into the concept "Literate DevOps" where everything is executed in Emacs. I don't do DevOps but I am a penetration tester that uses Emacs, so I've came up with the concept <i>Literate Hacking</i>.
+</p>
+</div>
+<div id="outline-container-org704a7ca" class="outline-3">
+<h3 id="org704a7ca">Notes File</h3>
+<div class="outline-text-3" id="text-org704a7ca">
+<p>
+Like any other penetration tester, I take notes when on a project so i can recall what I've found / done. I've been taking my notes in an <code>org-mode</code> document for some time now, as well as <i>staging</i> my report in the same document so I can reference it later down the line if need be.
+</p>
+
+<p>
+Like most other penetration testers I dint have the tools on my local system, I'll normally <code>ssh</code> to a virtual machine and run the tools from that device, then work with <code>scp</code> to get all the data off later. Or now days I'll use a docker container. Literate Hacking allows me to define code blocks in my notes file and then execute it on the virtual machine via <code>ssh</code>. 
+</p>
+</div>
+<div id="outline-container-orgdc2d2aa" class="outline-4">
+<h4 id="orgdc2d2aa">Example</h4>
+<div class="outline-text-4" id="text-orgdc2d2aa">
+<p>
+First I'll show the example, then I'll show the <code>org-mode</code> code for it.
+In this example I'll just pull the <code>IP</code> of the remote server.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ip addr
+</pre>
+</div>
+
+<pre class="example" id="org3367492">
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether b8:27:eb:f3:f7:5b brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.6/24 brd 192.168.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::ba27:ebff:fef3:f75b/64 scope link 
+       valid_lft forever preferred_lft forever
+</pre>
+
+<p>
+So the <code>org-mode</code> code for that looks like this
+</p>
+
+<pre class="example" id="org3f35b3b">
+#+BEGIN_SRC shell :dir /ssh:home-kalipi:~/ :exports both :results output
+ip addr
+#+END_SRC
+</pre>
+
+<p>
+That's great, I have all my <code>SSH</code> config, such as keys and what not for the host <code>home-kalipi</code> in <code>~/.ssh/config</code> and with <code>C-c</code> on the code block it executes.
+With other tools like <code>msfconsole</code> I could do something like this.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">msfconsole -q -x <span style="font-style: italic;">'use auxiliary/scanner/http/iis_internal_ip'</span> -x <span style="font-style: italic;">'set RHOSTS $target'</span> -x <span style="font-style: italic;">'set RPORT 80'</span> -x <span style="font-style: italic;">'set SSL false'</span> -x <span style="font-style: italic;">'run'</span>
+</pre>
+</div>
+
+<pre class="example" id="orga19bd86">
+RHOSTS =&gt; $target
+RPORT =&gt; 80
+SSL =&gt; false
+[+] Location Header: http://10.8.9.40/
+[+] Result for $target found Internal IP:  10.8.9.40
+[+] Location Header: http://10.8.9.40/
+[+] Result for $target found Internal IP:  10.8.9.40
+[+] Location Header: http://10.8.9.40/
+[+] Result for $target found Internal IP:  10.8.9.40
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf auxiliary(scanner/http/iis_internal_ip) &gt; 
+</pre>
+
+<p>
+<code>$target</code> would be the vulnerable <code>IP</code> in this case, and the <code>org-mode</code> code looks like this.
+</p>
+
+<pre class="example" id="org764013e">
+#+BEGIN_SRC shell :dir /ssh:home-kalipi:/usr/share/metasploit-framework :results output :exports both
+  msfconsole -q -x 'use auxiliary/scanner/http/iis_internal_ip' -x 'set RHOSTS $target' -x 'set RPORT 80' -x 'set SSL false' -x 'run'
+#+END_SRC
+</pre>
+</div>
+<ul class="org-ul">
+<li><a id="org17840ec"></a>Internal devices<br />
+<div class="outline-text-5" id="text-org17840ec">
+<p>
+So, a lot of the time for an internal penetration test, we would send <code>$client</code> an appliance of some sort and connect to it remotely. I'm a huge fan of using a reverse <code>SSH</code> shell to connect to internal appliances, but until recently I've not worked out how to do Literate Hacking via a reverse <code>SSH</code> connection. 
+</p>
+
+<p>
+For this example, I'll use a <code>vps</code> and access the same internal device as above.
+</p>
+
+<ul class="org-ul">
+<li><b>hax</b> = external public ip box</li>
+<li><b>home-kalipi</b> = internal box</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">echo</span> $<span style="font-weight: bold; font-style: italic;">PWD</span> &amp;&amp; ls -lah &amp;&amp; ip a
+</pre>
+</div>
+
+<pre class="example" id="orgc5b049f">
+/opt
+total 8.0K
+drwxr-xr-x  2 root root 4.0K Oct 20  2017 .
+drwxr-xr-x 22 root root 4.0K Apr 21  2017 ..
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+ link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+ inet 127.0.0.1/8 scope host lo
+    valid_lft forever preferred_lft forever
+ inet6 ::1/128 scope host 
+    valid_lft forever preferred_lft forever
+    2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+ link/ether b8:27:eb:f3:f7:5b brd ff:ff:ff:ff:ff:ff
+ inet 192.168.1.6/24 brd 192.168.1.255 scope global eth0
+    valid_lft forever preferred_lft forever
+ inet6 fe80::ba27:ebff:fef3:f75b/64 scope link 
+    valid_lft forever preferred_lft forever
+</pre>
+
+<pre class="example" id="orge65026d">
+#+BEGIN_SRC shell :dir /ssh:hax|ssh:jthorpe@127.0.0.1#2222:/opt :results output : exports both
+  echo $PWD &amp;&amp; ls -lah &amp;&amp; ip a
+#+END_SRC
+</pre>
+
+<p>
+So the initial connection to the <code>vps</code> is then passed to <code>127.0.0.1</code> and the port is specified with <code>#2222</code>. Pretty nifty :). I have found however that trying to do that with the <code>root</code> account and <code>org-mode</code> really does not like it, so setting up another account and configuring <code>sudo</code> not to ask for a password on that account is what I do now.
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

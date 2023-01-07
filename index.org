@@ -1,0 +1,33 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+HTML_HEAD_EXTRA: <style type="text/css">h2 {text-indent: 20%;}</style>
+#+HTML_HEAD_EXTRA: <style type="text/css">ul {width: auto; display: table; margin-left: auto; margin-right: auto;}</style>
+#+OPTIONS: num:nil toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+#+TITLE: JxTx
+|[[https://twitter.com/JxTx__][Twitter]]|[[https://mastodon.lol/web/@jxtx][Mastodon]]|[[https://www.linkedin.com/in/joe-thorpe-4a5a7321][Linkedin]]|
+|[[https://gitlab.com/JxTx][GitLab]]|[[https://github.com/jthorpe6][GitHub]]|
+#+HTML: <br><br>
+
+ - [[file:macos-kernel-debugging.html][macOS Kernel Debugging]]
+ - [[file:a-bit-about-gatekeeper.html][A bit about Gatekeeper]]
+ - [[file:file-attributes-in-fruity-devices.html][File Attributes in Fruity Devices]]
+ - [[file:ipas-i-just-love-ipas.html][IPA's I just love IPA's]]
+ - [[file:doing-something-fun-with-arm-assembly.html][Doing something fun with ARM assembly]]
+ - [[file:saving-copy-and-paste-with-ob-rasm2.html][Saving Copy and Paste with ob-rasm2]]
+ - [[file:spamming-friends-with-discord-bots.html][Spamming Friends with Discord Bot's]]
+ - [[file:simple-jailbreak-bypass.html][Simple Jailbreak Bypass]]
+ - [[file:jail-root-detection.html][Jailbreak and Root Detection]]
+ - [[file:raspberry-pi-home-lab.html][Raspberry pi Home Lab]]
+ - [[file:Playing-with-r2frida.html][Playing with r2frida]]
+ - [[file:DVTA-Bypassing-Authentication.html][DVTA Bypassing Authentication]]
+ - [[file:VulnUni.html][VulnUni]]
+ - [[file:Looking-at-Compiled-Python-Files.html][Looking at Compiled Python Files]]
+ - [[file:Beyond-alert1.html][Beyond alert(1)]]
+ - [[file:Static-Analysis-of-the-discord-APK.html][Static Analysis of the discord APK]]
+ - [[file:IOLI-crackmes.html][IOLI crackmes]]
+ - [[file:The-Emacs-Multimedia-System.html][The Emacs Multimedia System]]
+ - [[file:Emacs-For-Pentesters.html][Emacs For Pentesters]]
+ - [[file:Literate-Hacking.html][Literate Hacking]]
+ - [[file:Always-Testing.html][Always Testing]]
+ - [[file:Automating-the-ZAP-Scanner.html][Automating the ZAP Scanner]]
+ - [[file:How-to-setup-a-Kali-Server.html][How to setup a Kali Server]]
