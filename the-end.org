@@ -1,0 +1,20 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+OPTIONS: num:0 toc:nil html-postamble:nil
+#+PROPERTY: header-args :tangle yes :exports both :eval no-export :results output
+ - [[file:index.html][home]]
+
+* The end of here
+
+It was going to happen sooner or later, but I've moved to [[https://jthorpe6.github.io/][here]], where its easier to maintain. 
+
+** Emacs's place in 2023
+
+I've found it hard to use emacs recently, maybe because I've got a new job, or maybe because its not cutting it anymore. Yes its not an electron based application, and can do all the things the althernatives can do, but I was finding myself debugging emacs more than the actual thing I wanted to do. So I ended up not using it much at all. To the point I've installed the terminal version over the GUI version.
+
+*** Does that mean your not using org-mode ?
+
+Yeah, although org-mode is far more superior than markdown. Markdown is more popular, and thats that. I've also moved all of my notes to Obsidian, and dont know how I lived without it before.
+
+** The end
+
+Well thats that, hopfully you now follow me at [[https://jthorpe6.github.io/][here]] !
