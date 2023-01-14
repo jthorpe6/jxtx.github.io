@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,9 +199,9 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org1d0776f" class="outline-2">
-<h2 id="org1d0776f">IPA's I just love IPA's</h2>
-<div class="outline-text-2" id="text-org1d0776f">
+<div id="outline-container-orgd639854" class="outline-2">
+<h2 id="orgd639854">IPA's I just love IPA's</h2>
+<div class="outline-text-2" id="text-orgd639854">
 <p>
 India Pale Ale has always been a favorite of mine, I've had so many different styles/flavors and still get excited every time I find a new one. Some of my go to IPA's are;
 </p>
@@ -220,18 +220,18 @@ Nursing a hangover, I messages my friends to see if they wanted to continue with
 </p>
 </div>
 
-<div id="outline-container-orgbd166db" class="outline-3">
-<h3 id="orgbd166db">go2ipa</h3>
-<div class="outline-text-3" id="text-orgbd166db">
+<div id="outline-container-org41e8599" class="outline-3">
+<h3 id="org41e8599">go2ipa</h3>
+<div class="outline-text-3" id="text-org41e8599">
 <p>
 Did you know that you can pass a <code>ipa://</code> schema to radare2 ? I did not, I would always extract the content and then throw the binary into <code>r2</code>. After getting the r2pipe library installed, I began to write most likely really shoddy golang. But it worked, it did what I wanted it to do, it was just I had a nagging feeling that it seemed a bit useless. It would be quicker and easier just to use the <code>r2</code> commands. So with that in mind, if you really want to use my wrapper and see my shoddy golang, the repo is <a href="https://gitlab.com/JxTx/go2ipa">here</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org797ff0a" class="outline-3">
-<h3 id="org797ff0a">Getting the IPA's</h3>
-<div class="outline-text-3" id="text-org797ff0a">
+<div id="outline-container-org2a34d7d" class="outline-3">
+<h3 id="org2a34d7d">Getting the IPA's</h3>
+<div class="outline-text-3" id="text-org2a34d7d">
 <p>
 I don't use many mobile applications, I prefer a keyboard. So one weekend I just went on a rampage within the App Store, downloading anything and everything that I could find. I ended up with ~60 mobile applications, Now all I had to do was pull them off the device, that should be simple enough. Using <a href="https://github.com/ChiChou/bagbak">bagbak</a> and this <i>one liner</i> I was able to pull all the <code>.ipa</code>'s off the device.
 </p>
@@ -242,16 +242,16 @@ I don't use many mobile applications, I prefer a keyboard. So one weekend I just
 </div>
 
 
-<div id="orgc42550e" class="figure">
+<div id="orga278a77" class="figure">
 <p><img src="./ipas-pull.gif" alt="ipas-pull.gif" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org714cf00" class="outline-3">
-<h3 id="org714cf00">Analysis</h3>
-<div class="outline-text-3" id="text-org714cf00">
+<div id="outline-container-org0ff700d" class="outline-3">
+<h3 id="org0ff700d">Analysis</h3>
+<div class="outline-text-3" id="text-org0ff700d">
 <p>
 If I was going to put some effort into this, I wanted to make it worth it. A while ago I went through the <a href="https://www.hacker101.com/sessions/iOS/ios_quickstart">iOS quickstart video series by hackerone</a>, this series went through both static and dynamic analysis, so I reviewed my notes and built the following list of requirements that I wanted to extract from each <code>.ipa</code>.
 </p>
@@ -276,9 +276,9 @@ Seeing as the analysis side was already being ran by a <a href="https://docs.git
 </div>
 </div>
 
-<div id="outline-container-orge0f9233" class="outline-3">
-<h3 id="orge0f9233">Publishing</h3>
-<div class="outline-text-3" id="text-orge0f9233">
+<div id="outline-container-org165e7a7" class="outline-3">
+<h3 id="org165e7a7">Publishing</h3>
+<div class="outline-text-3" id="text-org165e7a7">
 <p>
 I'm a fan of the <a href="https://readthedocs.org">read the docs</a> theme so <a href="https://www.mkdocs.org">mkdocs</a> with the read the docs theme made sense, adding this to the pipeline was simple enough, I just needed to add the following stages.
 </p>
@@ -318,9 +318,9 @@ There are a few gotchas, first off, the analysis stage runs the analysis over ea
 </div>
 </div>
 
-<div id="outline-container-orgc0ca5af" class="outline-3">
-<h3 id="orgc0ca5af">Findings</h3>
-<div class="outline-text-3" id="text-orgc0ca5af">
+<div id="outline-container-org5b5fa3f" class="outline-3">
+<h3 id="org5b5fa3f">Findings</h3>
+<div class="outline-text-3" id="text-org5b5fa3f">
 <p>
 First off, every application ran on a jailbroken device, and every application was pulled off with <code>bagbak</code> which uses <a href="https://frida.re">Frida</a>, so I guess you have two findings right there :)
 </p>

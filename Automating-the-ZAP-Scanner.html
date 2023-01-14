@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,21 +199,21 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org370ee97" class="outline-2">
-<h2 id="org370ee97">Automating the ZAP Scanner</h2>
-<div class="outline-text-2" id="text-org370ee97">
+<div id="outline-container-orgab7e624" class="outline-2">
+<h2 id="orgab7e624">Automating the ZAP Scanner</h2>
+<div class="outline-text-2" id="text-orgab7e624">
 <p>
 I normally use BurpSuite when doing web app penetration tests, but recently I've been trying out the <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">Zed Attack Proxy</a> and quite like it. Using some fancy python, I ran run a scan of an application using <code>ZAP</code> without putting traffic through it and opening up the application trough the proxy. <b>Note:</b> An application penetration is not just running tools and writing up the report, our tools help us see the lay of the land, but it takes a human to go in and poke around.
 </p>
 </div>
 
-<div id="outline-container-org33ab7ed" class="outline-3">
-<h3 id="org33ab7ed">Setup</h3>
-<div class="outline-text-3" id="text-org33ab7ed">
+<div id="outline-container-org0a2c275" class="outline-3">
+<h3 id="org0a2c275">Setup</h3>
+<div class="outline-text-3" id="text-org0a2c275">
 </div>
-<div id="outline-container-org34c45bc" class="outline-4">
-<h4 id="org34c45bc">Daemon</h4>
-<div class="outline-text-4" id="text-org34c45bc">
+<div id="outline-container-orga356aad" class="outline-4">
+<h4 id="orga356aad">Daemon</h4>
+<div class="outline-text-4" id="text-orga356aad">
 <p>
 First we need to launch <code>ZAP</code>, if on a unix system you can run a headless server like so.
 </p>
@@ -228,9 +228,9 @@ Any option could be reconfigured to meet your needs, in this example <code>ZAP</
 </p>
 </div>
 </div>
-<div id="outline-container-orgf8beab3" class="outline-4">
-<h4 id="orgf8beab3">Client</h4>
-<div class="outline-text-4" id="text-orgf8beab3">
+<div id="outline-container-orgf419aea" class="outline-4">
+<h4 id="orgf419aea">Client</h4>
+<div class="outline-text-4" id="text-orgf419aea">
 <p>
 Using the following <code>python</code> script, a scan of the application will take place, and you'll receive a <code>.xml</code> and <code>.html</code> report of the findings.
 </p>
@@ -287,7 +287,7 @@ zap.core.delete_site_node(app,apikey=apikey)
 </pre>
 </div>
 
-<pre class="example" id="org3f7380b">
+<pre class="example" id="org7532c50">
 [+] Accessing app http://scanme.nmap.org/
 [+] Spidering app http://scanme.nmap.org/
 [+] Scanning app http://scanme.nmap.org/
@@ -331,9 +331,9 @@ zap.core.delete_site_node(app,apikey=apikey)
 </div>
 </div>
 </div>
-<div id="outline-container-orgb5bfdc3" class="outline-3">
-<h3 id="orgb5bfdc3">Results</h3>
-<div class="outline-text-3" id="text-orgb5bfdc3">
+<div id="outline-container-orgae965fb" class="outline-3">
+<h3 id="orgae965fb">Results</h3>
+<div class="outline-text-3" id="text-orgae965fb">
 <p>
 The results output to a <code>.xml</code> and a <code>.html</code> file that you can parse or view.
 </p>

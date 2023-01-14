@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:51 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,9 +199,9 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org915571b" class="outline-2">
-<h2 id="org915571b">Spamming Friends with Discord Bot's</h2>
-<div class="outline-text-2" id="text-org915571b">
+<div id="outline-container-org289a754" class="outline-2">
+<h2 id="org289a754">Spamming Friends with Discord Bot's</h2>
+<div class="outline-text-2" id="text-org289a754">
 <p>
 Recently a few ex-colleagues and I created a Discord server to stay in touch with one another. This gave me an idea to create a bot that would remind us of events that took place when we worked together. Also be semi-annoying to people still working there.
 </p>
@@ -239,7 +239,7 @@ Once the bot was up, anyone (normally me) could use the command <code>!thelink</
 </p>
 
 
-<div id="org048961d" class="figure">
+<div id="orgd0e0610" class="figure">
 <p><img src="./discordbot/thelink.png" alt="thelink.png" />
 </p>
 </div>
@@ -249,7 +249,7 @@ Great start. So a few commands later, I wanted to start tagging (mentioning) peo
 </p>
 
 
-<div id="org5667690" class="figure">
+<div id="org6344c31" class="figure">
 <p><img src="./discordbot/userid.png" alt="userid.png" />
 </p>
 </div>
@@ -259,7 +259,7 @@ Now that I have this I <i>accidently</i> ended up spamming the person.
 </p>
 
 
-<div id="org0ac5bb3" class="figure">
+<div id="org0c366ca" class="figure">
 <p><img src="./discordbot/spam.png" alt="spam.png" />
 </p>
 </div>
@@ -269,7 +269,7 @@ Another gotcha I had was comment matching. The bot has the ability to respond to
 </p>
 
 
-<div id="org3663d89" class="figure">
+<div id="orge1dc01b" class="figure">
 <p><img src="./discordbot/badmatch.png" alt="badmatch.png" />
 </p>
 </div>
@@ -279,7 +279,7 @@ A few commits later, I changed the matching to be a more specific string. But I 
 </p>
 
 
-<div id="org35fa593" class="figure">
+<div id="org734ee3a" class="figure">
 <p><img src="./discordbot/botreply.png" alt="botreply.png" />
 </p>
 </div>
@@ -296,9 +296,9 @@ This one was an easy fix. I just had to change the bot to reply to the original 
 </div>
 </div>
 
-<div id="outline-container-org049bcc0" class="outline-3">
-<h3 id="org049bcc0">Over Engineering the Deployment</h3>
-<div class="outline-text-3" id="text-org049bcc0">
+<div id="outline-container-org86c4981" class="outline-3">
+<h3 id="org86c4981">Over Engineering the Deployment</h3>
+<div class="outline-text-3" id="text-org86c4981">
 <p>
 The only <i>problem</i> with the bot was that the script had to be running forever, meaning I needed to having it running on a system that was up for the majority of the time. Because I made a local repo for the code, I decided to make a <code>Dockerfile</code> for each bot, and then after any commit, a CI/CD pipeline would run that would re-deploy the container. As I used <a href="https://python-poetry.org">poetry</a> for the python project, here is the <code>Dockerfile</code> I ended up using.
 </p>
@@ -322,7 +322,7 @@ Now, when I commit a change to the bot's code, the pipeline runs, and re-deploys
 </p>
 
 
-<div id="org8ebeaa5" class="figure">
+<div id="org87133f1" class="figure">
 <p><img src="./discordbot/containerbot.png" alt="containerbot.png" />
 </p>
 </div>

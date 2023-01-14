@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,17 +199,17 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org5b8c58b" class="outline-2">
-<h2 id="org5b8c58b">Saving Copy and Paste With ob-rasm2</h2>
-<div class="outline-text-2" id="text-org5b8c58b">
+<div id="outline-container-org0f0f63a" class="outline-2">
+<h2 id="org0f0f63a">Saving Copy and Paste With ob-rasm2</h2>
+<div class="outline-text-2" id="text-org0f0f63a">
 <p>
 At the beginning of 2022 I thought it would be a good idea to learn assembly, specfically ARM assembly. Like any good Emacs user I'm taking my notes in <code>org-mode</code> and I wanted to reduce the amount of copy and paste from the terminal to Emacs. I already use <code>vterm</code> and <code>asm-mode</code> to assemble my code, but I wanted to have that inline with my notes. So i started to look around.
 </p>
 </div>
 
-<div id="outline-container-org76be09d" class="outline-3">
-<h3 id="org76be09d">Rasm2</h3>
-<div class="outline-text-3" id="text-org76be09d">
+<div id="outline-container-org7587ac0" class="outline-3">
+<h3 id="org7587ac0">Rasm2</h3>
+<div class="outline-text-3" id="text-org7587ac0">
 <p>
 <a href="https://r2wiki.readthedocs.io/en/latest/tools/rasm2/">Rasm2</a> is part of the radare2 framework, and assembles and disassembles files or hexpair strings without having to open <code>r2</code>. After installing <a href="https://rada.re/n/radare2.html">radare2</a> we can execute <code>rasm2</code> to quickly assemble and disassemble strings.
 </p>
@@ -244,9 +244,9 @@ This is great and excatly what I want for learning, but it would be nicer if it 
 </div>
 </div>
 
-<div id="outline-container-org2a10989" class="outline-3">
-<h3 id="org2a10989">Org Babel</h3>
-<div class="outline-text-3" id="text-org2a10989">
+<div id="outline-container-orgdf4f731" class="outline-3">
+<h3 id="orgdf4f731">Org Babel</h3>
+<div class="outline-text-3" id="text-orgdf4f731">
 <p>
 The code blocks above are ran by using <a href="https://orgmode.org/worg/org-contrib/babel/intro.html">org babel</a> with shell-mode. Under the hood, it executes whats in the <code>src</code> bock and then displays the results in the buffer. Now, if I could have the <code>rasm2</code> command above as a snippet then it would save me a lot of repitition, but I can do one better.
 </p>
@@ -257,9 +257,9 @@ My <a href="https://letmegooglethat.com/?q=rasm2+org+babel">research</a> into li
 </div>
 </div>
 
-<div id="outline-container-org1a23e3a" class="outline-3">
-<h3 id="org1a23e3a">ob-rasm2</h3>
-<div class="outline-text-3" id="text-org1a23e3a">
+<div id="outline-container-orga2a94a8" class="outline-3">
+<h3 id="orga2a94a8">ob-rasm2</h3>
+<div class="outline-text-3" id="text-orga2a94a8">
 <p>
 Tidying up the code and googling around a bit, I ended up with <a href="https://gitlab.com/JxTx/ob-rasm2">ob-rasm2</a>, and adding <code>(add-to-list 'org-src-lang-modes '("rasm2" . asm))</code> allows editiing with <code>C '</code> by tricking <code>org-mode</code> in thinking that your editing in <code>asm</code>. All thats left to do is show the same example above :).
 </p>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,17 +199,17 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orgb943319" class="outline-2">
-<h2 id="orgb943319">Playing with r2frida</h2>
-<div class="outline-text-2" id="text-orgb943319">
+<div id="outline-container-org1480ef0" class="outline-2">
+<h2 id="org1480ef0">Playing with r2frida</h2>
+<div class="outline-text-2" id="text-org1480ef0">
 <p>
 <a href="https://www.radare.org/r/">Radare2</a> and <a href="https://frida.re/">frida</a> are some of my favourite tools, mainly because once you get over the steep learning curve they are fantastic at what they do. A bit like <code>emacs</code>, in that once you have your setup the way you want it, you'll learn more tinkering. Well the other day I stumbled across <a href="https://github.com/nowsecure/r2frida">r2frida</a>.
 </p>
 </div>
 
-<div id="outline-container-orgbbd38a3" class="outline-3">
-<h3 id="orgbbd38a3">Install</h3>
-<div class="outline-text-3" id="text-orgbbd38a3">
+<div id="outline-container-orgb171248" class="outline-3">
+<h3 id="orgb171248">Install</h3>
+<div class="outline-text-3" id="text-orgb171248">
 <p>
 Your going to have to have <code>radare2</code> and <code>frida</code> installed ofcourse, and theres a few other dependencies too install too.
 </p>
@@ -233,9 +233,9 @@ Your also going to need frida on your target device, but thats a littl out of sc
 </p>
 </div>
 </div>
-<div id="outline-container-orgdab12b6" class="outline-3">
-<h3 id="orgdab12b6">Connecting to target with <code>r2frida</code></h3>
-<div class="outline-text-3" id="text-orgdab12b6">
+<div id="outline-container-org74820db" class="outline-3">
+<h3 id="org74820db">Connecting to target with <code>r2frida</code></h3>
+<div class="outline-text-3" id="text-org74820db">
 <p>
 The <code>README</code> outlines this, but here is a quick guide to connect and spawn an app on the device.
 </p>
@@ -276,7 +276,7 @@ Once connected however the app with pause (like it does in the frida repl) so to
 Now we can run specfic <code>r2frida</code> commands that are prepended with <code>\</code>.
 </p>
 
-<pre class="example" id="orgc434093">
+<pre class="example" id="orgfad682b">
 [0x00000000]&gt; \?
 r2frida commands available via =! or \ prefix
 
@@ -285,14 +285,14 @@ r2frida commands available via =! or \ prefix
 </div>
 </div>
 
-<div id="outline-container-org420ab4f" class="outline-3">
-<h3 id="org420ab4f">Search Example</h3>
-<div class="outline-text-3" id="text-org420ab4f">
+<div id="outline-container-org58da050" class="outline-3">
+<h3 id="org58da050">Search Example</h3>
+<div class="outline-text-3" id="text-org58da050">
 <p>
 In <code>radare2</code> to search for a pattern you'd use the <code>/ &lt;pattern&gt;</code> command, well with <code>r2frida</code> its the same but prepended with <code>\</code>.
 </p>
 
-<pre class="example" id="orgf5a4ee0">
+<pre class="example" id="org407f738">
 [0x00000000]&gt; \/ jail
 Searching 4 bytes: 6a 61 69 6c
 Searching 4 bytes in [0x0000000100bf4000-0x0000000100c04000]
@@ -342,7 +342,7 @@ hits: 32
 When doing mobile testing its also nice to have a list of classes that that app uses. We can get that with the <code>\ic</code> command, and the <code>\icl</code> command for a list of classes that have been loaded.
 </p>
 
-<pre class="example" id="org2c325c8">
+<pre class="example" id="org4e4eba7">
 [0x00000000]&gt; \icl
 Do you want to print 26214 lines? (y/N) y
 PFEmbeddedMulticasterImplementation
@@ -370,7 +370,7 @@ PFUtilities
 Like with any <code>radare2</code> command, this can be filtered.
 </p>
 
-<pre class="example" id="org45284ea">
+<pre class="example" id="org24e708c">
 [0x00000000]&gt; \icl~+discord
 discord_ios_discord_ios_swift_lib.Networking
 discord_ios_discord_ios_swift_lib.ContactSyncEncryption
@@ -383,14 +383,14 @@ discord_ios_discord_ios_swift_lib.DCDTableView
 </div>
 </div>
 
-<div id="outline-container-org75cc640" class="outline-3">
-<h3 id="org75cc640">Inspecting Memory</h3>
-<div class="outline-text-3" id="text-org75cc640">
+<div id="outline-container-orgff1b520" class="outline-3">
+<h3 id="orgff1b520">Inspecting Memory</h3>
+<div class="outline-text-3" id="text-orgff1b520">
 <p>
 With the <code>\dm</code> command we can see the memory regions. With the <code>\dmm</code> command its then possible to show the memory maps.
 </p>
 
-<pre class="example" id="org03c83d6">
+<pre class="example" id="orgff9c199">
 [0x00000000]&gt; \dmm
 0x0000000100bf4000 - 0x0000000101f6e000 rwx /private/var/containers/Bundle/Application/98F28445-DD8E-4E52-90D7-2C55B994F911/Discord.app/Discord
 0x00000001021bc000 - 0x000000010227f000 rwx /binpack/lib/dyld

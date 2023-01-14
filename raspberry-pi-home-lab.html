@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,9 +199,9 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org13f83ab" class="outline-2">
-<h2 id="org13f83ab">Raspberry pi Home Lab</h2>
-<div class="outline-text-2" id="text-org13f83ab">
+<div id="outline-container-org4bad1f1" class="outline-2">
+<h2 id="org4bad1f1">Raspberry pi Home Lab</h2>
+<div class="outline-text-2" id="text-org4bad1f1">
 <p>
 I've been using a home lab for a number of years now, just to play with different software and services. At the end of last year, the setup was a <a href="https://www.proxmox.com/en/">proxmox</a> hypervisor on a custom PC I built when I left school, so it was starting to show its age. At the end of 2020 to make that year even worse, my home lab gave up and would refuse to boot. Luckily, there was nothing <i>too</i> important on there, but I learnt a lesson about backups that day. There were a lot of VM's in there that had been powered off for months, so it got me thinking for a new home lab in if I could use some raspberry pi's that I had sitting in my draw doing nothing. So I made the following list of services I <b>require</b> in a home lab;
 </p>
@@ -213,9 +213,9 @@ I've been using a home lab for a number of years now, just to play with differen
 </ul>
 </div>
 
-<div id="outline-container-org3913fbc" class="outline-3">
-<h3 id="org3913fbc">GitLab</h3>
-<div class="outline-text-3" id="text-org3913fbc">
+<div id="outline-container-org780612f" class="outline-3">
+<h3 id="org780612f">GitLab</h3>
+<div class="outline-text-3" id="text-org780612f">
 <p>
 Having a self hosted GitLab instance allows me to have all my code &amp; projects local, but with all the power of <code>git</code>. GitLab works very well in my workflow for learning new topics / languages, and with the <a href="https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html">repository mirroring</a> feature, I can push to gitlab.com with ease.
 </p>
@@ -230,14 +230,14 @@ I like to use the builtin <a href="https://docs.gitlab.com/ee/ci/">CI/CD</a> to 
 </div>
 </div>
 
-<div id="outline-container-org6124640" class="outline-3">
-<h3 id="org6124640">Portainer</h3>
-<div class="outline-text-3" id="text-org6124640">
+<div id="outline-container-org6dd66d1" class="outline-3">
+<h3 id="org6dd66d1">Portainer</h3>
+<div class="outline-text-3" id="text-org6dd66d1">
 <p>
 Portainer is a nice web interface to docker, although docker in the terminal is nice. I followed <a href="https://www.wundertech.net/portainer-raspberry-pi-install-how-to-install-docker-and-portainer/">this guide</a> to install Portainer on the raspberry pi. The only step that is different from the <a href="https://documentation.portainer.io/v2.0/deploy/linux/">official guide</a> is specifying to use the <code>linux-arm</code> image. Which brings me to a consideration, as the raspberry pi has an <code>arm</code> processor, some docker images are not built to run on <code>arm</code>. For example, attempting to run the official <a href="https://www.kali.org/news/official-kali-linux-docker-images/">kalilinux docker constainer</a> results in a failure with the error that it does not match the host platform.
 </p>
 
-<pre class="example" id="org5ed0db1">
+<pre class="example" id="org6dd6346">
 pi@portainerpi:~ $ docker run --rm -it kalilinux/kali-rolling /bin/bash
 
 WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm/v7) and no specific platform was requested
@@ -248,7 +248,7 @@ standard_init_linux.go:219: exec user process caused: exec format error
 This can be a little frustrating, luckily there is a <a href="https://hub.docker.com/u/hypriot/">good list of containers</a> built to run on the raspberry pi. If its not in that list it may take a bit of searching, for example, I use the <code>antoineb/kalilinux-arm</code> base container for the majority of what I do within kali linux.
 </p>
 
-<pre class="example" id="orgf18005d">
+<pre class="example" id="orge2525b8">
 pi@portainerpi:~ $ docker run --rm -it antoineb/kalilinux-arm /bin/bash 
 
 root@18aaed4c585b:/# cat /etc/issue 
@@ -262,9 +262,9 @@ I also installed a <a href="https://docs.gitlab.com/runner/">GitLab runner</a> o
 </div>
 </div>
 
-<div id="outline-container-org4b06e38" class="outline-3">
-<h3 id="org4b06e38">Network Share</h3>
-<div class="outline-text-3" id="text-org4b06e38">
+<div id="outline-container-org6715175" class="outline-3">
+<h3 id="org6715175">Network Share</h3>
+<div class="outline-text-3" id="text-org6715175">
 <p>
 Unfortunately, not everything can or fits well inside of a <code>git</code> repository. I don't use this that often, but its worth having ( with backups this time :) ). I attached a 500GB external HDD to another raspberry pi, and then followed <a href="https://gennaromigliaccio.com/creating-a-samba-share-using-a-raspberry-pi-and-an-external-hard-drive">this guide</a> to set up a <code>smb</code> share on the external HDD.
 </p>
@@ -275,9 +275,9 @@ I consider this raspberry pi more of a "test pi" than a critical service, I've i
 </div>
 </div>
 
-<div id="outline-container-org123867f" class="outline-3">
-<h3 id="org123867f">Windows</h3>
-<div class="outline-text-3" id="text-org123867f">
+<div id="outline-container-org1ecd839" class="outline-3">
+<h3 id="org1ecd839">Windows</h3>
+<div class="outline-text-3" id="text-org1ecd839">
 <p>
 Ah, sometimes I need to try something within a windows environment and my home lab does not <i>support</i> this right now. For now, the need for windows is so low, I'm happy having a windows VM on my laptop for those odd occasions, If i find myself needing this environment more, I'll look into setting up <a href="https://www.tomshardware.com/how-to/install-windows-10-raspberry-pi">windows on a raspberry pi</a>. 
 </p>
@@ -285,9 +285,9 @@ Ah, sometimes I need to try something within a windows environment and my home l
 </div>
 </div>
 
-<div id="outline-container-orgbb4db59" class="outline-2">
-<h2 id="orgbb4db59">Conclusion</h2>
-<div class="outline-text-2" id="text-orgbb4db59">
+<div id="outline-container-org39948c9" class="outline-2">
+<h2 id="org39948c9">Conclusion</h2>
+<div class="outline-text-2" id="text-org39948c9">
 <p>
 So hopefully this helped someone, If anything it was a place for me to include all the links I used to set up my home lab. However, if it did help you, please let me know.
 </p>

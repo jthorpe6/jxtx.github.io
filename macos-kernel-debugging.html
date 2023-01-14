@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,9 +199,9 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org7e1be54" class="outline-2">
-<h2 id="org7e1be54">macOS Kernel Debugging</h2>
-<div class="outline-text-2" id="text-org7e1be54">
+<div id="outline-container-orgd0bcb27" class="outline-2">
+<h2 id="orgd0bcb27">macOS Kernel Debugging</h2>
+<div class="outline-text-2" id="text-orgd0bcb27">
 <p>
 I've done a but of reverse engineering of kernelcache's extracted from <code>.ipsw</code>'s recently, and although I'm learning loads about reverse engineering and iOS in general, I felt that something was missing. I was not seeing what actually happens at runtime. There are a few issues when trying to debug the iOS kernel, mainly that its not open source like in macOS, there are <a href="https://github.com/googleprojectzero/ktrw">projects that try to help overcome this</a>, but I wanted to see what I could do without jumping through hoops first.
 </p>
@@ -211,9 +211,9 @@ Like iOS, macOS <a href="https://github.com/apple-oss-distributions/xnu">uses th
 </p>
 </div>
 
-<div id="outline-container-org7007faa" class="outline-3">
-<h3 id="org7007faa">Installing a VM</h3>
-<div class="outline-text-3" id="text-org7007faa">
+<div id="outline-container-org18c8bfd" class="outline-3">
+<h3 id="org18c8bfd">Installing a VM</h3>
+<div class="outline-text-3" id="text-org18c8bfd">
 <p>
 I'll be using <a href="https://github.com/insidegui/VirtualBuddy">VirtualBuddy</a>, as <a href="https://github.com/utmapp/UTM/issues/3526">UTM does not support booting into recovery mode just yet</a>.
 </p>
@@ -223,21 +223,21 @@ Its a very simple setup. The install wizard downloads the <code>.ipsw</code> and
 </p>
 
 
-<div id="org452d030" class="figure">
+<div id="orgc7a31a7" class="figure">
 <p><img src="./mkd/macosVM.png" alt="macosVM.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org7815f6a" class="outline-3">
-<h3 id="org7815f6a">Disabling <a href="https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection">SIP</a></h3>
-<div class="outline-text-3" id="text-org7815f6a">
+<div id="outline-container-org618d29f" class="outline-3">
+<h3 id="org618d29f">Disabling <a href="https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection">SIP</a></h3>
+<div class="outline-text-3" id="text-org618d29f">
 <p>
 Once the VM is installed, and you've gone through the initial setup, shutdown the VM, and then choose the option to boot into recovery mode.
 </p>
 
 
-<div id="orgfde6e65" class="figure">
+<div id="orgdc68a93" class="figure">
 <p><img src="./mkd/vmrecovery.png" alt="vmrecovery.png" />
 </p>
 </div>
@@ -247,7 +247,7 @@ Once in recovery mode, choose Terminal from the Utilities menu. In this terminal
 </p>
 
 
-<div id="org24aab54" class="figure">
+<div id="org0640b18" class="figure">
 <p><img src="./mkd/sipoff.png" alt="sipoff.png" />
 </p>
 </div>
@@ -257,9 +257,9 @@ Now reboot to macOS. We can verify that SIP is disabled with the <code>csrutil s
 </p>
 </div>
 </div>
-<div id="outline-container-org26c3e77" class="outline-3">
-<h3 id="org26c3e77">Modifying the boot arguments</h3>
-<div class="outline-text-3" id="text-org26c3e77">
+<div id="outline-container-org06ee29a" class="outline-3">
+<h3 id="org06ee29a">Modifying the boot arguments</h3>
+<div class="outline-text-3" id="text-org06ee29a">
 <p>
 We need to change the boot arguments of the VM, this can be done with the <code>nvram</code> <code>boot-args</code> command, we need to specify the <code>debug=0x44</code> option and also tell the <code>kdp_match_name</code> what interface to listen on, and to disable watchdog. The full command looks something like this;
 </p>
@@ -270,7 +270,7 @@ We need to change the boot arguments of the VM, this can be done with the <code>
 </div>
 
 
-<div id="org0a5b2a7" class="figure">
+<div id="org1aaa235" class="figure">
 <p><img src="./mkd/bootargs.png" alt="bootargs.png" />
 </p>
 </div>
@@ -280,23 +280,23 @@ Now reboot the VM.
 </p>
 </div>
 </div>
-<div id="outline-container-org587f991" class="outline-3">
-<h3 id="org587f991">Installing the Kernel debug kit</h3>
-<div class="outline-text-3" id="text-org587f991">
+<div id="outline-container-org4e4f383" class="outline-3">
+<h3 id="org4e4f383">Installing the Kernel debug kit</h3>
+<div class="outline-text-3" id="text-org4e4f383">
 <p>
 On your host, download the Kernel debug kit from Apple, making sure to download the version that correlates to your macOS build. For my system, I need the 21G72 build.
 </p>
 
 
-<div id="orgf4fbca5" class="figure">
+<div id="org925aff2" class="figure">
 <p><img src="./mkd/kdk.png" alt="kdk.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org327502e" class="outline-3">
-<h3 id="org327502e">Installing dependencies and setting up LLDB</h3>
-<div class="outline-text-3" id="text-org327502e">
+<div id="outline-container-orgb53c254" class="outline-3">
+<h3 id="orgb53c254">Installing dependencies and setting up LLDB</h3>
+<div class="outline-text-3" id="text-orgb53c254">
 <p>
 On your host, we need to install the following two dependencies.
 </p>
@@ -317,9 +317,9 @@ To make life a little easier for you when Kernel debugging, you can set the foll
 </div>
 </div>
 </div>
-<div id="outline-container-org18ab0ae" class="outline-3">
-<h3 id="org18ab0ae">Trigger a NMI and debug</h3>
-<div class="outline-text-3" id="text-org18ab0ae">
+<div id="outline-container-org4b4b6d0" class="outline-3">
+<h3 id="org4b4b6d0">Trigger a NMI and debug</h3>
+<div class="outline-text-3" id="text-org4b4b6d0">
 <p>
 Traditionally, to set an NMI on the target would require a key combination of <i>Command</i>, <i>Option</i>, <i>Control</i>, <i>Shift</i> and <i>Esc</i>. As that's a bit of a pain to do in a VM we can use the following <code>dtrace</code> command.
 </p>
@@ -330,7 +330,7 @@ Traditionally, to set an NMI on the target would require a key combination of <i
 </div>
 
 
-<div id="org10c27c5" class="figure">
+<div id="org8b01004" class="figure">
 <p><img src="./mkd/dtrace.png" alt="dtrace.png" />
 </p>
 </div>
@@ -340,7 +340,7 @@ With the NMI triggered, its now just a matter of connecting to the VM within LLD
 </p>
 
 
-<div id="org9242cd0" class="figure">
+<div id="org9eb3638" class="figure">
 <p><img src="./mkd/remote.png" alt="remote.png" />
 </p>
 </div>
@@ -350,7 +350,7 @@ Eventually, you'll hit the breakpoint set in the previous section, and from here
 </p>
 
 
-<div id="orgb30ec53" class="figure">
+<div id="org42cbec2" class="figure">
 <p><img src="./mkd/breakhit.png" alt="breakhit.png" />
 </p>
 </div>
@@ -360,7 +360,7 @@ It's important to note that once the kernel has launched and the debugger contin
 </p>
 
 
-<div id="org8fd62c8" class="figure">
+<div id="orgbae3ae1" class="figure">
 <p><img src="./mkd/cantinter.png" alt="cantinter.png" />
 </p>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,16 +199,16 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org6008edc" class="outline-2">
-<h2 id="org6008edc">DVTA Bypassing Authentication</h2>
-<div class="outline-text-2" id="text-org6008edc">
+<div id="outline-container-orgbc6c21b" class="outline-2">
+<h2 id="orgbc6c21b">DVTA Bypassing Authentication</h2>
+<div class="outline-text-2" id="text-orgbc6c21b">
 <p>
 <a href="https://github.com/nddmars/dvta">DVTA</a> (Damn Vulnerable Thick App) is a Vulnerable Thick Client Application developed in C# .NET. There are quite a few vulnerabilities within this application. One of them allows to bypass login and login to the application as the admin user. 
 </p>
 </div>
-<div id="outline-container-orge6fb1d0" class="outline-3">
-<h3 id="orge6fb1d0">Setup</h3>
-<div class="outline-text-3" id="text-orge6fb1d0">
+<div id="outline-container-orgef0212c" class="outline-3">
+<h3 id="orgef0212c">Setup</h3>
+<div class="outline-text-3" id="text-orgef0212c">
 <p>
 The thick app needs a MSSQL database and FTP server to function. I just followed the video below.
 </p>
@@ -222,7 +222,7 @@ Once you've downloaded the repo, build the project in visual studio and you shou
 </p>
 
 
-<div id="org263af6b" class="figure">
+<div id="orgba11309" class="figure">
 <p><img src="./dvta/rebecca.png" alt="rebecca.png" />
 </p>
 </div>
@@ -233,15 +233,15 @@ Great! Time to start hacking.
 </div>
 </div>
 
-<div id="outline-container-orgad2ec2a" class="outline-3">
-<h3 id="orgad2ec2a">Getting Admin</h3>
-<div class="outline-text-3" id="text-orgad2ec2a">
+<div id="outline-container-org88ff6c6" class="outline-3">
+<h3 id="org88ff6c6">Getting Admin</h3>
+<div class="outline-text-3" id="text-org88ff6c6">
 <p>
 First off, I need a way to debug the application. Luckily <a href="https://github.com/0xd4d/dnSpy/">dnSpy</a> is perfect for this. Open up dnSpy (x86) and drag / drop <code>DVTA.exe</code> into it.
 </p>
 
 
-<div id="org121777b" class="figure">
+<div id="orgb3c82a3" class="figure">
 <p><img src="./dvta/dnspy1.png" alt="dnspy1.png" />
 </p>
 </div>
@@ -251,7 +251,7 @@ To live debug the application, click <code>Start</code> then in the dialog box, 
 </p>
 
 
-<div id="org1033ece" class="figure">
+<div id="orgf4c4d2d" class="figure">
 <p><img src="./dvta/dnspystart.png" alt="dnspystart.png" />
 </p>
 </div>
@@ -261,7 +261,7 @@ Attempt to login into the application with the username of <code>admin</code> an
 </p>
 
 
-<div id="orgf033a31" class="figure">
+<div id="orga2861c3" class="figure">
 <p><img src="./dvta/adminlogerror.png" alt="adminlogerror.png" />
 </p>
 </div>
@@ -271,7 +271,7 @@ Without closing the error, in dnSpy click <code>Break All</code>.
 </p>
 
 
-<div id="orgcb51758" class="figure">
+<div id="org2ee45ba" class="figure">
 <p><img src="./dvta/dnspybreakall.png" alt="dnspybreakall.png" />
 </p>
 </div>
@@ -281,7 +281,7 @@ Now its possible to debug the login process of the application. To identify wher
 </p>
 
 
-<div id="orgc9eec2e" class="figure">
+<div id="orgdfedfb4" class="figure">
 <p><img src="./dvta/dnspycallstack.png" alt="dnspycallstack.png" />
 </p>
 </div>
@@ -291,7 +291,7 @@ Within the call stack window, we can see the function used for the message box, 
 </p>
 
 
-<div id="org590df42" class="figure">
+<div id="org148d078" class="figure">
 <p><img src="./dvta/dnspymessagebox.png" alt="dnspymessagebox.png" />
 </p>
 </div>
@@ -301,7 +301,7 @@ Clicking the <code>db.checkLogin</code> function shows the query made when authe
 </p>
 
 
-<div id="org1eed99c" class="figure">
+<div id="org813bd96" class="figure">
 <p><img src="./dvta/dnspybreakpoint.png" alt="dnspybreakpoint.png" />
 </p>
 </div>
@@ -311,7 +311,7 @@ Great, with the break point set, click <code>Continue</code> and attempt to logi
 </p>
 
 
-<div id="orgcc73eb2" class="figure">
+<div id="org995e417" class="figure">
 <p><img src="./dvta/dnspybreakhit.png" alt="dnspybreakhit.png" />
 </p>
 </div>
@@ -321,7 +321,7 @@ Like other debuggers, when a break point is hit, we can step into / step over th
 </p>
 
 
-<div id="orgf4eb28d" class="figure">
+<div id="org18b2454" class="figure">
 <p><img src="./dvta/dnspystepover.png" alt="dnspystepover.png" />
 </p>
 </div>
@@ -331,7 +331,7 @@ Clicking <code>Step Over</code> again to the line that says <code>return new Sql
 </p>
 
 
-<div id="org3e2e56c" class="figure">
+<div id="orgb28f7b7" class="figure">
 <p><img src="./dvta/dnspysqlquery.png" alt="dnspysqlquery.png" />
 </p>
 </div>
@@ -341,7 +341,7 @@ At this stage we can change the query within the <code>Locals</code> tab by clic
 </p>
 
 
-<div id="org3e18293" class="figure">
+<div id="org19cf2c0" class="figure">
 <p><img src="./dvta/dnspychangequery.png" alt="dnspychangequery.png" />
 </p>
 </div>
@@ -351,16 +351,16 @@ Now if we click <code>Continue</code> in dnSpy we should have bypassed authentic
 </p>
 
 
-<div id="orgdd29b27" class="figure">
+<div id="org6c3d2da" class="figure">
 <p><img src="./dvta/admin.png" alt="admin.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4e454d5" class="outline-3">
-<h3 id="org4e454d5">Conclusion</h3>
-<div class="outline-text-3" id="text-org4e454d5">
+<div id="outline-container-orgd679151" class="outline-3">
+<h3 id="orgd679151">Conclusion</h3>
+<div class="outline-text-3" id="text-orgd679151">
 <p>
 Because the application had the SQL query hard coded we were able to bypass authentication, it should be noted that we could have changed the SQL statement to something like <code>INSERT</code> or <code>UPDATE</code> resulting in an injection to the SQL database.
 </p>

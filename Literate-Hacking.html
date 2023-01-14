@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,16 +199,16 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org360af0d" class="outline-2">
-<h2 id="org360af0d">Literate Hacking</h2>
-<div class="outline-text-2" id="text-org360af0d">
+<div id="outline-container-org5e26766" class="outline-2">
+<h2 id="org5e26766">Literate Hacking</h2>
+<div class="outline-text-2" id="text-org5e26766">
 <p>
 I found <a href="http://howardism.org/Technical/Emacs/literate-devops.html">this</a> blog post that goes into the concept "Literate DevOps" where everything is executed in Emacs. I don't do DevOps but I am a penetration tester that uses Emacs, so I've came up with the concept <i>Literate Hacking</i>.
 </p>
 </div>
-<div id="outline-container-org704a7ca" class="outline-3">
-<h3 id="org704a7ca">Notes File</h3>
-<div class="outline-text-3" id="text-org704a7ca">
+<div id="outline-container-orgc1acdb7" class="outline-3">
+<h3 id="orgc1acdb7">Notes File</h3>
+<div class="outline-text-3" id="text-orgc1acdb7">
 <p>
 Like any other penetration tester, I take notes when on a project so i can recall what I've found / done. I've been taking my notes in an <code>org-mode</code> document for some time now, as well as <i>staging</i> my report in the same document so I can reference it later down the line if need be.
 </p>
@@ -217,9 +217,9 @@ Like any other penetration tester, I take notes when on a project so i can recal
 Like most other penetration testers I dint have the tools on my local system, I'll normally <code>ssh</code> to a virtual machine and run the tools from that device, then work with <code>scp</code> to get all the data off later. Or now days I'll use a docker container. Literate Hacking allows me to define code blocks in my notes file and then execute it on the virtual machine via <code>ssh</code>. 
 </p>
 </div>
-<div id="outline-container-orgdc2d2aa" class="outline-4">
-<h4 id="orgdc2d2aa">Example</h4>
-<div class="outline-text-4" id="text-orgdc2d2aa">
+<div id="outline-container-org34e8231" class="outline-4">
+<h4 id="org34e8231">Example</h4>
+<div class="outline-text-4" id="text-org34e8231">
 <p>
 First I'll show the example, then I'll show the <code>org-mode</code> code for it.
 In this example I'll just pull the <code>IP</code> of the remote server.
@@ -229,7 +229,7 @@ In this example I'll just pull the <code>IP</code> of the remote server.
 </pre>
 </div>
 
-<pre class="example" id="org3367492">
+<pre class="example" id="orgc50900e">
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -248,7 +248,7 @@ link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 So the <code>org-mode</code> code for that looks like this
 </p>
 
-<pre class="example" id="org3f35b3b">
+<pre class="example" id="org74f30d9">
 #+BEGIN_SRC shell :dir /ssh:home-kalipi:~/ :exports both :results output
 ip addr
 #+END_SRC
@@ -264,7 +264,7 @@ With other tools like <code>msfconsole</code> I could do something like this.
 </pre>
 </div>
 
-<pre class="example" id="orga19bd86">
+<pre class="example" id="org013ea56">
 RHOSTS =&gt; $target
 RPORT =&gt; 80
 SSL =&gt; false
@@ -283,15 +283,15 @@ msf auxiliary(scanner/http/iis_internal_ip) &gt;
 <code>$target</code> would be the vulnerable <code>IP</code> in this case, and the <code>org-mode</code> code looks like this.
 </p>
 
-<pre class="example" id="org764013e">
+<pre class="example" id="orgc8798b2">
 #+BEGIN_SRC shell :dir /ssh:home-kalipi:/usr/share/metasploit-framework :results output :exports both
   msfconsole -q -x 'use auxiliary/scanner/http/iis_internal_ip' -x 'set RHOSTS $target' -x 'set RPORT 80' -x 'set SSL false' -x 'run'
 #+END_SRC
 </pre>
 </div>
 <ul class="org-ul">
-<li><a id="org17840ec"></a>Internal devices<br />
-<div class="outline-text-5" id="text-org17840ec">
+<li><a id="org1643a6b"></a>Internal devices<br />
+<div class="outline-text-5" id="text-org1643a6b">
 <p>
 So, a lot of the time for an internal penetration test, we would send <code>$client</code> an appliance of some sort and connect to it remotely. I'm a huge fan of using a reverse <code>SSH</code> shell to connect to internal appliances, but until recently I've not worked out how to do Literate Hacking via a reverse <code>SSH</code> connection. 
 </p>
@@ -310,7 +310,7 @@ For this example, I'll use a <code>vps</code> and access the same internal devic
 </pre>
 </div>
 
-<pre class="example" id="orgc5b049f">
+<pre class="example" id="orgc3da188">
 /opt
 total 8.0K
 drwxr-xr-x  2 root root 4.0K Oct 20  2017 .
@@ -329,7 +329,7 @@ drwxr-xr-x 22 root root 4.0K Apr 21  2017 ..
     valid_lft forever preferred_lft forever
 </pre>
 
-<pre class="example" id="orge65026d">
+<pre class="example" id="org875b1b0">
 #+BEGIN_SRC shell :dir /ssh:hax|ssh:jthorpe@127.0.0.1#2222:/opt :results output : exports both
   echo $PWD &amp;&amp; ls -lah &amp;&amp; ip a
 #+END_SRC

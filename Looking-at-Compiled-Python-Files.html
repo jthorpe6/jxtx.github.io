@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,17 +199,17 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org3dca2f9" class="outline-2">
-<h2 id="org3dca2f9">Looking at Compiled Python Files</h2>
-<div class="outline-text-2" id="text-org3dca2f9">
+<div id="outline-container-org874e4c2" class="outline-2">
+<h2 id="org874e4c2">Looking at Compiled Python Files</h2>
+<div class="outline-text-2" id="text-org874e4c2">
 <p>
 <code>Python</code> is like <code>Emacs</code> for me, where you use it all the time but every now and then you discover something new and wonder how you lived without it. I've known for a while you can compile <code>python</code> files but I've never really bother looking into them much. Well I have some time so here are my notes at looking into compiled <code>python</code> files.
 </p>
 </div>
 
-<div id="outline-container-orgd403a2e" class="outline-3">
-<h3 id="orgd403a2e">Hello World</h3>
-<div class="outline-text-3" id="text-orgd403a2e">
+<div id="outline-container-orgfbec887" class="outline-3">
+<h3 id="orgfbec887">Hello World</h3>
+<div class="outline-text-3" id="text-orgfbec887">
 <p>
 So I'm going to need a file to actually compile first, but I want to see the differences (if any) when you import a module to when you do not.
 </p>
@@ -248,9 +248,9 @@ So thats actually made a folder called <code>__pycache__</code> and inside of th
 </p>
 </div>
 
-<div id="outline-container-orgd3dc17b" class="outline-4">
-<h4 id="orgd3dc17b">Initial Analysis</h4>
-<div class="outline-text-4" id="text-orgd3dc17b">
+<div id="outline-container-orgb4ae6ea" class="outline-4">
+<h4 id="orgb4ae6ea">Initial Analysis</h4>
+<div class="outline-text-4" id="text-orgb4ae6ea">
 <p>
 Ok so like any binary file, there are a few things I can do to get the lowdown on the file.
 </p>
@@ -262,7 +262,7 @@ Ok so like any binary file, there are a few things I can do to get the lowdown o
 </pre>
 </div>
 
-<pre class="example" id="orgdec8bd4">
+<pre class="example" id="orgc506c8c">
 ./__pycache__/hello.cpython-37.pyc: data
 a}f^O
 hello {})
@@ -285,9 +285,9 @@ As expected its just a data binary, and the source code could with a little luck
 </div>
 </div>
 
-<div id="outline-container-orgc04ba52" class="outline-3">
-<h3 id="orgc04ba52">Import this</h3>
-<div class="outline-text-3" id="text-orgc04ba52">
+<div id="outline-container-org38ffb6b" class="outline-3">
+<h3 id="org38ffb6b">Import this</h3>
+<div class="outline-text-3" id="text-org38ffb6b">
 <p>
 I'm not going to <code>import this</code> as i dont think that would be a good test :), but I want to see what happens when I import a libary. I have more knowelege of the <code>requests</code> libary so I'll compile the below script.
 </p>
@@ -326,9 +326,9 @@ And much like last time its made a folder <code>__pycache__</code> and a compile
 </p>
 </div>
 
-<div id="outline-container-org0d8346d" class="outline-4">
-<h4 id="org0d8346d">Initial Analysis</h4>
-<div class="outline-text-4" id="text-org0d8346d">
+<div id="outline-container-org56cc6a5" class="outline-4">
+<h4 id="org56cc6a5">Initial Analysis</h4>
+<div class="outline-text-4" id="text-org56cc6a5">
 <p>
 Like last time, I'll see if there is anything noteworthy in the strings of the file and the file type.
 </p>
@@ -340,7 +340,7 @@ Like last time, I'll see if there is anything noteworthy in the strings of the f
 </pre>
 </div>
 
-<pre class="example" id="org33b0703">
+<pre class="example" id="orgae48a93">
 ./__pycache__/get.cpython-37.pyc: data
 timeoutZ
 verify)

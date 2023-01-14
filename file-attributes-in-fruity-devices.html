@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,22 +199,22 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orge0979f0" class="outline-2">
-<h2 id="orge0979f0">File Attributes in Fruity Devices</h2>
-<div class="outline-text-2" id="text-orge0979f0">
+<div id="outline-container-org1aa1397" class="outline-2">
+<h2 id="org1aa1397">File Attributes in Fruity Devices</h2>
+<div class="outline-text-2" id="text-org1aa1397">
 <p>
 I wanted to spend some time looking around different file types in the Apple world, and this is what I've got.
 </p>
 </div>
-<div id="outline-container-org0d02416" class="outline-3">
-<h3 id="org0d02416">Mach-O</h3>
-<div class="outline-text-3" id="text-org0d02416">
+<div id="outline-container-orgac627f2" class="outline-3">
+<h3 id="orgac627f2">Mach-O</h3>
+<div class="outline-text-3" id="text-orgac627f2">
 <p>
 Mach-O is the executable format used on macOS and iOS. In the Windows world this could be like a .exe file.
 </p>
 
 
-<div id="orgf181a1c" class="figure">
+<div id="org7816315" class="figure">
 <p><img src="./fafd/macho-file.png" alt="macho-file.png" />
 </p>
 </div>
@@ -228,7 +228,7 @@ The most important load commands define segments, which are the areas of the Mac
 </p>
 
 
-<div id="orgfd0daea" class="figure">
+<div id="org708543b" class="figure">
 <p><img src="./fafd/sections.png" alt="sections.png" />
 </p>
 </div>
@@ -253,16 +253,16 @@ Each segment can also define sections, which further subdivides the segment into
 </p>
 
 
-<div id="org2b1156f" class="figure">
+<div id="org619e1b4" class="figure">
 <p><img src="./fafd/macho-segments.png" alt="macho-segments.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf37f446" class="outline-3">
-<h3 id="orgf37f446">Dyld</h3>
-<div class="outline-text-3" id="text-orgf37f446">
+<div id="outline-container-org39dd5b3" class="outline-3">
+<h3 id="org39dd5b3">Dyld</h3>
+<div class="outline-text-3" id="text-org39dd5b3">
 <p>
 Dyld is the dynamic linker in macOS and iOS. In the Mach-O sections there are several items with the <code>LC_LOAD_DYLIB</code> load command. These typically point to frameworks such as WebKit and UIKit.
 </p>
@@ -272,7 +272,7 @@ Unlike other operating systems, instead of including the system libraries with t
 </p>
 
 
-<div id="orgc9dcf58" class="figure">
+<div id="org2c00ebe" class="figure">
 <p><img src="./fafd/dyld-lib.png" alt="dyld-lib.png" />
 </p>
 </div>
@@ -286,7 +286,7 @@ After you’ve located and made a copy of the cache, we need to extract it. <a h
 </p>
 
 
-<div id="orgf12ae76" class="figure">
+<div id="org29fe7ac" class="figure">
 <p><img src="./fafd/cache.png" alt="cache.png" />
 </p>
 </div>
@@ -297,15 +297,15 @@ We can also get the generated cache from a <code>.ipsw</code> so, let’s go ove
 </div>
 </div>
 
-<div id="outline-container-orgb911ec6" class="outline-3">
-<h3 id="orgb911ec6">IPSW</h3>
-<div class="outline-text-3" id="text-orgb911ec6">
+<div id="outline-container-org54daf08" class="outline-3">
+<h3 id="org54daf08">IPSW</h3>
+<div class="outline-text-3" id="text-org54daf08">
 <p>
 A <code>.ipsw</code> file, simply put, is a firmware file for an Apple device. This file is a zip archive and looks something along the lines of this after extracting.
 </p>
 
 
-<div id="org3a1b8e1" class="figure">
+<div id="org3b2ec39" class="figure">
 <p><img src="./fafd/ipsw-tree.png" alt="ipsw-tree.png" />
 </p>
 </div>
@@ -315,7 +315,7 @@ Starting from the top, we have two <code>.dmg</code> (Disk Image) files. You’l
 </p>
 
 
-<div id="org2d164ca" class="figure">
+<div id="orgc8aa42f" class="figure">
 <p><img src="./fafd/dmg-mount.png" alt="dmg-mount.png" />
 </p>
 </div>
@@ -325,7 +325,7 @@ Seeing as we have access to the file system and as mentioned above, the location
 </p>
 
 
-<div id="orgf8e046e" class="figure">
+<div id="orgbf128eb" class="figure">
 <p><img src="./fafd/cache-mount.png" alt="cache-mount.png" />
 </p>
 </div>
@@ -335,24 +335,24 @@ We can also review much more within the file system, such as directories and per
 </p>
 </div>
 
-<div id="outline-container-org0edf758" class="outline-4">
-<h4 id="org0edf758">*.plist</h4>
-<div class="outline-text-4" id="text-org0edf758">
+<div id="outline-container-orgcc1c541" class="outline-4">
+<h4 id="orgcc1c541">*.plist</h4>
+<div class="outline-text-4" id="text-orgcc1c541">
 <p>
 Moving on, we have two <code>.plist</code> files in the extracted .ipsw, Like everything Apple, there’s identifiers for almost everything. These <code>.plist</code> files include identifiers for the firmware, such as the OS version and supported devices.
 </p>
 
 
-<div id="org3f8c20b" class="figure">
+<div id="org6ec3324" class="figure">
 <p><img src="./fafd/plist.png" alt="plist.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org910f6db" class="outline-4">
-<h4 id="org910f6db">file ./kernelcache</h4>
-<div class="outline-text-4" id="text-org910f6db">
+<div id="outline-container-org8e4e395" class="outline-4">
+<h4 id="org8e4e395">file ./kernelcache</h4>
+<div class="outline-text-4" id="text-org8e4e395">
 <p>
 The kernelcache is basically the kernel itself as well as all of its extensions in one file, then packed and encrypted.
 </p>
@@ -362,7 +362,7 @@ We can view the kernel extensions and their load addresses from the encrypted ke
 </p>
 
 
-<div id="org8f25cf1" class="figure">
+<div id="org3bc4202" class="figure">
 <p><img src="./fafd/kernelcache.png" alt="kernelcache.png" />
 </p>
 </div>
@@ -372,16 +372,16 @@ It’s also possible to decrypt and decompress the kernel with <code>jtool2</cod
 </p>
 
 
-<div id="org346f5fb" class="figure">
+<div id="org7027b17" class="figure">
 <p><img src="./fafd/rekernelcache.png" alt="rekernelcache.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb5b8291" class="outline-4">
-<h4 id="orgb5b8291">ls ./Firmware/all<sub>flash</sub>/all<sub>flash</sub>.{BoardCode}.production/</h4>
-<div class="outline-text-4" id="text-orgb5b8291">
+<div id="outline-container-org8ce52ff" class="outline-4">
+<h4 id="org8ce52ff">ls ./Firmware/all<sub>flash</sub>/all<sub>flash</sub>.{BoardCode}.production/</h4>
+<div class="outline-text-4" id="text-org8ce52ff">
 <p>
 Inside the all<sub>flash</sub> directory we have a few files that end with a <code>.img3</code> extension. As the extension and directory may give away, these are files that are used in the boot image. Like most things Apple, these files are encrypted, and require the Hardware AES engine to be run per file in order to decrypt. That’s not saying it’s impossible, but that would deserve its own blog post.
 </p>
@@ -407,9 +407,9 @@ At a high level here are these files and their usage within the boot image;
 </div>
 
 
-<div id="outline-container-org283713c" class="outline-4">
-<h4 id="org283713c">ls ./Firmware/dfu/</h4>
-<div class="outline-text-4" id="text-org283713c">
+<div id="outline-container-org8dae3ce" class="outline-4">
+<h4 id="org8dae3ce">ls ./Firmware/dfu/</h4>
+<div class="outline-text-4" id="text-org8dae3ce">
 <p>
 Lastly the DFU directory. This directory contains the DFU mode boot images, and yep you guessed it, they are encrypted. Again DFU mode deserves its own blog post, so at a high level there will be two different files in this directory, a file starting with <code>iBEC</code> and another starting with <code>iBSS</code>.
 </p>

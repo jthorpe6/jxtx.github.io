@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,9 +199,9 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org0fcdddd" class="outline-2">
-<h2 id="org0fcdddd">Jailbreak and Root Detection</h2>
-<div class="outline-text-2" id="text-org0fcdddd">
+<div id="outline-container-org2c91f3b" class="outline-2">
+<h2 id="org2c91f3b">Jailbreak and Root Detection</h2>
+<div class="outline-text-2" id="text-org2c91f3b">
 <p>
 When I'm testing mobile applications, as part of static analysis, I always check to see if the application may give me a hard time running on rooted or jailbroken devices. This normally includes searching for <i>common</i> detection strings like "Cydia" within the compiled application, for example;
 </p>
@@ -236,9 +236,9 @@ Another way I like to look for these <i>common</i> detection strings is by searc
 </pre>
 </div>
 
-<div id="outline-container-orgc0e98f3" class="outline-3">
-<h3 id="orgc0e98f3">Automate the boring stuff</h3>
-<div class="outline-text-3" id="text-orgc0e98f3">
+<div id="outline-container-orge896072" class="outline-3">
+<h3 id="orge896072">Automate the boring stuff</h3>
+<div class="outline-text-3" id="text-orge896072">
 <p>
 So I wanted to have a standard script that I could run that would do this for me, both with <code>radare2</code> and with <code>strings</code>. I also wanted this to work for Android applications. So after little thought, I decided to use <code>python</code> and specifically the <code>r2pipe</code> library to interact with <code>radare2</code> and then using the <code>sh</code> library fall back to <code>strings</code>.
 </p>
@@ -313,14 +313,14 @@ This works well, but it did not quite hit the mark, I wanted this to be callable
 </p>
 </div>
 
-<div id="outline-container-orgaa59150" class="outline-4">
-<h4 id="orgaa59150">Python Poetry</h4>
-<div class="outline-text-4" id="text-orgaa59150">
+<div id="outline-container-org5601d8d" class="outline-4">
+<h4 id="org5601d8d">Python Poetry</h4>
+<div class="outline-text-4" id="text-org5601d8d">
 <p>
 I was using <code>poetry</code> to manage the <code>virtualenv</code> and any other dependencies of this script, so I initially looked at the documentation to see how I could have this installed to the users <code>$PATH</code>, and discovered the <code>tool.poetry.scripts</code> in the <code>pyproject.toml</code> file. This was exactly what I was looking for, so I added in the following;
 </p>
 
-<pre class="example" id="org747f721">
+<pre class="example" id="org0ee30e9">
 [tool.poetry.scripts]
 jrd = "jailrootdetector.main:main"
 </pre>
@@ -332,9 +332,9 @@ This now means users can install the script and then call it with <code>jrd --he
 </div>
 </div>
 
-<div id="outline-container-org3fdcaf3" class="outline-3">
-<h3 id="org3fdcaf3">PyPi</h3>
-<div class="outline-text-3" id="text-org3fdcaf3">
+<div id="outline-container-org6eb5c72" class="outline-3">
+<h3 id="org6eb5c72">PyPi</h3>
+<div class="outline-text-3" id="text-org6eb5c72">
 <p>
 All that was left was to upload this to PyPi so people could install it with <code>pip</code> or <code>pipx</code>. <code>poetry</code> also helped here too with the <code>poetry publish --build</code> command.
 </p>
@@ -357,7 +357,7 @@ And then call <code>jrd</code>.
 </pre>
 </div>
 
-<pre class="example" id="org20751e9">
+<pre class="example" id="org38d04a4">
 usage: jrd [-h] (--dex DEX | --ios IOS)
 
 [+] root &amp; jailbreak detection

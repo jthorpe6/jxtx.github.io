@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,21 +199,21 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-org59f2926" class="outline-2">
-<h2 id="org59f2926">Always Testing</h2>
-<div class="outline-text-2" id="text-org59f2926">
+<div id="outline-container-orgdafabb1" class="outline-2">
+<h2 id="orgdafabb1">Always Testing</h2>
+<div class="outline-text-2" id="text-orgdafabb1">
 <p>
 Devices sent to customers for internal penetration tests I've develeoped both a <i>kali linux</i> installation script and a <i>Debian</i> installation script filled with tools. To track the changes to these files an internal <a href="https://gitlab.com/">GitLab</a> was deployed. But like any project there are bugs, so devices that were sent for internal penetration tests were not working as expected. To try and overcome this obvious issue, I looked into the <code>CI/CD</code> process build into <a href="https://gitlab.com">GitLab</a> and was amazed. Not only would the process run the script as a job, but it will show if there was a problem. 
 </p>
 </div>
 
-<div id="outline-container-orgde59cb7" class="outline-3">
-<h3 id="orgde59cb7">Server Configurations</h3>
-<div class="outline-text-3" id="text-orgde59cb7">
+<div id="outline-container-orgee3d898" class="outline-3">
+<h3 id="orgee3d898">Server Configurations</h3>
+<div class="outline-text-3" id="text-orgee3d898">
 </div>
-<div id="outline-container-org329737e" class="outline-4">
-<h4 id="org329737e">Installation</h4>
-<div class="outline-text-4" id="text-org329737e">
+<div id="outline-container-orge612f72" class="outline-4">
+<h4 id="orge612f72">Installation</h4>
+<div class="outline-text-4" id="text-orge612f72">
 <p>
 First the <code>gitlab-runner</code> needs to be installed. Because updates are nice installing the <code>gitlab-runner</code> repo is chosen.
 </p>
@@ -244,9 +244,9 @@ Install docker on the server
 </ol>
 </div>
 </div>
-<div id="outline-container-org401f605" class="outline-4">
-<h4 id="org401f605">Deploying a Runner</h4>
-<div class="outline-text-4" id="text-org401f605">
+<div id="outline-container-orga8a9bc7" class="outline-4">
+<h4 id="orga8a9bc7">Deploying a Runner</h4>
+<div class="outline-text-4" id="text-orga8a9bc7">
 <p>
 A runner is now needed for the project(s) that you want to test a build of. When I first done this the runner would have the status of <i>stuck</i>, A bit of googling around and I discovered this command.
 </p>
@@ -268,13 +268,13 @@ Replace <code>$URL</code> and <code>$TOKEN</code> with the values shown under th
 </div>
 </div>
 
-<div id="outline-container-orge9ad849" class="outline-3">
-<h3 id="orge9ad849">Project Configurations</h3>
-<div class="outline-text-3" id="text-orge9ad849">
+<div id="outline-container-org8dbccd0" class="outline-3">
+<h3 id="org8dbccd0">Project Configurations</h3>
+<div class="outline-text-3" id="text-org8dbccd0">
 <p>
 For the runner to know what to run for the project a <code>.gitlab-ci.yml</code> file is needed in the project root. Populate that file to represent the commands to test your installation script. Mine looks like this.
 </p>
-<pre class="example" id="org4c58a27">
+<pre class="example" id="org4e2a113">
 before_script:
   - apt-get update -qq &amp;&amp; apt-get upgrade -y &amp;&amp; apt-get -qq install lsb-release wget -y
 

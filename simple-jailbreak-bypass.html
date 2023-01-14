@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:51 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,17 +199,17 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orgd7fb9a5" class="outline-2">
-<h2 id="orgd7fb9a5">Simple Jailbreak Bypass</h2>
-<div class="outline-text-2" id="text-orgd7fb9a5">
+<div id="outline-container-org5e12ecf" class="outline-2">
+<h2 id="org5e12ecf">Simple Jailbreak Bypass</h2>
+<div class="outline-text-2" id="text-org5e12ecf">
 <p>
 Mobile applications will often detect if the mobile divice is in an untrusted state, for iOS this is detecting if the device is jailbroken. As attackers this is rather annoying, however, it it normally possible to bypass this.
 </p>
 </div>
 
-<div id="outline-container-orge6f2906" class="outline-3">
-<h3 id="orge6f2906">Detection</h3>
-<div class="outline-text-3" id="text-orge6f2906">
+<div id="outline-container-orgef48812" class="outline-3">
+<h3 id="orgef48812">Detection</h3>
+<div class="outline-text-3" id="text-orgef48812">
 <p>
 Mobile applications can detect if a device is untrusted in a few different ways. One of the ways I like to find this out before I launch the application is to discover any <i>common</i> strings within the application that relate to this type of detection.
 </p>
@@ -223,7 +223,7 @@ In this example I'll use <a href="https://pypi.org/project/jailrootdetector/">ja
 </pre>
 </div>
 
-<pre class="example" id="org3771176">
+<pre class="example" id="org0e5bad9">
 
 [+] searching
 
@@ -310,16 +310,16 @@ Running the application and triggering the jailbreak check functionality, and it
 </p>
 
 
-<div id="orgefcd857" class="figure">
+<div id="org8956f07" class="figure">
 <p><img src="./simple_jb_bypass/device_is_jb.png" alt="device_is_jb.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgfd353fd" class="outline-3">
-<h3 id="orgfd353fd">Bypass</h3>
-<div class="outline-text-3" id="text-orgfd353fd">
+<div id="outline-container-orgc1febc5" class="outline-3">
+<h3 id="orgc1febc5">Bypass</h3>
+<div class="outline-text-3" id="text-orgc1febc5">
 <p>
 There are a few ways to bypass this detection, could use something like <a href="https://yalujailbreak.net/liberty-lite/">Liberty Lite</a> where this application is installed on a jailbroken device. To have more fun, I'm going to leverage a frida script.
 </p>
@@ -424,9 +424,9 @@ I could run this directly from firda codeshare with the <code>--codeshare rodnt/
 </p>
 </div>
 
-<div id="outline-container-org890d4a9" class="outline-4">
-<h4 id="org890d4a9">Hooking with Frida</h4>
-<div class="outline-text-4" id="text-org890d4a9">
+<div id="outline-container-org6496827" class="outline-4">
+<h4 id="org6496827">Hooking with Frida</h4>
+<div class="outline-text-4" id="text-org6496827">
 <p>
 All that I need to do now is hook the application with <a href="https://frida.re">frida</a>, and include the bypass script.
 </p>
@@ -442,7 +442,7 @@ That command will spawn the application, and load in the <code>JavaScript</code>
 
 
 
-<div id="orgce93b8f" class="figure">
+<div id="org1ed320e" class="figure">
 <p><img src="./simple_jb_bypass/device_is_not_jb.png" alt="device_is_not_jb.png" />
 </p>
 </div>

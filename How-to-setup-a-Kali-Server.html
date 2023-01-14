@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,22 +199,22 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orgbe42600" class="outline-2">
-<h2 id="orgbe42600">How to setup a Kali Server</h2>
-<div class="outline-text-2" id="text-orgbe42600">
+<div id="outline-container-org78e3efc" class="outline-2">
+<h2 id="org78e3efc">How to setup a Kali Server</h2>
+<div class="outline-text-2" id="text-org78e3efc">
 </div>
-<div id="outline-container-org655c5b9" class="outline-3">
-<h3 id="org655c5b9">Install Kali</h3>
-<div class="outline-text-3" id="text-org655c5b9">
+<div id="outline-container-orgb1a5278" class="outline-3">
+<h3 id="orgb1a5278">Install Kali</h3>
+<div class="outline-text-3" id="text-orgb1a5278">
 <p>
 For this guide I've chosen to use the kali-light iso, because I'll be removing the Window Manager and other tools, I'll also only selecting certain programs to install on this build.
 Just install the light iso like you would any other instance of kali, keeping the default settings ect.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc5f412d" class="outline-3">
-<h3 id="orgc5f412d">Initial tweaks</h3>
-<div class="outline-text-3" id="text-orgc5f412d">
+<div id="outline-container-orgf5d9886" class="outline-3">
+<h3 id="orgf5d9886">Initial tweaks</h3>
+<div class="outline-text-3" id="text-orgf5d9886">
 <p>
 Because this will be a server and not a desktop I'll remove the Window Manager, enable ssh login for root, and having ssh start on boot.
 </p>
@@ -248,9 +248,9 @@ Right after that is done, lets reboot
 </div>
 </div>
 
-<div id="outline-container-orgf34e52f" class="outline-3">
-<h3 id="orgf34e52f">Interface issue</h3>
-<div class="outline-text-3" id="text-orgf34e52f">
+<div id="outline-container-org8d75fdb" class="outline-3">
+<h3 id="org8d75fdb">Interface issue</h3>
+<div class="outline-text-3" id="text-org8d75fdb">
 <p>
 Because we have removed the Window Manager the interface settings may not be correct anymore to fix find the interface name with <code>ip a</code> and edit the <code>/etc/network/interfaces</code> file, adding the interface in.
 </p>
@@ -262,9 +262,9 @@ Because we have removed the Window Manager the interface settings may not be cor
 </div>
 </div>
 
-<div id="outline-container-orge688706" class="outline-3">
-<h3 id="orge688706">SSH tweaks</h3>
-<div class="outline-text-3" id="text-orge688706">
+<div id="outline-container-org2a80a1e" class="outline-3">
+<h3 id="org2a80a1e">SSH tweaks</h3>
+<div class="outline-text-3" id="text-org2a80a1e">
 <p>
 For this setup i don't want to have to use a password, i want to use my SSH keys. 
 </p>
@@ -287,22 +287,22 @@ PasswordAuthentication no
 </div>
 </div>
 
-<div id="outline-container-org0d8eaaf" class="outline-3">
-<h3 id="org0d8eaaf">Install tools</h3>
-<div class="outline-text-3" id="text-org0d8eaaf">
+<div id="outline-container-orga77bc83" class="outline-3">
+<h3 id="orga77bc83">Install tools</h3>
+<div class="outline-text-3" id="text-orga77bc83">
 </div>
-<div id="outline-container-org574efdd" class="outline-4">
-<h4 id="org574efdd">Comforts</h4>
-<div class="outline-text-4" id="text-org574efdd">
+<div id="outline-container-org98a5f48" class="outline-4">
+<h4 id="org98a5f48">Comforts</h4>
+<div class="outline-text-4" id="text-org98a5f48">
 <div class="org-src-container">
 <pre class="src src-shell">apt update &amp;&amp; apt install zsh tmux fortunes git  -y
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org9e26557" class="outline-4">
-<h4 id="org9e26557">zsh configuration</h4>
-<div class="outline-text-4" id="text-org9e26557">
+<div id="outline-container-orgc637619" class="outline-4">
+<h4 id="orgc637619">zsh configuration</h4>
+<div class="outline-text-4" id="text-orgc637619">
 <div class="org-src-container">
 <pre class="src src-shell">git clone --recursive https://github.com/sorin-ionescu/prezto.git <span style="font-style: italic;">"${ZDOTDIR:-$HOME}/.zprezto"</span>
 </pre>
@@ -323,9 +323,9 @@ PasswordAuthentication no
 </div>
 </div>
 
-<div id="outline-container-orged54066" class="outline-4">
-<h4 id="orged54066">Kali tools</h4>
-<div class="outline-text-4" id="text-orged54066">
+<div id="outline-container-org579ac11" class="outline-4">
+<h4 id="org579ac11">Kali tools</h4>
+<div class="outline-text-4" id="text-org579ac11">
 <div class="org-src-container">
 <pre class="src src-shell">apt update &amp;&amp; apt upgrade -y &amp;&amp; apt install kali-linux-web -y
 </pre>
@@ -333,9 +333,9 @@ PasswordAuthentication no
 </div>
 </div>
 
-<div id="outline-container-org12ee017" class="outline-4">
-<h4 id="org12ee017">External tools</h4>
-<div class="outline-text-4" id="text-org12ee017">
+<div id="outline-container-orgadac383" class="outline-4">
+<h4 id="orgadac383">External tools</h4>
+<div class="outline-text-4" id="text-orgadac383">
 <p>
 I'm not going to tell you how to set up your own server, for me all external tools go in <code>/opt</code> and i use the following script to get updates
 </p>
@@ -353,9 +353,9 @@ apt-get -qq update &amp;&amp; <span style="font-style: italic;">\</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orga49ab95" class="outline-3">
-<h3 id="orga49ab95">Cleanup</h3>
-<div class="outline-text-3" id="text-orga49ab95">
+<div id="outline-container-org03ae01b" class="outline-3">
+<h3 id="org03ae01b">Cleanup</h3>
+<div class="outline-text-3" id="text-org03ae01b">
 <p>
 We don't need all the Window Manager stuff anymore, I'm going to remove it 
 </p>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,21 +199,21 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orga9d26ff" class="outline-2">
-<h2 id="orga9d26ff">Static Analysis of the discord APK</h2>
-<div class="outline-text-2" id="text-orga9d26ff">
+<div id="outline-container-orgc10ca06" class="outline-2">
+<h2 id="orgc10ca06">Static Analysis of the discord APK</h2>
+<div class="outline-text-2" id="text-orgc10ca06">
 </div>
-<div id="outline-container-org0cf95a5" class="outline-3">
-<h3 id="org0cf95a5">Overview</h3>
-<div class="outline-text-3" id="text-org0cf95a5">
+<div id="outline-container-org00ad033" class="outline-3">
+<h3 id="org00ad033">Overview</h3>
+<div class="outline-text-3" id="text-org00ad033">
 <p>
 When performing static analysis of an android APK file I often find myself doing the same tasks, with this repetition should come automation. I decided to download the <a href="https://apkpure.com/discord-chat-for-gamers/com.discord">discord apk</a> and peform the initial tasks to write a script. I'll be using <a href="https://ibotpeaches.github.io/Apktool/">apktool</a> and <a href="https://www.radare.org/r/">radare2</a> as well as <code>grep</code> to get some initial information about the <code>apk</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-org976869a" class="outline-3">
-<h3 id="org976869a">Extract the apk</h3>
-<div class="outline-text-3" id="text-org976869a">
+<div id="outline-container-orga71374d" class="outline-3">
+<h3 id="orga71374d">Extract the apk</h3>
+<div class="outline-text-3" id="text-orga71374d">
 <p>
 First we have to extract the <code>apk</code> file with <code>apktool</code> so the <code>AndroidManifest.xml</code> is readable.
 </p>
@@ -222,7 +222,7 @@ First we have to extract the <code>apk</code> file with <code>apktool</code> so 
 </pre>
 </div>
 
-<pre class="example" id="org8b6196a">
+<pre class="example" id="org0a1f832">
 I: Using Apktool 2.3.4 on Discord.apk
 I: Loading resource table...
 I: Decoding AndroidManifest.xml with resources...
@@ -241,9 +241,9 @@ Next we have to unzip the <code>apk</code> too
 </p>
 </div>
 </div>
-<div id="outline-container-org9722361" class="outline-3">
-<h3 id="org9722361">Android Permissions</h3>
-<div class="outline-text-3" id="text-org9722361">
+<div id="outline-container-org124581b" class="outline-3">
+<h3 id="org124581b">Android Permissions</h3>
+<div class="outline-text-3" id="text-org124581b">
 <p>
 Now that the apk has been extracted we can look at the <code>AndroidManifest.xml</code> for any permissions required by the application.
 </p>
@@ -252,7 +252,7 @@ Now that the apk has been extracted we can look at the <code>AndroidManifest.xml
 </pre>
 </div>
 
-<pre class="example" id="orgf4f1ce8">
+<pre class="example" id="org03d4d44">
 &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;
 &lt;uses-permission android:name="android.permission.BLUETOOTH"/&gt;
 &lt;uses-permission android:name="android.permission.BROADCAST_STICKY"/&gt;
@@ -299,13 +299,13 @@ Sometimes there are further <code>AndroidManifest.xml</code> files hidden within
 </pre>
 </div>
 </div>
-<div id="outline-container-org9846af5" class="outline-3">
-<h3 id="org9846af5">Classes dex files</h3>
-<div class="outline-text-3" id="text-org9846af5">
+<div id="outline-container-org3951b49" class="outline-3">
+<h3 id="org3951b49">Classes dex files</h3>
+<div class="outline-text-3" id="text-org3951b49">
 </div>
-<div id="outline-container-org32f142c" class="outline-4">
-<h4 id="org32f142c">Initial Analysis</h4>
-<div class="outline-text-4" id="text-org32f142c">
+<div id="outline-container-org31e748e" class="outline-4">
+<h4 id="org31e748e">Initial Analysis</h4>
+<div class="outline-text-4" id="text-org31e748e">
 <p>
 After extracting the <code>apk</code> there are further files than the <code>AndroidManifest.xml</code> files that are intresting to us for analysis should include <code>.dex</code> files. These files hold the code to the <code>apk</code> and are used are runtime.
 </p>
@@ -337,7 +337,7 @@ Lets first see the info for the files.
 </pre>
 </div>
 
-<pre class="example" id="orgfe2ded5">
+<pre class="example" id="org88f0dd2">
 arch     dalvik
 baddr    0x0
 binsz    8576488
@@ -401,9 +401,9 @@ Great! As expected its a Dalvik VM.
 </p>
 </div>
 </div>
-<div id="outline-container-org43d3682" class="outline-4">
-<h4 id="org43d3682">Checking for Root detection</h4>
-<div class="outline-text-4" id="text-org43d3682">
+<div id="outline-container-org1db4a24" class="outline-4">
+<h4 id="org1db4a24">Checking for Root detection</h4>
+<div class="outline-text-4" id="text-org1db4a24">
 <p>
 Later for dynamic analysis it would be good to know if the application will run on a rooted device, to check for this we can search the strings of the <code>classes.dex</code> file for anything that may impact it running on a rooted device.
 </p>
@@ -421,7 +421,7 @@ Later for dynamic analysis it would be good to know if the application will run 
 </pre>
 </div>
 
-<pre class="example" id="org628c3ec">
+<pre class="example" id="org47423ec">
 looking for sudo in classes.dex
 
 looking for bin/su in classes.dex
@@ -442,14 +442,14 @@ So it looks like the <code>classes2.dex</code> does look for the <code>Superuser
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd98370" class="outline-4">
-<h4 id="orgbd98370">Possible URL endpoints</h4>
-<div class="outline-text-4" id="text-orgbd98370">
+<div id="outline-container-orge9bfc32" class="outline-4">
+<h4 id="orge9bfc32">Possible URL endpoints</h4>
+<div class="outline-text-4" id="text-orge9bfc32">
 <p>
 Most the time API or URLs are in the <code>classes.dex</code> files and it would be a good idea to know these before dynamic analysis to understand all the calls that the application should be making or that it could reference.
 </p>
 <div class="org-src-container">
-<pre class="src src-python" id="org0f4f992"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">encoding=utf8</span>
+<pre class="src src-python" id="org48b4211"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">encoding=utf8</span>
 <span style="font-weight: bold;">import</span> r2pipe
 
 <span style="font-weight: bold; font-style: italic;">dexfile</span> = [<span style="font-style: italic;">"classes.dex"</span>,<span style="font-style: italic;">"classes2.dex"</span>]
@@ -481,7 +481,7 @@ Alright, so lets try to extract only the urls from that output so we have a nice
 </pre>
 </div>
 
-<pre class="example" id="orga80c2a0">
+<pre class="example" id="orgb496b00">
 \ahttp://
 http://127.0.0.1
 *http://schemas.android.com/apk/res/android
@@ -580,9 +580,9 @@ Ok its not pretty but we now have a better list of URLs that are present in the 
 </p>
 </div>
 </div>
-<div id="outline-container-org133b7a1" class="outline-4">
-<h4 id="org133b7a1">Any SQL statements</h4>
-<div class="outline-text-4" id="text-org133b7a1">
+<div id="outline-container-orgb392e3d" class="outline-4">
+<h4 id="orgb392e3d">Any SQL statements</h4>
+<div class="outline-text-4" id="text-orgb392e3d">
 <div class="org-src-container">
 <pre class="src src-python"><span style="font-weight: bold;">import</span> r2pipe
 
@@ -597,7 +597,7 @@ Ok its not pretty but we now have a better list of URLs that are present in the 
 </pre>
 </div>
 
-<pre class="example" id="orga11b9a2">
+<pre class="example" id="orgcdaed6a">
 looking for SELECT in classes.dex
 0x569b32 157 156  AND (SELECT COUNT(*)=0 FROM dependency WHERE     prerequisite_id=id AND     work_spec_id NOT IN         (SELECT id FROM workspec WHERE state IN (2, 3, 5)))
 0x582c90 42 41 (ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN

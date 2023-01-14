@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,16 +199,16 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orgb081a11" class="outline-2">
-<h2 id="orgb081a11">VulnUni&#xa0;&#xa0;&#xa0;<span class="tag"><span class="boot2root">boot2root</span></span></h2>
-<div class="outline-text-2" id="text-orgb081a11">
+<div id="outline-container-org728044b" class="outline-2">
+<h2 id="org728044b">VulnUni&#xa0;&#xa0;&#xa0;<span class="tag"><span class="boot2root">boot2root</span></span></h2>
+<div class="outline-text-2" id="text-org728044b">
 <p>
 Its been a while since I did a boot2root, and I got really bored one weekend so I decided to do one.
 </p>
 </div>
-<div id="outline-container-org4150817" class="outline-3">
-<h3 id="org4150817">Discovery</h3>
-<div class="outline-text-3" id="text-org4150817">
+<div id="outline-container-orgb3bab8d" class="outline-3">
+<h3 id="orgb3bab8d">Discovery</h3>
+<div class="outline-text-3" id="text-orgb3bab8d">
 <p>
 All good things start off with <code>nmap</code>, and in this case I'll just use the defaults.
 </p>
@@ -243,7 +243,7 @@ Content discovery is next on the list, and <code>gobuster</code> is pretty good 
 </pre>
 </div>
 
-<pre class="example" id="orgd0bd070">
+<pre class="example" id="org2dbcb4f">
 ===============================================================
 Gobuster v3.0.1
 by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
@@ -313,16 +313,16 @@ And sure enough, there is what looks to be an admin portal.
 </p>
 
 
-<div id="orgd674b81" class="figure">
+<div id="org4fe7204" class="figure">
 <p><img src="./vulnuni/vulnuni-eclass.png" alt="vulnuni-eclass.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1b4f0aa" class="outline-3">
-<h3 id="org1b4f0aa">Exploitation</h3>
-<div class="outline-text-3" id="text-org1b4f0aa">
+<div id="outline-container-orga5b2512" class="outline-3">
+<h3 id="orga5b2512">Exploitation</h3>
+<div class="outline-text-3" id="text-orga5b2512">
 <p>
 Looking for exploits for the Admin portal (eClass) with <code>getsploit</code>.
 </p>
@@ -332,7 +332,7 @@ Looking for exploits for the Admin portal (eClass) with <code>getsploit</code>.
 </pre>
 </div>
 
-<pre class="example" id="org87b5c74">
+<pre class="example" id="orgb877a85">
 Total found exploits: 8
 Web-search URL: https://vulners.com/search?query=bulletinFamily%3Aexploit+AND+eClass
 +----------------------+--------------------------------+----------------------------------------------------------------------------------------------------+
@@ -381,7 +381,7 @@ Lets try SQL injection on the login pages <code>uname</code> parameter then.
 </pre>
 </div>
 
-<pre class="example" id="org041d399">
+<pre class="example" id="orgdc29e63">
 	___
        __H__
  ___ ___[']_____ ___ ___  {1.4.5.24#dev}
@@ -416,7 +416,7 @@ back-end DBMS: MySQL &gt;= 5.0.12
 Yep, looks like we have injection. Using <code>sqlmap</code> more I've found out that the current database is <code>eclass</code>.
 </p>
 
-<pre class="example" id="org8bc9c7d">
+<pre class="example" id="org21f62ea">
 [18:16:51] [INFO] fetching current database
 [18:16:51] [INFO] resumed: eclass
 current database: 'eclass'
@@ -431,7 +431,7 @@ Looking around that database for a bit I found a column for username &amp; passw
 </pre>
 </div>
 
-<pre class="example" id="orgf92feeb">
+<pre class="example" id="org3e96f37">
 	___
        __H__
  ___ ___[)]_____ ___ ___  {1.4.5.24#dev}
@@ -539,9 +539,9 @@ Table: user
 </div>
 </div>
 
-<div id="outline-container-org5db5776" class="outline-3">
-<h3 id="org5db5776">Exploitation</h3>
-<div class="outline-text-3" id="text-org5db5776">
+<div id="outline-container-org4740ce0" class="outline-3">
+<h3 id="org4740ce0">Exploitation</h3>
+<div class="outline-text-3" id="text-org4740ce0">
 <p>
 Logging into the application with the admin creds above I get admin access to the application.
 </p>
@@ -551,7 +551,7 @@ Reviewing the admin functionality there is the ability to upload a <code>.zip</c
 </p>
 
 
-<div id="orgab9cf57" class="figure">
+<div id="org4f15fce" class="figure">
 <p><img src="./vulnuni/rescourse.png" alt="rescourse.png" />
 </p>
 </div>
@@ -612,16 +612,16 @@ Looking back there in the tmp folder I see the uploaded reverse shell. and if I 
 </div>
 
 
-<div id="org9e19571" class="figure">
+<div id="orga1c8569" class="figure">
 <p><img src="./vulnuni/shell.png" alt="shell.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org394fa88" class="outline-3">
-<h3 id="org394fa88">Post Exploitation</h3>
-<div class="outline-text-3" id="text-org394fa88">
+<div id="outline-container-orgf6ec5d3" class="outline-3">
+<h3 id="orgf6ec5d3">Post Exploitation</h3>
+<div class="outline-text-3" id="text-orgf6ec5d3">
 <p>
 First things first is that I need an interactive shell. I'll do that with the following command.
 </p>
@@ -640,7 +640,7 @@ The first flag is in the home directory..
 </p>
 
 
-<div id="org1217b91" class="figure">
+<div id="orgf7096c7" class="figure">
 <p><img src="./vulnuni/first_flag.png" alt="first_flag.png" />
 </p>
 </div>
@@ -663,7 +663,7 @@ The exploit has a comment on how to compile it. and it seemed like it worked on 
 </p>
 
 
-<div id="orgce68ca7" class="figure">
+<div id="org9d09abf" class="figure">
 <p><img src="./vulnuni/root.png" alt="root.png" />
 </p>
 </div>

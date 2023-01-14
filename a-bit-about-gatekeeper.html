@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-01-07 Sat 14:50 -->
+<!-- 2023-01-14 Sat 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -199,9 +199,9 @@
 <ul class="org-ul">
 <li><a href="index.html">home</a></li>
 </ul>
-<div id="outline-container-orgca31002" class="outline-2">
-<h2 id="orgca31002">A bit about Gatekeeper</h2>
-<div class="outline-text-2" id="text-orgca31002">
+<div id="outline-container-org98823fd" class="outline-2">
+<h2 id="org98823fd">A bit about Gatekeeper</h2>
+<div class="outline-text-2" id="text-org98823fd">
 <p>
 macOS actually comes with an <i>anti-virus</i> like windows does, and like defender, there have been <a href="https://papers.put.as/papers/macosx/2015/Wardle-VB2015.pdf">several bypasses</a>.
 </p>
@@ -233,15 +233,15 @@ Gatekeeper applies the quarantine attribute (<code>com.apple.quarantine)</code> 
 </div>
 </div>
 
-<div id="outline-container-orgacd2a14" class="outline-3">
-<h3 id="orgacd2a14">Example</h3>
-<div class="outline-text-3" id="text-orgacd2a14">
+<div id="outline-container-orga2c0360" class="outline-3">
+<h3 id="orga2c0360">Example</h3>
+<div class="outline-text-3" id="text-orga2c0360">
 <p>
 Have you ever downloaded a file, and when you try to run it, it says that <i>"&lt;application&gt; can’t be opened because Apple cannot check it for malicious software."</i>? This is gatekeeper in action.
 </p>
 
 
-<div id="orge64b5ac" class="figure">
+<div id="org21a8b10" class="figure">
 <p><img src="./abag/popup.png" alt="popup.png" />
 </p>
 </div>
@@ -265,7 +265,7 @@ After browsing to my local <code>http</code> server, and downloading the test bi
 I had to download the binary via a web browser, because browsers will automatically generate extended attribute for the download. We can view these attributes with the <code>xattr</code> command.
 </p>
 
-<pre class="example" id="org07466e8">
+<pre class="example" id="orgf65fa20">
 % xattr -l ./test
 com.apple.macl:
 com.apple.metadata:kMDItemDownloadedDate: bplist00�3A�OgH݇
@@ -284,7 +284,7 @@ Readers that want the world to burn, would be asking themselves if this attribut
 </p>
 
 
-<div id="org1983dea" class="figure">
+<div id="org9f026f3" class="figure">
 <p><img src="./abag/curl.png" alt="curl.png" />
 </p>
 </div>
@@ -294,7 +294,7 @@ No output is good, to be doubly sure, lets run it.
 </p>
 
 
-<div id="org37d341e" class="figure">
+<div id="org222317a" class="figure">
 <p><img src="./abag/curl-run.png" alt="curl-run.png" />
 </p>
 </div>
